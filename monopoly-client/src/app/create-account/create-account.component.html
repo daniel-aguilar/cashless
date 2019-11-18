@@ -1,0 +1,8 @@
+<form [formGroup]="joinForm" (ngSubmit)="createAccount()">
+    <select formControlName="bank">
+        <option value="">Select a bank</option>
+        <option *ngFor="let b of banks" [value]="b.id">{{ b.name }}</option>
+    </select>
+    <input formControlName="account">
+    <button>Submit</button>
+</form>

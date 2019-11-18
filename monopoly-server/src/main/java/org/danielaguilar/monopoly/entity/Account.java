@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Account {
 
-	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -24,6 +23,7 @@ public class Account {
 	@JoinColumn(name = "bank_id")
 	private Bank bank;
 
+	@JsonIgnore
 	private Integer balance = 0;
 
 	public Integer getId() {
