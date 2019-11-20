@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class CreateAccountComponent implements OnInit {
 
   joinForm: FormGroup;
-  banks: Bank[];
+  banks: Bank[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -36,8 +36,11 @@ export class CreateAccountComponent implements OnInit {
   createAccount() {
     let data = this.joinForm.value;
     const bank = this.banks.find(b => b.id == data.bank);
-    this.as.createAccount(bank, data.account).subscribe(() => {
-      this.router.navigate(['/account']);
-    });
+
+    if (bank) {
+      this.as.createAccount(bank, data.account).subscribe(() => {
+        this.router.navigate(['/account']);
+      });
+    }
   }
 }

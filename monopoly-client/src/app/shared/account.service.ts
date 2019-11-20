@@ -9,12 +9,14 @@ import { Bank } from './bank';
     providedIn: 'root',
 })
 export class AccountService {
-
-    private _account: Account;
+    private account?: Account;
 
     constructor(private http: HttpClient) {
-        let json = localStorage.getItem('account');
-        this._account = JSON.parse(json);
+        const json = localStorage.getItem('account');
+
+        if (json) {
+            this.account = JSON.parse(json);
+        }
     }
 
     get account() {
@@ -31,7 +33,7 @@ export class AccountService {
     }
 
     private save(account: Account) {
-        this._account = account;
+        this.account = account;
         localStorage.setItem('account', JSON.stringify(account));
     }
 }
