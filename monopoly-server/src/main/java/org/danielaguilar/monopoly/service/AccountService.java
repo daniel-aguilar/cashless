@@ -13,6 +13,10 @@ public class AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 
+	public Iterable<Account> getAccounts() {
+		return accountRepository.findAll();
+	}
+
 	public Optional<Account> findAccount(Integer accountId) {
 		return accountRepository.findById(accountId);
 	}

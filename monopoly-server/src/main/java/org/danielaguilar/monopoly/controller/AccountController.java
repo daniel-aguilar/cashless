@@ -17,11 +17,26 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
+	@GetMapping("/")
+	public Iterable<Account> getAccounts() {
+		return accountService.getAccounts();
+	}
+
 	@GetMapping("{accountId}/")
 	public Account account(@PathVariable Integer accountId) {
 		Optional<Account> query = accountService.findAccount(accountId);
 		if (query.isPresent()) {
 			return query.get();
+		}
+		throw new IllegalArgumentException(); // TODO: throw 404
+	}
+
+	@GetMapping("{accountId}/balance/")
+	public Integer getBalance(@PathVariable Integer accountId) {
+		Optional<Account> query = accountService.findAccount(accountId);
+		if (query.isPresent()) {
+			Account account = query.get();
+			return account.getBalance();
 		}
 		throw new IllegalArgumentException(); // TODO: throw 404
 	}

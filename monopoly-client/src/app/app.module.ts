@@ -7,14 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateBankComponent } from './create-bank/create-bank.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
-import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { AccountHomeComponent } from './account-home/account-home.component';
+import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateBankComponent,
     CreateAccountComponent,
-    AccountDetailComponent
+    AccountHomeComponent,
+    TransferMoneyComponent
   ],
   imports: [
     BrowserModule,

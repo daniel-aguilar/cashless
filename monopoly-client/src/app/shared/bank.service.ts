@@ -24,4 +24,12 @@ export class BankService {
 
     return this.http.post('http://localhost:8080/bank/new/', params);
   }
+
+  transfer(fromAccount: number, toAccount: number, amount: number) {
+    return this.http.post('http://localhost:8080/bank/transfer/', {
+      from: fromAccount,
+      to: toAccount,
+      amount,
+    });
+  }
 }
