@@ -1,6 +1,6 @@
 package org.danielaguilar.monopoly.service;
 
-import org.danielaguilar.monopoly.entity.Account;
+import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -3,9 +3,9 @@ package org.danielaguilar.monopoly.service;
 import java.util.Arrays;
 import java.util.Optional;
 
-import org.danielaguilar.monopoly.entity.Account;
-import org.danielaguilar.monopoly.entity.Bank;
-import org.danielaguilar.monopoly.entity.Transaction;
+import org.danielaguilar.monopoly.model.Account;
+import org.danielaguilar.monopoly.model.Bank;
+import org.danielaguilar.monopoly.model.Transaction;
 import org.danielaguilar.monopoly.repository.AccountRepository;
 import org.danielaguilar.monopoly.repository.BankRepository;
 import org.danielaguilar.monopoly.repository.TransactionRepository;

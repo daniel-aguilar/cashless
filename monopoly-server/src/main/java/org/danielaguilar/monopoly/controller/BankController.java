@@ -3,8 +3,8 @@ package org.danielaguilar.monopoly.controller;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.danielaguilar.monopoly.entity.Account;
-import org.danielaguilar.monopoly.entity.Bank;
+import org.danielaguilar.monopoly.model.Account;
+import org.danielaguilar.monopoly.model.Bank;
 import org.danielaguilar.monopoly.service.AccountService;
 import org.danielaguilar.monopoly.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;

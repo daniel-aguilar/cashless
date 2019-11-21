@@ -1,4 +1,4 @@
-package org.danielaguilar.monopoly.entity;
+package org.danielaguilar.monopoly.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
