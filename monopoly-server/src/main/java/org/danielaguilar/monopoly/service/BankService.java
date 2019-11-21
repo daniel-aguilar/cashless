@@ -44,21 +44,16 @@ public class BankService {
 		return accountRepository.save(newAccount);
 	}
 
-	public void makeTransaction(Account from, Account to, Integer amount) {
-		Integer newBalance;
-
+	public void makeTransaction(Account sender, Account recipient, Integer amount) {
 		Transaction transaction = new Transaction();
-		transaction.setFrom(from);
-		transaction.setTo(to);
+		transaction.setFrom(sender);
+		transaction.setTo(recipient);
 		transaction.setAmount(amount);
 
-		newBalance = from.getBalance() - amount;
-		from.setBalance(newBalance);
-
-		newBalance = to.getBalance() + amount;
-		to.setBalance(newBalance);
+		sender.withdraw(amount);
+		recipient.deposit(amount);
 
 		transactionRepository.save(transaction);
-		accountRepository.saveAll(Arrays.asList(from, to));
+		accountRepository.saveAll(Arrays.asList(sender, recipient));
 	}
 }

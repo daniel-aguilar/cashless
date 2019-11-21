@@ -1,13 +1,13 @@
 package org.danielaguilar.monopoly.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Account {
@@ -25,6 +25,19 @@ public class Account {
 
 	@JsonIgnore
 	private Integer balance = 0;
+
+	public void deposit(Integer amount) {
+		balance += amount;
+	}
+
+	public void withdraw(Integer amount) {
+		if (balance - amount >= 0) {
+			balance -= amount;
+		} else {
+			// TODO: Find more appropriate exception
+			throw new IllegalArgumentException();
+		}
+	}
 
 	public Integer getId() {
 		return id;
