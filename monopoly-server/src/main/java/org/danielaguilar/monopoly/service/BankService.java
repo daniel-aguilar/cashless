@@ -1,7 +1,6 @@
 package org.danielaguilar.monopoly.service;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Bank;
@@ -29,25 +28,10 @@ public class BankService {
 		return bankRepository.save(bank);
 	}
 
-	public Iterable<Bank> getBanks() {
-		return bankRepository.findAll();
-	}
-
-	public Optional<Bank> findBank(Integer bankId) {
-		return bankRepository.findById(bankId);
-	}
-
-	public Account createAccount(Bank bank, String name) {
-		Account newAccount = new Account();
-		newAccount.setName(name);
-		newAccount.setBank(bank);
-		return accountRepository.save(newAccount);
-	}
-
-	public void makeTransaction(Account sender, Account recipient, Integer amount) {
+	public void transferMoney(Account sender, Account recipient, Integer amount) {
 		Transaction transaction = new Transaction();
-		transaction.setFrom(sender);
-		transaction.setTo(recipient);
+		transaction.setSender(sender);
+		transaction.setRecipient(recipient);
 		transaction.setAmount(amount);
 
 		sender.withdraw(amount);

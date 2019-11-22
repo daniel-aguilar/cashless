@@ -15,18 +15,14 @@ public class Transaction {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "from_account")
-	private Account from;
+	@JoinColumn(name = "sender_id")
+	private Account sender;
 
 	@ManyToOne
-	@JoinColumn(name = "to_account")
-	private Account to;
+	@JoinColumn(name = "recipient_id")
+	private Account recipient;
 
 	private Integer amount;
-
-	public Transaction() {
-
-	}
 
 	public Integer getId() {
 		return id;
@@ -36,20 +32,20 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Account getFrom() {
-		return from;
+	public Account getSender() {
+		return sender;
 	}
 
-	public void setFrom(Account from) {
-		this.from = from;
+	public void setSender(Account sender) {
+		this.sender = sender;
 	}
 
-	public Account getTo() {
-		return to;
+	public Account getRecipient() {
+		return recipient;
 	}
 
-	public void setTo(Account to) {
-		this.to = to;
+	public void setRecipient(Account recipient) {
+		this.recipient = recipient;
 	}
 
 	public Integer getAmount() {

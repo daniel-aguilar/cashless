@@ -14,7 +14,7 @@ CREATE TABLE account (
 
 CREATE TABLE transaction (
   id SERIAL PRIMARY KEY,
-  from_account INTEGER REFERENCES account (id) NOT NULL, -- TODO: Add check constraint to avoid transfering money to yourself
-  to_account INTEGER REFERENCES account (id) NOT NULL,
+  sender_id INTEGER REFERENCES account (id) NOT NULL,
+  recipient_id INTEGER REFERENCES account (id) NOT NULL,
   amount INTEGER NOT NULL
 );

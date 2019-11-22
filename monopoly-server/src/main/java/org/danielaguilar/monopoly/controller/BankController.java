@@ -1,10 +1,11 @@
 package org.danielaguilar.monopoly.controller;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Bank;
+import org.danielaguilar.monopoly.repository.AccountRepository;
+import org.danielaguilar.monopoly.repository.BankRepository;
 import org.danielaguilar.monopoly.service.AccountService;
 import org.danielaguilar.monopoly.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @RestController
 @RequestMapping("bank/")
@@ -24,64 +26,51 @@ public class BankController {
 	private BankService bankService;
 
 	@Autowired
+	private BankRepository bankRepository;
+
+	@Autowired
 	private AccountService accountService;
 
+	@Autowired
+	private AccountRepository accountRepository;
+
 	public static class Transaction {
-		private Integer from;
-		private Integer to;
-		private Integer amount;
+		@JsonProperty("from")
+		public Integer sender;
 
-		public Integer getFrom() {
-			return from;
-		}
+		@JsonProperty("to")
+		public Integer recipient;
 
-		public void setFrom(Integer from) {
-			this.from = from;
-		}
-
-		public Integer getTo() {
-			return to;
-		}
-
-		public void setTo(Integer to) {
-			this.to = to;
-		}
-
-		public Integer getAmount() {
-			return amount;
-		}
-
-		public void setAmount(Integer amount) {
-			this.amount = amount;
-		}
+		public Integer amount;
 	}
 
-	@GetMapping("/")
-	public Iterable<Bank> list() {
-		return bankService.getBanks();
+	@GetMapping()
+	public Iterable<Bank> getBanks() {
+		return bankRepository.findAll();
 	}
 
 	@PostMapping("new/")
-	public void createBank(@RequestParam String name) {
+	public void createBank(String name) {
 		bankService.createBank(name);
 	}
 
-	@PostMapping("{bankId}/newAccount/")
-	public Account createAccount(@PathVariable Integer bankId, @RequestParam String name) {
-		Optional<Bank> bank = bankService.findBank(bankId);
-		if (bank.isPresent()) {
-			return bankService.createAccount(bank.get(), name);
-		}
-		throw new IllegalArgumentException(); // TODO: throw 404
+	@GetMapping("{id}/accounts/")
+	public Iterable<Account> getAccounts(@PathVariable("id") Bank bank) {
+		return bank.getAccounts();
+	}
+
+	@PostMapping("{id}/new-account/")
+	public Account createAccount(@PathVariable("id") Bank bank, String name) {
+		return accountService.createAccount(bank, name);
 	}
 
 	@PostMapping("transfer/")
-	public void makeTransaction(@RequestBody Transaction transaction) {
+	public void transferMoney(@RequestBody Transaction transaction) {
 		try {
-			Account from = accountService.findAccount(transaction.getFrom()).get();
-			Account to = accountService.findAccount(transaction.getTo()).get();
+			Account sender = accountRepository.findById(transaction.sender).get();
+			Account recipient = accountRepository.findById(transaction.recipient).get();
 
-			bankService.makeTransaction(from, to, transaction.getAmount());
+			bankService.transferMoney(sender, recipient, transaction.amount);
 		} catch (NoSuchElementException e) {
 			throw e; // TODO: throw 404
 		}
