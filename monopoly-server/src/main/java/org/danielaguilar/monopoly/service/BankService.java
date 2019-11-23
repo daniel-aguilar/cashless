@@ -33,15 +33,19 @@ public class BankService {
 	}
 
 	public void transferMoney(Account sender, Account recipient, Integer amount) {
-		Transaction transaction = new Transaction();
-		transaction.setSender(sender);
-		transaction.setRecipient(recipient);
-		transaction.setAmount(amount);
+		if (sender.getBank().equals(recipient.getBank())) {
+			Transaction transaction = new Transaction();
+			transaction.setSender(sender);
+			transaction.setRecipient(recipient);
+			transaction.setAmount(amount);
 
-		sender.withdraw(amount);
-		recipient.deposit(amount);
+			sender.withdraw(amount);
+			recipient.deposit(amount);
 
-		transactionRepository.save(transaction);
-		accountRepository.saveAll(Arrays.asList(sender, recipient));
+			transactionRepository.save(transaction);
+			accountRepository.saveAll(Arrays.asList(sender, recipient));
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 }
