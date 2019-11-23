@@ -1,5 +1,7 @@
 package org.danielaguilar.monopoly.service;
 
+import java.util.Optional;
+
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Bank;
 import org.danielaguilar.monopoly.repository.AccountRepository;
@@ -11,6 +13,10 @@ public class AccountService {
 
 	@Autowired
 	private AccountRepository accountRepository;
+
+	public Optional<Account> getAccount(Integer id) {
+		return accountRepository.findById(id);
+	}
 
 	public Account createAccount(Bank bank, String name) {
 		Account newAccount = new Account();

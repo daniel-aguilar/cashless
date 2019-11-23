@@ -4,8 +4,6 @@ import java.util.NoSuchElementException;
 
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Bank;
-import org.danielaguilar.monopoly.repository.AccountRepository;
-import org.danielaguilar.monopoly.repository.BankRepository;
 import org.danielaguilar.monopoly.service.AccountService;
 import org.danielaguilar.monopoly.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +24,7 @@ public class BankController {
 	private BankService bankService;
 
 	@Autowired
-	private BankRepository bankRepository;
-
-	@Autowired
 	private AccountService accountService;
-
-	@Autowired
-	private AccountRepository accountRepository;
 
 	public static class Transaction {
 		@JsonProperty("from")
@@ -46,7 +38,7 @@ public class BankController {
 
 	@GetMapping()
 	public Iterable<Bank> getBanks() {
-		return bankRepository.findAll();
+		return bankService.getBanks();
 	}
 
 	@PostMapping("new/")
@@ -67,8 +59,8 @@ public class BankController {
 	@PostMapping("transfer/")
 	public void transferMoney(@RequestBody Transaction transaction) {
 		try {
-			Account sender = accountRepository.findById(transaction.sender).get();
-			Account recipient = accountRepository.findById(transaction.recipient).get();
+			Account sender = accountService.getAccount(transaction.sender).get();
+			Account recipient = accountService.getAccount(transaction.recipient).get();
 
 			bankService.transferMoney(sender, recipient, transaction.amount);
 		} catch (NoSuchElementException e) {

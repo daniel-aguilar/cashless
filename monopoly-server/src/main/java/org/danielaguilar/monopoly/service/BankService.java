@@ -23,6 +23,10 @@ public class BankService {
 	@Autowired
 	private TransactionRepository transactionRepository;
 
+	public Iterable<Bank> getBanks() {
+		return bankRepository.findAll();
+	}
+
 	public Bank createBank(String name) {
 		Bank bank = new Bank(name);
 		return bankRepository.save(bank);
