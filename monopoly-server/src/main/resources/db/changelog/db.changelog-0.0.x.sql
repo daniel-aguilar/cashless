@@ -7,14 +7,14 @@ CREATE TABLE bank (
 
 CREATE TABLE account (
   id SERIAL PRIMARY KEY,
-  bank_id INTEGER REFERENCES bank (id) NOT NULL,
+  bank_id INTEGER NOT NULL REFERENCES bank (id),
   name VARCHAR(25) NOT NULL,
   balance INTEGER NOT NULL
 );
 
 CREATE TABLE transaction (
   id SERIAL PRIMARY KEY,
-  sender_id INTEGER REFERENCES account (id) NOT NULL,
-  recipient_id INTEGER REFERENCES account (id) NOT NULL,
+  sender_id INTEGER NOT NULL REFERENCES account (id),
+  recipient_id INTEGER NOT NULL REFERENCES account (id),
   amount INTEGER NOT NULL
 );
