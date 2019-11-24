@@ -1,6 +1,0 @@
-<select [formControl]="toAccount">
-    <option value="">select account</option>
-    <option *ngFor="let a of accounts" [value]="a.id">{{ a.name }}</option>
-</select>
-<input type="number" [formControl]="amount">
-<button type="button" (click)="transferAmount()">ok</button>

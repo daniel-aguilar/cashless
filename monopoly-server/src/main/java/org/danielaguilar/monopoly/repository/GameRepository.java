@@ -1,10 +1,10 @@
 package org.danielaguilar.monopoly.repository;
 
-import org.danielaguilar.monopoly.model.Bank;
+import org.danielaguilar.monopoly.model.Game;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BankRepository extends CrudRepository<Bank, Integer> {
+public interface GameRepository extends CrudRepository<Game, Integer> {
 
 }

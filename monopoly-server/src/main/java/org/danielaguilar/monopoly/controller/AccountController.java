@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("account/")
 public class AccountController {
 
-	@GetMapping("{id}/")
-	public Account getAccount(@PathVariable("id") Account account) {
-		return account;
-	}
-
 	@GetMapping("{id}/balance/")
 	public Integer getBalance(@PathVariable("id") Account account) {
 		return account.getBalance();

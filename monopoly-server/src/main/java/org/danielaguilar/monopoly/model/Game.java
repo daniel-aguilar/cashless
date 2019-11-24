@@ -7,30 +7,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Bank {
+public class Game {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "bank")
-	private List<Account> accounts;
-
 	private String name;
 
-	public Bank() {
+	@OneToOne
+	@JoinColumn(name = "bank_id")
+	private Account bank;
 
-	}
+	@OneToOne
+	@JoinColumn(name = "banker_id")
+	private Account banker;
 
-	public Bank(String name) {
-		this.name = name;
-	}
+	@OneToMany(mappedBy = "game")
+	private List<Account> accounts;
 
 	public Integer getId() {
 		return id;
@@ -40,20 +39,36 @@ public class Bank {
 		this.id = id;
 	}
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Account getBank() {
+		return bank;
+	}
+
+	public void setBank(Account bank) {
+		this.bank = bank;
+	}
+
+	public Account getBanker() {
+		return banker;
+	}
+
+	public void setBanker(Account banker) {
+		this.banker = banker;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 
 	@Override
@@ -66,10 +81,10 @@ public class Bank {
 		if (this == obj) {
 			return true;
 		}
-		if (!(obj instanceof Bank)) {
+		if (!(obj instanceof Game)) {
 			return false;
 		}
-		Bank other = (Bank) obj;
+		Game other = (Game) obj;
 		return Objects.equals(name, other.name);
 	}
 }

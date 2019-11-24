@@ -1,57 +1,44 @@
 import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
 import { Account } from './account';
-import { Bank } from './bank';
-import { throwError } from 'rxjs';
+
+const apiURL = `${environment.apiURL}/account`;
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root'
 })
-export class AccountService {
-    private account?: Account;
+export class AccountService implements CanActivate {
+  private isLoggedIn = false;
+  private account: Account = {
+    id: 0,
+    name: '',
+  };
 
-    constructor(private http: HttpClient) {
-        const json = localStorage.getItem('account');
+  get name() {
+    return this.account.name;
+  }
 
-        if (json) {
-            this.account = JSON.parse(json);
-        }
-    }
+  constructor(private http: HttpClient) {
 
-    get loggedAccount() {
-        if (this.account) {
-            return this.account;
-        } else {
-            throw new Error('user not logged in');
-        }
-    }
+  }
 
-    getAccounts() {
-        return this.http.get<Account[]>('http://localhost:8080/account/');
-    }
+  canActivate() {
+    return this.isLoggedIn;
+  }
 
-    createAccount(bank: Bank, account: string) {
-        let data = new FormData();
-        data.set('name', account);
+  login(account: Account) {
+    this.isLoggedIn = true;
+    this.account = account;
+  }
 
-        return this.http.post<Account>(`http://localhost:8080/bank/${bank.id}/newAccount/`, data).pipe(
-            tap(account => this.save(account))
-        );
-    }
-
-    getBalance() {
-        // TODO: Move to BankService
-        if (this.account) {
-            return this.http.get<number>(`http://localhost:8080/account/${this.account.id}/balance/`);
-        } else {
-            return throwError('user not logged in');
-        }
-    }
-
-    private save(account: Account) {
-        this.account = account;
-        localStorage.setItem('account', JSON.stringify(account));
-    }
+  getBalance() {
+    return this.http.get<number>(`${apiURL}/${this.account.id}/balance/`).pipe(
+      catchError(() => of(0))
+    );
+  }
 }
