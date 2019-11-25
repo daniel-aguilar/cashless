@@ -13,9 +13,9 @@ CREATE TABLE account (
   pin CHAR(4) NOT NULL
 );
 
-ALTER TABLE game
-ADD COLUMN bank_id INTEGER REFERENCES account (id),
-ADD COLUMN banker_id INTEGER REFERENCES account (id);
+-- Common syntax for Postgres & H2
+ALTER TABLE game ADD COLUMN bank_id INTEGER REFERENCES account (id);
+ALTER TABLE game ADD COLUMN banker_id INTEGER REFERENCES account (id);
 
 CREATE TABLE transaction (
   id SERIAL PRIMARY KEY,
@@ -23,3 +23,12 @@ CREATE TABLE transaction (
   recipient_id INTEGER NOT NULL REFERENCES account (id),
   amount INTEGER NOT NULL
 );
+
+--changeset Daniel Aguilar:1574640900 context:test
+INSERT INTO game (id, name) VALUES (1, 'game');
+
+INSERT INTO account VALUES (1, 1, 'Bank', 1000, '0000');
+INSERT INTO account VALUES (2, 1, 'Banker', 100, '1234');
+INSERT INTO account VALUES (3, 1, 'Player', 100, '4321');
+
+UPDATE game SET bank_id = 1, banker_id = 2 WHERE id = 1;

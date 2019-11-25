@@ -13,6 +13,10 @@ public class AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 
+	public Optional<Account> getAccount(Integer id) {
+		return accountRepository.findById(id);
+	}
+
 	public Optional<Account> getAccount(String pin) {
 		return accountRepository.findByPin(pin);
 	}

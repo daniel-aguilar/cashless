@@ -15,7 +15,11 @@ export class AccountDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = this.account.name;
+    this.name = this.account.info.name;
+    this.updateBalance();
+  }
+
+  updateBalance() {
     this.account.getBalance().subscribe(n => this.balance = n);
   }
 }

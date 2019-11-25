@@ -17,10 +17,11 @@ export class AccountService implements CanActivate {
   private account: Account = {
     id: 0,
     name: '',
+    isBanker: false,
   };
 
-  get name() {
-    return this.account.name;
+  get info() {
+    return this.account;
   }
 
   constructor(private http: HttpClient) {
@@ -40,5 +41,9 @@ export class AccountService implements CanActivate {
     return this.http.get<number>(`${apiURL}/${this.account.id}/balance/`).pipe(
       catchError(() => of(0))
     );
+  }
+
+  transfer(amount: number, recipient: Account) {
+    return this.http.post(`${apiURL}/${this.account.id}/transfer/`, { amount, to: recipient.id });
   }
 }

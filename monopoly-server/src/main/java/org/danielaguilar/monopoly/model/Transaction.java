@@ -7,8 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Transaction {
+
+	public static class JSON {
+		public Integer amount;
+
+		@JsonProperty("to")
+		public Integer recipientId;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
