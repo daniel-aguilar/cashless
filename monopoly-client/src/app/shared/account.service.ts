@@ -44,6 +44,6 @@ export class AccountService implements CanActivate {
   }
 
   transfer(amount: number, recipient: Account) {
-    return this.http.post(`${apiURL}/${this.account.id}/transfer/`, { amount, to: recipient.id });
+    return this.http.post<never>(`${apiURL}/${this.account.id}/transfer/`, { amount, to: recipient.id });
   }
 }

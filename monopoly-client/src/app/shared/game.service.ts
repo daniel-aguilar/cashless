@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
+import { of, EMPTY } from 'rxjs';
+import { tap, catchError, switchMap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { Account } from './account';
+import { AccountService } from './account.service';
 
 const apiURL = environment.apiURL;
 const gameURL = `${apiURL}/game`
@@ -20,7 +21,9 @@ interface JoinResponse {
 export class GameService {
   gameId = 0;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private auth: AccountService) {
 
   }
 
@@ -29,8 +32,8 @@ export class GameService {
     data.set('pin', pin);
 
     return this.http.post<JoinResponse>(`${apiURL}/join/`, data).pipe(
-      tap(res => this.gameId = res.gameId),
-      map(res => res.account)
+      tap(res => this.setUp(res)),
+      switchMap(() => EMPTY)
     );
   }
 
@@ -40,5 +43,10 @@ export class GameService {
     return this.http.get<Account[]>(`${gameURL}/${this.gameId}/players/`).pipe(
       catchError(() => of(emptyList))
     );
+  }
+
+  private setUp(res: JoinResponse) {
+    this.gameId = res.gameId;
+    this.auth.login(res.account);
   }
 }
