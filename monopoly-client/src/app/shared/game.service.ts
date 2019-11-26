@@ -8,7 +8,7 @@ import { Account } from './account';
 import { AccountService } from './account.service';
 
 const apiURL = environment.apiURL;
-const gameURL = `${apiURL}/game`
+const gameURL = `${apiURL}/game`;
 
 interface JoinResponse {
   gameId: number;
