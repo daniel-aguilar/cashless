@@ -1,9 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { GameService } from '../shared/game.service';
-import { AccountService } from '../shared/account.service';
-import { Account } from '../shared/account';
+import { Account } from 'src/app/auth/account';
+import { PlayerService } from '../player.service';
 
 interface TransactionForm {
   amount: string;
@@ -16,15 +15,14 @@ interface TransactionForm {
 })
 export class TransferMoneyComponent implements OnInit {
   txForm: FormGroup;
-  accounts: Account[] = [];
+  recipients: Account[] = [];
 
   @Output()
   done = new EventEmitter();
 
   constructor(
     private fb: FormBuilder,
-    private game: GameService,
-    private account: AccountService) {
+    private player: PlayerService) {
 
     this.txForm = this.fb.group({
       amount: ['', Validators.required],
@@ -33,20 +31,15 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   ngOnInit() {
-    const accountId = this.account.info.id;
-
-    this.game.getPlayers().subscribe(players =>
-      // Don't transfer money to yourself
-      this.accounts = players.filter(p => p.id !== accountId)
-    );
+    this.player.getOtherPlayers().subscribe(a => this.recipients = a);
   }
 
   makeTransaction() {
     const form = this.txForm.value as TransactionForm;
-    const account = this.accounts.find(a => a.id === +form.recipientId);
+    const recipient = this.recipients.find(a => a.id === +form.recipientId);
 
-    if (account) {
-      this.account.transfer(+form.amount, account).subscribe(() =>
+    if (recipient) {
+      this.player.transfer(+form.amount, recipient).subscribe(() =>
         this.done.emit()
       );
     }

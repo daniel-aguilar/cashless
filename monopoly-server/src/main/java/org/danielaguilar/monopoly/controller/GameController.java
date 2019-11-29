@@ -1,8 +1,6 @@
 package org.danielaguilar.monopoly.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Game;
@@ -20,13 +18,8 @@ public class GameController {
 	private AccountService accountService;
 
 	@PostMapping("/join/")
-	public Map<String, Object> joinGame(String pin) {
-		var response = new HashMap<String, Object>();
-		var account = accountService.getAccount(pin).get();
-
-		response.put("account", account);
-		response.put("gameId", account.getGame().getId());
-		return response;
+	public Account joinGame(String pin) {
+		return accountService.getAccount(pin).get();
 	}
 
 	@GetMapping("/game/{id}/players/")

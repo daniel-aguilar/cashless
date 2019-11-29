@@ -32,6 +32,10 @@ public class Account {
 	@JsonIgnore
 	private String pin;
 
+	public Integer getGameId() {
+		return game.getId();
+	}
+
 	@JsonProperty("isBanker")
 	public Boolean isBanker() {
 		return game.getBanker().equals(this);

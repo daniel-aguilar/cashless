@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { GameService } from '../shared/game.service';
 import { Router } from '@angular/router';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-join-game',
@@ -13,12 +13,12 @@ export class JoinGameComponent {
 
   constructor(
     private router: Router,
-    private game: GameService) {
+    private auth: AuthService) {
 
   }
 
   joinGame() {
-    this.game.join(this.pin.value).subscribe({
+    this.auth.joinGame(this.pin.value).subscribe({
       complete: () => this.router.navigate(['/account'])
     });
   }
