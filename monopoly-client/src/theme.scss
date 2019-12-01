@@ -1,0 +1,8 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$monopoly-primary: mat-palette($mat-light-green, 100);
+$monopoly-accent: mat-palette($mat-red, A700);
+
+$monopoly-theme: mat-light-theme($monopoly-primary, $monopoly-accent);
+@include angular-material-theme($monopoly-theme);
