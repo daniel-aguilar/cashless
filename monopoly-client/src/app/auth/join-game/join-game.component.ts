@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-join-game',
   templateUrl: './join-game.component.html',
+  styleUrls: ['./join-game.component.scss'],
 })
 export class JoinGameComponent {
   pin = new FormControl();

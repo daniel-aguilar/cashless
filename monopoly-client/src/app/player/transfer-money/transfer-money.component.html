@@ -1,8 +1,29 @@
 <form [formGroup]="txForm">
-    <input type="number" formControlName="amount">
-    <select formControlName="recipientId">
-        <option value="">Choose an Account</option>
-        <option *ngFor="let r of recipients" [value]="r.id">{{ r.name }}</option>
-    </select>
-    <button type="button" (click)="makeTransaction()">Transfer amount</button>
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field>
+                <span matPrefix>$&nbsp;</span>
+                <input matInput placeholder="Amount" formControlName="amount">
+            </mat-form-field>
+        </div>
+
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Player</mat-label>
+                <mat-select formControlName="recipientId">
+                    <mat-option value="">Choose a Player</mat-option>
+                    <mat-option *ngFor="let r of recipients" [value]="r.id">
+                        {{ r.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button mat-raised-button color="primary" (click)="makeTransaction()">
+                Transfer amount
+            </button>
+        </div>
+    </div>
 </form>

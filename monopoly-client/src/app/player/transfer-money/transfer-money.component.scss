@@ -1,0 +1,12 @@
+@import 'breakpoints';
+
+.row:nth-child(2) {
+    @include media-breakpoint-down(sm) {
+        justify-content: center;
+
+        button {
+            display: block;
+            margin: auto;
+        }
+    }
+}

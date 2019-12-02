@@ -7,6 +7,7 @@ import { TransferMoneyComponent } from './transfer-money/transfer-money.componen
 import { AuthService } from 'src/app/auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PlayerService } from './player.service';
+import { MaterialModule } from '../material.module';
 
 const routes: Route[] = [
   { path: 'account', component: PlayerDetailComponent, canActivate: [AuthService] },
@@ -21,6 +22,7 @@ const routes: Route[] = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
+    MaterialModule,
   ],
   providers: [PlayerService]
 })
