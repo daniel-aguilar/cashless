@@ -1,5 +1,10 @@
 <div class="container">
-    <p>{{ name }}</p>
+    <h2 class="mat-title">Account Info</h2>
+    <p>Name: {{ name }}</p>
     <p>Balance: ${{ balance }}</p>
+
+    <hr>
+
+    <h2 class="mat-title">Transfer Money</h2>
     <app-transfer-money (done)="updateBalance()"></app-transfer-money>
 </div>

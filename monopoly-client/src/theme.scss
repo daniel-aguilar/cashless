@@ -1,19 +1,21 @@
 @import '~@angular/material/theming';
+@import 'variables';
 @include mat-core();
-
-body {
-    background-color: #CEE6D0;
-}
 
 $monopoly-primary: mat-palette($mat-red, 900);
 $monopoly-accent: mat-palette($mat-grey, 50);
 
+$monopoly-typography: mat-typography-config(
+  $font-family: 'Didact Gothic, sans-serif'
+);
+
 $monopoly-theme: mat-light-theme($monopoly-primary, $monopoly-accent);
 @include angular-material-theme($monopoly-theme);
+@include mat-base-typography($monopoly-typography);
 
 .mat-snack-bar-container {
-    color: rgba(0, 0, 0, 0.87);
-    background: #fafafa;
+    color: black;
+    background: $monopoly-green;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
                 0px 6px 10px 0px rgba(0, 0, 0, 0.14),
                 0px 1px 18px 0px rgba(0, 0, 0, 0.12);

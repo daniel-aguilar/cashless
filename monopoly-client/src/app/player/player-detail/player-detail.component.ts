@@ -5,6 +5,7 @@ import { PlayerService } from '../player.service';
 @Component({
   selector: 'app-player-detail',
   templateUrl: './player-detail.component.html',
+  styleUrls: ['./player-detail.component.scss'],
 })
 export class PlayerDetailComponent implements OnInit {
   name = '';
