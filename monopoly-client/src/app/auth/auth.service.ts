@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { Account } from './account';
@@ -14,16 +14,18 @@ export class AuthService implements CanActivate {
 
   private account?: Account;
 
-  private get isLoggedIn() {
-    return this.account !== undefined;
-  }
-
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router) {
 
   }
 
   canActivate() {
-    return this.isLoggedIn;
+    if (this.account !== undefined) {
+      return true;
+    } else {
+      return this.router.parseUrl('/');
+    }
   }
 
   getLoggedAccount() {
