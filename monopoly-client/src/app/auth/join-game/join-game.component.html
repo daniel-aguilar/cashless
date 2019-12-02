@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="input-col col-md-4">
             <mat-form-field>
-                <input type="text" matInput placeholder="Pin" [formControl]="pin">
+                <input type="text" autocomplete="off" matInput placeholder="Pin" [formControl]="pin">
             </mat-form-field>
             <button type="button" mat-raised-button color="primary" (click)="joinGame()">OK</button>
         </div>
