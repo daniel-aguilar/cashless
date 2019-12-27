@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
+import { Account } from '../account';
 
 @Component({
   selector: 'app-join-game',
@@ -24,9 +25,18 @@ export class JoinGameComponent {
 
   joinGame() {
     const pin = this.joinForm.value.pin as string;
+    let account: Account;
 
     this.auth.joinGame(pin).subscribe({
-      complete: () => this.router.navigate(['/account/player'])
+      complete: () => {
+        account = this.auth.getLoggedAccount();
+
+        if (account.isBanker) {
+          this.router.navigate(['/account/banker']);
+        } else {
+          this.router.navigate(['/account/player']);
+        }
+      }
     });
   }
 }

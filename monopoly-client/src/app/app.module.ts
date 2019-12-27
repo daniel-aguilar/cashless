@@ -13,6 +13,7 @@ import { MaterialModule } from './material.module';
 import { AuthModule } from './auth/auth.module';
 import { PlayerModule } from './player/player.module';
 import { NewGameComponent } from './new-game/new-game.component';
+import { BankerModule } from './banker/banker.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NewGameComponent } from './new-game/new-game.component';
     MaterialModule,
     AuthModule,
     PlayerModule,
+    BankerModule,
   ],
   bootstrap: [AppComponent]
 })
