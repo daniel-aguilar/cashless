@@ -1,10 +1,12 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="input-col col-md-4">
-            <mat-form-field>
-                <input type="text" autocomplete="off" matInput placeholder="Pin" [formControl]="pin">
-            </mat-form-field>
-            <button type="button" mat-raised-button color="primary" (click)="joinGame()">OK</button>
+    <form [formGroup]="joinForm" (ngSubmit)="joinGame()">
+        <div class="row justify-content-center">
+            <div class="input-col col-md-4">
+                <mat-form-field>
+                    <input type="text" autocomplete="off" matInput placeholder="Pin" formControlName="pin">
+                </mat-form-field>
+                <button mat-raised-button color="primary">OK</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>

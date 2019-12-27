@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
@@ -10,16 +10,22 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./join-game.component.scss'],
 })
 export class JoinGameComponent {
-  pin = new FormControl();
+  joinForm: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private auth: AuthService) {
 
+    this.joinForm = this.fb.group({
+      pin: '',
+    });
   }
 
   joinGame() {
-    this.auth.joinGame(this.pin.value).subscribe({
+    const pin = this.joinForm.value.pin as string;
+
+    this.auth.joinGame(pin).subscribe({
       complete: () => this.router.navigate(['/account'])
     });
   }
