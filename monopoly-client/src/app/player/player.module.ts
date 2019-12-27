@@ -24,6 +24,9 @@ const routes: Route[] = [
     ReactiveFormsModule,
     MaterialModule,
   ],
+  exports: [
+    RouterModule,
+  ],
   providers: [PlayerService]
 })
 export class PlayerModule { }
