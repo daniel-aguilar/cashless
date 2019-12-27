@@ -1,31 +1,18 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
-import { Account } from './account';
-import { environment as env } from 'src/environments/environment';
 import { switchMap, tap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService implements CanActivate {
+import { Account } from './account';
+import { environment as env } from 'src/environments/environment';
+
+@Injectable({ providedIn: 'root' })
+export class AuthService {
 
   private account?: Account;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router) {
+  constructor(private http: HttpClient) {
 
-  }
-
-  canActivate() {
-    if (this.account !== undefined) {
-      return true;
-    } else {
-      return this.router.parseUrl('/');
-    }
   }
 
   getLoggedAccount() {

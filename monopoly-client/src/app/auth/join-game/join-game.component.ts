@@ -26,7 +26,7 @@ export class JoinGameComponent {
     const pin = this.joinForm.value.pin as string;
 
     this.auth.joinGame(pin).subscribe({
-      complete: () => this.router.navigate(['/account'])
+      complete: () => this.router.navigate(['/account/player'])
     });
   }
 }

@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
-import { Router, UrlTree } from '@angular/router';
 
 import { Account } from './account';
 import { AuthService } from './auth.service';
@@ -11,18 +10,11 @@ describe('AccountServiceTest', () => {
     let service: AuthService;
     let httpTestingController: HttpTestingController;
     let req: TestRequest;
-    let routerSpy: jasmine.SpyObj<Router>;
 
     beforeEach(() => {
-        routerSpy = jasmine.createSpyObj('Router', ['parseUrl']);
-        routerSpy.parseUrl.and.returnValue({} as UrlTree);
-
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [
-                { provide: Router, useValue: routerSpy },
-                AuthService,
-            ],
+            providers: [AuthService],
         });
 
         httpTestingController = TestBed.get(HttpTestingController);
@@ -30,8 +22,6 @@ describe('AccountServiceTest', () => {
 
     it('Should have default values', () => {
         service = TestBed.get(AuthService);
-        expect(service.canActivate()).toBeTruthy();
-        expect(routerSpy.parseUrl.calls.count()).toBe(1);
         expect(() => service.getLoggedAccount()).toThrowError('User is not logged in');
     });
 
@@ -46,7 +36,6 @@ describe('AccountServiceTest', () => {
         service = TestBed.get(AuthService);
         service.joinGame('1234').subscribe({
             complete: () => {
-                expect(service.canActivate()).toBe(true);
                 expect(service.getLoggedAccount()).toBeTruthy();
                 done();
             }
