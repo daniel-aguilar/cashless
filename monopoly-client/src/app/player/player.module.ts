@@ -7,6 +7,7 @@ import { TransferMoneyComponent } from './transfer-money/transfer-money.componen
 import { AuthGuard } from '../auth/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { PlayerService } from './player.service';
 
 const routes: Route[] = [
   { path: 'account/player', component: PlayerDetailComponent, canActivate: [AuthGuard] },
@@ -17,6 +18,9 @@ const routes: Route[] = [
     PlayerDetailComponent,
     TransferMoneyComponent,
   ],
+  providers: [
+    PlayerService,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -25,6 +29,7 @@ const routes: Route[] = [
   ],
   exports: [
     RouterModule,
+    PlayerDetailComponent,
   ],
 })
 export class PlayerModule { }
