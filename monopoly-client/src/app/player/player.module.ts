@@ -6,7 +6,6 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PlayerService } from './player.service';
 import { MaterialModule } from '../material.module';
 
 const routes: Route[] = [
@@ -27,6 +26,5 @@ const routes: Route[] = [
   exports: [
     RouterModule,
   ],
-  providers: [PlayerService]
 })
 export class PlayerModule { }

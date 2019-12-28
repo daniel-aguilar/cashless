@@ -8,7 +8,7 @@ import { AuthService } from '../auth/auth.service';
 
 const apiURL = `${env.apiURL}/account`;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PlayerService {
 
   get name() {
