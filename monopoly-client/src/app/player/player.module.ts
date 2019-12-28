@@ -18,9 +18,6 @@ const routes: Route[] = [
     PlayerDetailComponent,
     TransferMoneyComponent,
   ],
-  providers: [
-    PlayerService,
-  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

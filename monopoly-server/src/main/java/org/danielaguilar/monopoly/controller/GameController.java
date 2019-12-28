@@ -26,4 +26,9 @@ public class GameController {
 	public List<Account> getPlayers(@PathVariable("id") Game game) {
 		return game.getAccounts();
 	}
+	
+	@GetMapping("/game/{id}/bank/")
+	public Account getBank(@PathVariable("id") Game game) {
+		return game.getBank();
+	}
 }

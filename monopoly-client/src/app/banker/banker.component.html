@@ -1,1 +1,12 @@
-<p>banker works!</p>
+<mat-tab-group mat-align-tabs="center" (selectedTabChange)="updateBalance($event)">
+    <mat-tab label="Player">
+        <div class="tab-content">
+            <app-player-detail [account]="player"></app-player-detail>
+        </div>
+    </mat-tab>
+    <mat-tab label="Bank">
+        <div class="tab-content" *ngIf="bank">
+            <app-player-detail [account]="bank"></app-player-detail>
+        </div>
+    </mat-tab>
+</mat-tab-group>
