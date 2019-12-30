@@ -5,11 +5,17 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
 import { PlayerService } from '../player.service';
+import { Transaction } from 'src/app/banker/transaction';
 
 interface TransactionForm {
   amount: string;
   recipientId: string;
 }
+
+const snackConfig: MatSnackBarConfig = {
+  duration: 5000,
+  panelClass: 'custom-snackbar',
+};
 
 @Component({
   selector: 'app-transfer-money',
@@ -21,7 +27,7 @@ export class TransferMoneyComponent implements OnInit {
   recipients: Account[] = [];
 
   @Output()
-  done = new EventEmitter();
+  balanceChange = new EventEmitter();
 
   private get player() {
     return this.currentPlayer.account;
@@ -41,6 +47,7 @@ export class TransferMoneyComponent implements OnInit {
 
   ngOnInit() {
     this.bank.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
+    this.bank.getTransactionsTo(this.player).subscribe(tx => this.notifyOfDeposit(tx));
   }
 
   makeTransaction() {
@@ -53,13 +60,13 @@ export class TransferMoneyComponent implements OnInit {
     }
   }
 
-  private success(amount: number, name: string) {
-    const config: MatSnackBarConfig = {
-      duration: 5000,
-      panelClass: 'custom-snackbar',
-    };
+  private notifyOfDeposit(tx: Transaction) {
+    this.snack.open(`Recieved $${tx.amount} from ${tx.sender.name}`, 'Ok', snackConfig);
+    this.balanceChange.emit();
+  }
 
-    this.done.emit();
-    this.snack.open(`Transfered $${amount} to ${name}!`, 'Ok', config);
+  private success(amount: number, name: string) {
+    this.balanceChange.emit();
+    this.snack.open(`Transfered $${amount} to ${name}!`, 'Ok', snackConfig);
   }
 }

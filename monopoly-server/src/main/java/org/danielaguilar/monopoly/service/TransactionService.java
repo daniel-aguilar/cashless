@@ -18,7 +18,7 @@ public class TransactionService {
 	@Autowired
 	private AccountRepository accountRepository;
 
-	public void transfer(Account sender, Account recipient, Integer amount) {
+	public Transaction transfer(Account sender, Account recipient, Integer amount) {
 		var transaction = new Transaction();
 		transaction.setSender(sender);
 		transaction.setRecipient(recipient);
@@ -28,6 +28,6 @@ public class TransactionService {
 		recipient.deposit(amount);
 
 		accountRepository.saveAll(Arrays.asList(sender, recipient));
-		transactionRepository.save(transaction);
+		return transactionRepository.save(transaction);
 	}
 }
