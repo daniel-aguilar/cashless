@@ -1,5 +1,7 @@
 package org.danielaguilar.monopoly.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +35,8 @@ public class Transaction {
 
 	private Integer amount;
 
+	private LocalDateTime date = LocalDateTime.now();
+
 	public Integer getId() {
 		return id;
 	}
@@ -63,5 +67,13 @@ public class Transaction {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
 }

@@ -5,4 +5,5 @@ export interface Transaction {
     sender: Account;
     recipient: Account;
     amount: number;
+    date: string;
 }

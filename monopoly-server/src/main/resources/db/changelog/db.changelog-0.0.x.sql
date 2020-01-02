@@ -21,7 +21,8 @@ CREATE TABLE transaction (
   id SERIAL PRIMARY KEY,
   sender_id INTEGER NOT NULL REFERENCES account (id),
   recipient_id INTEGER NOT NULL REFERENCES account (id),
-  amount INTEGER NOT NULL
+  amount INTEGER NOT NULL,
+  date TIMESTAMP NOT NULL
 );
 
 --changeset Daniel Aguilar:1574640900 context:test
