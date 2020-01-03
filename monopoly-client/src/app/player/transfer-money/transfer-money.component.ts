@@ -5,7 +5,6 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
 import { PlayerService } from '../player.service';
-import { Transaction } from 'src/app/banker/transaction';
 
 interface TransactionForm {
   amount: string;
@@ -47,7 +46,6 @@ export class TransferMoneyComponent implements OnInit {
 
   ngOnInit() {
     this.bank.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
-    this.bank.getTransactionsTo(this.player).subscribe(tx => this.notifyOfDeposit(tx));
   }
 
   makeTransaction() {
@@ -58,11 +56,6 @@ export class TransferMoneyComponent implements OnInit {
       this.bank.makeTransaction(this.player, +form.amount, recipient).subscribe(() =>
         this.success(+form.amount, recipient.name));
     }
-  }
-
-  private notifyOfDeposit(tx: Transaction) {
-    this.snack.open(`Recieved $${tx.amount} from ${tx.sender.name}`, 'Ok', snackConfig);
-    this.balanceChange.emit();
   }
 
   private success(amount: number, name: string) {

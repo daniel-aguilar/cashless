@@ -30,7 +30,9 @@
             "styles": [
               "src/theme.scss",
               "src/styles.scss",
-              "./node_modules/bootstrap/dist/css/bootstrap-grid.css"
+              "./node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/solid.min.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/partials"]

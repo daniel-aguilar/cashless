@@ -7,7 +7,8 @@ import { TransferMoneyComponent } from './transfer-money/transfer-money.componen
 import { AuthGuard } from '../auth/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
-import { PlayerService } from './player.service';
+import { TransactionLogComponent } from './transaction-log/transaction-log.component';
+import { PaymentTypeDirective } from './payment-type.directive';
 
 const routes: Route[] = [
   { path: 'account/player', component: PlayerDetailComponent, canActivate: [AuthGuard] },
@@ -17,6 +18,8 @@ const routes: Route[] = [
   declarations: [
     PlayerDetailComponent,
     TransferMoneyComponent,
+    TransactionLogComponent,
+    PaymentTypeDirective,
   ],
   imports: [
     CommonModule,

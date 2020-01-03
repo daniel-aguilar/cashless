@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
 import { Account } from 'src/app/auth/account';
 import { Transaction } from './transaction';
+import { Payment } from './payment';
 
 const apiURL = `${env.apiURL}/account`;
 
@@ -27,9 +28,15 @@ export class BankService {
     return this.http.get<number>(`${apiURL}/${account.id}/balance/`);
   }
 
-  getTransactionsTo(account: Account) {
+  getPayments(account: Account) {
     return this.transactions.asObservable().pipe(
-      filter(tx => tx.recipient.id === account.id)
+      filter(tx => {
+        const isSender = tx.sender.id === account.id;
+        const isRecipient = tx.recipient.id === account.id;
+
+        return isSender || isRecipient;
+      }),
+      map(tx => new Payment(tx, account))
     );
   }
 

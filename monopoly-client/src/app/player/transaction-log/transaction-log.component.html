@@ -1,0 +1,24 @@
+<table class="mx-auto my-3 mat-typography">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Type</th>
+      <th>Account</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of payments">
+      <td>{{ p.tx.date | date:'h:mm a' }}</td>
+      <td appPaymentType [isIncoming]="p.isIncoming">
+        <i *ngIf="p.isIncoming; else elseBlock" class="fas fa-arrow-down"></i>
+        <ng-template #elseBlock><i class="fas fa-arrow-up"></i></ng-template>
+      </td>
+      <td>{{ p.account.name }}</td>
+      <td>${{ p.tx.amount }}</td>
+    </tr>
+    <tr *ngIf="payments.length === 0">
+      <td *ngFor="let i of emptyLines">-</td>
+    </tr>
+  </tbody>
+</table>
