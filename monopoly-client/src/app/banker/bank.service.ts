@@ -40,14 +40,6 @@ export class BankService {
     );
   }
 
-  getOtherPlayers(except: Account) {
-    const url = `${env.apiURL}/game`;
-
-    return this.http.get<Account[]>(`${url}/${except.gameId}/players/`).pipe(
-      map(accounts => accounts.filter(a => a.id !== except.id))
-    );
-  }
-
   makeTransaction(sender: Account, amount: number, recipient: Account) {
     return this.http.post<never>(`${apiURL}/${sender.id}/transfer/`,
       { amount, to: recipient.id });

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 import { Account } from 'src/app/auth/account';
+import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { PlayerService } from '../player.service';
 
@@ -36,6 +37,7 @@ export class TransferMoneyComponent implements OnInit {
     private fb: FormBuilder,
     private snack: MatSnackBar,
     private currentPlayer: PlayerService,
+    private auth: AuthService,
     private bank: BankService) {
 
     this.txForm = this.fb.group({
@@ -45,7 +47,7 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bank.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
+    this.auth.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
   }
 
   makeTransaction() {

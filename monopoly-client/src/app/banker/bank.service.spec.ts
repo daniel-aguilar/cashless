@@ -55,20 +55,6 @@ describe('BankServiceTest', () => {
         httpTestingController.verify();
     });
 
-    it('Should get other players', (done: DoneFn) => {
-        const url = 'http://localhost:8080/game';
-
-        service = TestBed.get(BankService);
-        service.getOtherPlayers(player).subscribe(p => {
-            expect(p).toEqual([banker]);
-            done();
-        });
-
-        req = httpTestingController.expectOne(`${url}/1/players/`);
-        req.flush([player, banker]);
-        httpTestingController.verify();
-    });
-
     it('Should transfer amount', () => {
         service = TestBed.get(BankService);
         service.makeTransaction(player, 100, banker).subscribe();
