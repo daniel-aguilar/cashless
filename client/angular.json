@@ -102,6 +102,9 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/partials"]
+            },
             "scripts": []
           }
         },

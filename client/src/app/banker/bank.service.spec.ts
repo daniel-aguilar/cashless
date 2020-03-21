@@ -11,6 +11,7 @@ describe('BankServiceTest', () => {
     const player: Account = {
         id: 1,
         name: 'Player',
+        pin: '',
         gameId: 1,
         isBanker: false,
     };
@@ -18,6 +19,7 @@ describe('BankServiceTest', () => {
     const banker: Account = {
         id: 2,
         name: 'Banker',
+        pin: '',
         gameId: 1,
         isBanker: true,
     };

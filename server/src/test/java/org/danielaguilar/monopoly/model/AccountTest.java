@@ -26,4 +26,10 @@ public class AccountTest {
 	public void testNegativeBalance() {
 		assertThrows(IllegalArgumentException.class, () -> account.withdraw(110));
 	}
+	
+	@Test
+	public void testGeneratePin() {
+		assertEquals(account.getPin().length(), 4);
+		Integer.parseInt(account.getPin());
+	}
 }

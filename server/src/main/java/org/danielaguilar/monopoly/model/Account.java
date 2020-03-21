@@ -1,6 +1,7 @@
 package org.danielaguilar.monopoly.model;
 
 import java.util.Objects;
+import java.util.Random;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +30,12 @@ public class Account {
 	@JsonIgnore
 	private Integer balance = 0;
 
-	@JsonIgnore
 	private String pin;
 
+	public Account() {
+		generatePin();
+	}
+	
 	public Integer getGameId() {
 		return game.getId();
 	}
@@ -96,7 +100,7 @@ public class Account {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name);
+		return Objects.hash(pin);
 	}
 
 	@Override
@@ -108,6 +112,12 @@ public class Account {
 			return false;
 		}
 		Account other = (Account) obj;
-		return Objects.equals(name, other.name);
+		return Objects.equals(pin, other.pin);
+	}
+
+	private void generatePin() {
+		Random rand = new Random();
+		int number = rand.nextInt(10000);
+		pin = String.format("%04d", number);
 	}
 }

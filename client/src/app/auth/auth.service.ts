@@ -1,19 +1,24 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { switchMap, tap, map, mergeMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
-
-import { Account } from './account';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, EMPTY, of } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { environment as env } from 'src/environments/environment';
+import { BankService } from '../banker/bank.service';
+import { Account } from './account';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  players: Account[] = [];
-
   private account?: Account;
+  private isLoggedIn = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private bank: BankService) {
 
+  }
+
+  getLoginStatus() {
+    return this.isLoggedIn.asObservable();
   }
 
   getLoggedAccount() {
@@ -23,8 +28,18 @@ export class AuthService {
     throw Error('User is not logged in');
   }
 
-  getOtherPlayers(except: Account) {
-    return this.getPlayers(except.gameId).pipe(
+  getOtherPlayers(except: Account, skipBank = false) {
+    const gameId = except.gameId;
+
+    return this.getPlayers(gameId).pipe(
+      switchMap(accounts => {
+        if (skipBank) {
+          return this.bank.getBankAccount(gameId).pipe(
+            map(bank => accounts.filter(a => a.id !== bank.id))
+          );
+        }
+        return of(accounts);
+      }),
       map(accounts => accounts.filter(a => a.id !== except.id))
     );
   }
@@ -35,26 +50,17 @@ export class AuthService {
 
     return this.http.post<Account>(`${env.apiURL}/join/`, data).pipe(
       tap(a => this.login(a)),
-      mergeMap(a => this.loadPlayers(a)),
       switchMap(() => EMPTY)
     );
   }
 
   private login(account: Account) {
     this.account = account;
+    this.isLoggedIn.next(true);
   }
 
   private getPlayers(gameId: number) {
     const url = `${env.apiURL}/game`;
     return this.http.get<Account[]>(`${url}/${gameId}/players/`);
-  }
-
-  private loadPlayers(account: Account) {
-    if (account.isBanker) {
-      return this.getPlayers(account.gameId).pipe(
-        tap(players => this.players = players)
-      );
-    }
-    return EMPTY;
   }
 }

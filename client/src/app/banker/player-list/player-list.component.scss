@@ -1,0 +1,24 @@
+@import "variables";
+
+table {
+  border-collapse: collapse;
+
+  & p {
+    font-size: medium;
+  }
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+thead {
+  background: $monopoly-red;
+  color: white;
+}
+
+p {
+  text-align: center;
+}

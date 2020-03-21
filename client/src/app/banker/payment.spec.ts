@@ -8,6 +8,7 @@ describe('PaymentTest', () => {
         const sender: Account = {
             id: 1,
             name: 'Sender',
+            pin: '',
             gameId: 1,
             isBanker: false,
         };
@@ -15,6 +16,7 @@ describe('PaymentTest', () => {
         const recipient: Account = {
             id: 2,
             name: 'Recipient',
+            pin: '',
             gameId: 1,
             isBanker: false,
         };

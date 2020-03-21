@@ -36,7 +36,7 @@ describe('AuthGuardTest', () => {
         const guard = TestBed.get(AuthGuard) as AuthGuard;
         authSpy.getLoggedAccount.and.throwError('User is not logged in');
 
-        expect(guard.canActivate()).toBeTruthy();
+        expect(guard.canActivate()).toBeDefined();
         expect(routerSpy.parseUrl.calls.count()).toBe(1);
     });
 });
