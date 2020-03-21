@@ -40,11 +40,11 @@ describe('AccountServiceTest', () => {
             providers: [AuthService],
         });
 
-        httpTestingController = TestBed.get(HttpTestingController);
+        httpTestingController = TestBed.inject(HttpTestingController);
     });
 
     it('Should have default values', (done: DoneFn) => {
-        service = TestBed.get(AuthService);
+        service = TestBed.inject(AuthService);
         expect(() => service.getLoggedAccount()).toThrowError('User is not logged in');
         service.getLoginStatus().subscribe(status => {
           expect(status).toBe(false);
@@ -53,7 +53,7 @@ describe('AccountServiceTest', () => {
     });
 
     it('Should log user in', (done: DoneFn) => {
-        service = TestBed.get(AuthService);
+        service = TestBed.inject(AuthService);
         service.joinGame('1234').subscribe({
             complete: () => {
                 expect(service.getLoggedAccount()).toBeTruthy();
@@ -69,7 +69,7 @@ describe('AccountServiceTest', () => {
     });
 
     it('Should get correct status', (done: DoneFn) => {
-      service = TestBed.get(AuthService);
+      service = TestBed.inject(AuthService);
       service.joinGame('').subscribe({
         complete: () => checkStatus()
       });
@@ -89,7 +89,7 @@ describe('AccountServiceTest', () => {
     it('Should get other players', (done: DoneFn) => {
         const url = 'http://localhost:8080/game';
 
-        service = TestBed.get(AuthService);
+        service = TestBed.inject(AuthService);
         service.getOtherPlayers(player).subscribe(p => {
             expect(p).toEqual([banker, bank]);
             done();
@@ -103,7 +103,7 @@ describe('AccountServiceTest', () => {
     it('Should get other players, skipping the bank', (done: DoneFn) => {
       const url = 'http://localhost:8080/game';
 
-      service = TestBed.get(AuthService);
+      service = TestBed.inject(AuthService);
       service.getOtherPlayers(player, true).subscribe(p => {
           expect(p).toEqual([banker]);
           done();

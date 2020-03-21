@@ -26,14 +26,14 @@ describe('AuthGuardTest', () => {
     });
 
     it('Should activate', () => {
-        const guard = TestBed.get(AuthGuard) as AuthGuard;
+        const guard = TestBed.inject(AuthGuard) as AuthGuard;
         authSpy.getLoggedAccount.and.returnValue({} as Account);
 
         expect(guard.canActivate()).toBe(true);
     });
 
     it('Should not activate', () => {
-        const guard = TestBed.get(AuthGuard) as AuthGuard;
+        const guard = TestBed.inject(AuthGuard) as AuthGuard;
         authSpy.getLoggedAccount.and.throwError('User is not logged in');
 
         expect(guard.canActivate()).toBeDefined();
