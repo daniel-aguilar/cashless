@@ -46,7 +46,14 @@ export class BankService {
 
   getBankAccount(gameId: number) {
     const url = `${env.apiURL}/game/${gameId}/bank/`;
-    return this.http.get<Account>(`${url}`);
+    return this.http.get<Account>(url);
+  }
+
+  getLastestPayments(account: Account) {
+    const url = `${apiURL}/${account.id}/transactions/`;
+    return this.http.get<Transaction[]>(url).pipe(
+      map(list => list.map(tx => new Payment(tx, account)))
+    );
   }
 
   private listenToTransactions() {

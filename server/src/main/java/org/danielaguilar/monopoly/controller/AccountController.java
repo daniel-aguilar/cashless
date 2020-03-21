@@ -1,5 +1,7 @@
 package org.danielaguilar.monopoly.controller;
 
+import java.util.List;
+
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Transaction;
 import org.danielaguilar.monopoly.service.AccountService;
@@ -36,5 +38,10 @@ public class AccountController {
 		Account recipient = accountService.getAccount(transaction.recipientId).get();
 		Transaction tx = transactionService.transfer(sender, recipient, transaction.amount);
 		template.convertAndSend("/queue/transactions", tx);
+	}
+
+	@GetMapping("{id}/transactions/")
+	public List<Transaction> getLastestTransactions(@PathVariable("id") Account account) {
+		return transactionService.getLastestTransactions(account);
 	}
 }

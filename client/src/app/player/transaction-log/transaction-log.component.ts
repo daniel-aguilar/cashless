@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { BankService } from 'src/app/banker/bank.service';
 import { Payment } from 'src/app/banker/payment';
 import { PlayerService } from '../player.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-log',
@@ -26,9 +27,14 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subPayments = this.bank.getPayments(this.player).subscribe(
-      p => this.addToLog(p)
-    );
+    const lastest = this.bank.getLastestPayments(this.player);
+
+    this.subPayments = lastest.pipe(
+      switchMap(payments => {
+        this.payments = payments;
+        return this.bank.getPayments(this.player);
+      })
+    ).subscribe(p => this.addToLog(p))
   }
 
   ngOnDestroy() {
