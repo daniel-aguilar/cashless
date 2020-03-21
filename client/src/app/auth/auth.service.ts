@@ -64,6 +64,11 @@ export class AuthService implements CanActivate {
     );
   }
 
+  leaveGame() {
+    delete this.account;
+    this.isLoggedIn.next(false);
+  }
+
   private login(account: Account) {
     this.account = account;
     this.isLoggedIn.next(true);

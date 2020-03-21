@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from './auth/account';
 import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,24 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  isBanker = false;
+  account?: Account;
 
-  constructor(private auth: AuthService) {
-
-  }
+  constructor(
+    private auth: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
-    let account: Account;
-
     this.auth.getLoginStatus().subscribe(isLoggedIn => {
       if (isLoggedIn) {
-        account = this.auth.getLoggedAccount();
-        this.isBanker = account.isBanker;
+        this.account = this.auth.getLoggedAccount();
+      } else {
+        delete this.account;
       }
     });
+  }
+
+  leaveGame() {
+    this.auth.leaveGame();
+    this.router.navigateByUrl('/');
   }
 }
