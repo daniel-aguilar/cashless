@@ -8,63 +8,50 @@ import { Account } from '../auth/account';
 const apiURL = 'http://localhost:8080/account';
 
 describe('BankServiceTest', () => {
-    const player: Account = {
-        id: 1,
-        name: 'Player',
-        pin: '',
-        gameId: 1,
-        isBanker: false,
-    };
+  const player = { id: 1 } as Account;
+  const banker = { id: 2 } as Account;
 
-    const banker: Account = {
-        id: 2,
-        name: 'Banker',
-        pin: '',
-        gameId: 1,
-        isBanker: true,
-    };
+  let service: BankService;
+  let httpTestingController: HttpTestingController;
+  let req: TestRequest;
 
-    let service: BankService;
-    let httpTestingController: HttpTestingController;
-    let req: TestRequest;
+  beforeEach(() => {
+    const authSpy: jasmine.SpyObj<AuthService> =
+      jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
+    authSpy.getLoggedAccount.and.returnValue(player);
 
-    beforeEach(() => {
-        const authSpy: jasmine.SpyObj<AuthService> =
-            jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
-        authSpy.getLoggedAccount.and.returnValue(player);
-
-        TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [
-                BankService,
-                { provide: AuthService, useValue: authSpy },
-            ],
-        });
-
-        httpTestingController = TestBed.inject(HttpTestingController);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        BankService,
+        { provide: AuthService, useValue: authSpy },
+      ],
     });
 
-    it('Should get correct balance', (done: DoneFn) => {
-        service = TestBed.inject(BankService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
 
-        service.getBalance(player).subscribe(n => {
-            expect(n).toBe(100);
-            done();
-        });
+  it('Should get correct balance', (done: DoneFn) => {
+    service = TestBed.inject(BankService);
 
-        req = httpTestingController.expectOne(`${apiURL}/1/balance/`);
-        req.flush(100);
-        httpTestingController.verify();
+    service.getBalance(player).subscribe(n => {
+      expect(n).toBe(100);
+      done();
     });
 
-    it('Should transfer amount', () => {
-        service = TestBed.inject(BankService);
-        service.makeTransaction(player, 100, banker).subscribe();
+    req = httpTestingController.expectOne(`${apiURL}/1/balance/`);
+    req.flush(100);
+    httpTestingController.verify();
+  });
 
-        req = httpTestingController.expectOne(`${apiURL}/1/transfer/`);
-        expect(req.request.body).toEqual({ amount: 100, to: 2 });
+  it('Should transfer amount', () => {
+    service = TestBed.inject(BankService);
+    service.makeTransaction(player, 100, banker).subscribe();
 
-        req.flush(null);
-        httpTestingController.verify();
-    });
+    req = httpTestingController.expectOne(`${apiURL}/1/transfer/`);
+    expect(req.request.body).toEqual({ amount: 100, to: 2 });
+
+    req.flush(null);
+    httpTestingController.verify();
+  });
 });

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 import { BehaviorSubject, EMPTY, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { environment as env } from 'src/environments/environment';
@@ -7,16 +8,25 @@ import { BankService } from '../banker/bank.service';
 import { Account } from './account';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
+export class AuthService implements CanActivate {
   private account?: Account;
   private isLoggedIn = new BehaviorSubject(false);
 
   constructor(
+    private router: Router,
     private http: HttpClient,
-    private bank: BankService) {
+    private bank: BankService) { }
 
+  canActivate() {
+    try {
+      return Boolean(this.getLoggedAccount());
+    } catch (error) {
+      return this.router.parseUrl('/');
+    }
   }
 
+  // This could be an accessor, but Jasmine's
+  // spies don't work too well with them.
   getLoginStatus() {
     return this.isLoggedIn.asObservable();
   }

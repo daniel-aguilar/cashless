@@ -1,17 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Route, RouterModule } from '@angular/router';
-
-import { PlayerDetailComponent } from './player-detail/player-detail.component';
-import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
-import { AuthGuard } from '../auth/auth.guard';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import { MaterialModule } from '../material.module';
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { PaymentTypeDirective } from './transaction-log/payment-type.directive';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
-import { PaymentTypeDirective } from './payment-type.directive';
+import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
 
 const routes: Route[] = [
-  { path: 'account/player', component: PlayerDetailComponent, canActivate: [AuthGuard] },
+  { path: 'account/player', component: PlayerDetailComponent, canActivate: [AuthService] },
 ];
 
 @NgModule({

@@ -23,14 +23,13 @@ describe('AppComponentTest', () => {
       providers: [{ provide: AuthService, useValue: spy }],
       imports: [HttpClientTestingModule],
       schemas: [NO_ERRORS_SCHEMA],
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
-  it('Should create', () => {
+  it('Should have default values', () => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    playersLink =  fixture.nativeElement.querySelector('a');
+    playersLink = fixture.nativeElement.querySelector('a');
 
     expect(component.isBanker).toBe(false);
     expect(playersLink).toBeNull();

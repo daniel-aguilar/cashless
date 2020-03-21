@@ -1,29 +1,29 @@
 <form [formGroup]="txForm">
-    <div class="row">
-        <div class="col-md-4">
-            <mat-form-field>
-                <span matPrefix>$&nbsp;</span>
-                <input autocomplete="off" matInput placeholder="Amount" formControlName="amount">
-            </mat-form-field>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <mat-form-field>
+        <span matPrefix>$&nbsp;</span>
+        <input autocomplete="off" matInput placeholder="Amount" formControlName="amount">
+      </mat-form-field>
+    </div>
 
-        <div class="col">
-            <mat-form-field>
-                <mat-label>Player</mat-label>
-                <mat-select formControlName="recipientId">
-                    <mat-option value="">Choose a Player</mat-option>
-                    <mat-option *ngFor="let r of recipients" [value]="r.id">
-                        {{ r.name }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Player</mat-label>
+        <mat-select formControlName="recipientId">
+          <mat-option value="">Choose a Player</mat-option>
+          <mat-option *ngFor="let r of recipients" [value]="r.id">
+            {{ r.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <button mat-raised-button color="primary" (click)="makeTransaction()">
-                Transfer Amount
-            </button>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button mat-raised-button color="primary" (click)="makeTransaction()">
+        Transfer Amount
+      </button>
     </div>
+  </div>
 </form>

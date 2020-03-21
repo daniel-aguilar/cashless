@@ -1,12 +1,12 @@
 <div class="container">
-    <h2 class="mat-title">Account Info</h2>
-    <p>Name: {{ player.name }}</p>
-    <p>Balance: ${{ balance }}</p>
+  <h2 class="mat-title">Account Info</h2>
+  <p>Name: {{ player.name }}</p>
+  <p>Balance: ${{ balance }}</p>
 
-    <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
-    <h2 class="mat-title">Transfer Money</h2>
-    <app-transfer-money (balanceChange)="updateBalance()"></app-transfer-money>
+  <h2 class="mat-title">Transfer Money</h2>
+  <app-transfer-money (balanceChange)="updateBalance()"></app-transfer-money>
 
-    <app-transaction-log></app-transaction-log>
+  <app-transaction-log></app-transaction-log>
 </div>

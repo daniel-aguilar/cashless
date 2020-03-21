@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { BankService } from 'src/app/banker/bank.service';
-import { PlayerService } from '../player.service';
 import { Payment } from 'src/app/banker/payment';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-transaction-log',

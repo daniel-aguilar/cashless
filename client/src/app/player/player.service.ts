@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { AuthService } from '../auth/auth.service';
 import { Account } from '../auth/account';
+import { AuthService } from '../auth/auth.service';
 
 /**
  * Service to share a common instance of a player's account.
@@ -9,9 +8,9 @@ import { Account } from '../auth/account';
  */
 @Injectable()
 export class PlayerService {
-    account: Account;
+  account: Account;
 
-    constructor(private auth: AuthService) {
-        this.account = this.auth.getLoggedAccount();
-    }
+  constructor(private auth: AuthService) {
+    this.account = this.auth.getLoggedAccount();
+  }
 }
