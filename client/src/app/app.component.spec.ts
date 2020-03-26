@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
 import { AppComponent } from './app.component';
 import { Account } from './auth/account';
@@ -21,7 +22,10 @@ describe('AppComponentTest', () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       providers: [{ provide: AuthService, useValue: spy }],
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+      ],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
@@ -31,7 +35,7 @@ describe('AppComponentTest', () => {
     component = fixture.componentInstance;
     playersLink = fixture.nativeElement.querySelector('a');
 
-    expect(component.isBanker).toBe(false);
+    expect(component.account).toBeUndefined();
     expect(playersLink).toBeNull();
   });
 
@@ -45,7 +49,7 @@ describe('AppComponentTest', () => {
     fixture.detectChanges();
     playersLink = fixture.nativeElement.querySelector('a');
 
-    expect(component.isBanker).toBe(true);
+    expect(component.account?.isBanker).toBe(true);
     expect(playersLink).toBeDefined();
   });
 });

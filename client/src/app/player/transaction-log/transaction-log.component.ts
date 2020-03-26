@@ -34,7 +34,7 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
         this.payments = payments;
         return this.bank.getPayments(this.player);
       })
-    ).subscribe(p => this.addToLog(p))
+    ).subscribe(p => this.addToLog(p));
   }
 
   ngOnDestroy() {

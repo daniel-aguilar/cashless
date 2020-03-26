@@ -30,6 +30,7 @@ describe('TransactionLogComponentTest', () => {
 
     fixture = TestBed.createComponent(TransactionLogComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
   });
 
   it('Should add payments', () => {
