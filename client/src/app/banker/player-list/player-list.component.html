@@ -1,6 +1,6 @@
 <div class="container">
-  <p>Your pin is <span class="px-1 pin" appPinHider>{{ banker.pin }}</span></p>
-  <table class="mx-auto my-3 mat-typography">
+  <p>Your pin is <span class="pin" appPinHider>{{ banker.pin }}</span></p>
+  <table class="mx-auto my-3">
     <thead>
       <tr>
         <th>Name</th>
@@ -8,10 +8,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of players | async">
+      <tr *ngFor="let p of players">
         <td>{{ p.name }}</td>
-        <td><span class="px-1 pin" appPinHider>{{ p.pin }}</span></td>
+        <td><span class="pin" appPinHider>{{ p.pin }}</span></td>
       </tr>
     </tbody>
   </table>
+  <button title="Add Player" mat-fab color="primary" (click)="openDialog()">
+    <i class="fas fa-plus"></i>
+  </button>
 </div>

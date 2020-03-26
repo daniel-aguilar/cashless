@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add Player</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Player name</mat-label>
+    <input matInput cdkFocusInitial [formControl]="playerName">
+    <mat-error *ngIf="playerName.errors?.uniqueName">That name is already taken</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="addPlayer()" [disabled]="playerName.invalid">Ok</button>
+</div>

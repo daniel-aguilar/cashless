@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,7 +27,12 @@ public class GameController {
 	public List<Account> getPlayers(@PathVariable("id") Game game) {
 		return game.getAccounts();
 	}
-	
+
+	@PostMapping("/game/{id}/players/add/")
+	public Account addPlayer(@PathVariable("id") Game game, @RequestParam String playerName) {
+		return accountService.addAccount(playerName, game);
+	}
+
 	@GetMapping("/game/{id}/bank/")
 	public Account getBank(@PathVariable("id") Game game) {
 		return game.getBank();

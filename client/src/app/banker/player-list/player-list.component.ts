@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { orderBy } from 'lodash';
 import { Account } from 'src/app/auth/account';
 import { AuthService } from 'src/app/auth/auth.service';
+import { AddPlayerComponent, DialogData } from '../add-player/add-player.component';
 
 @Component({
   selector: 'app-player-list',
@@ -10,13 +12,36 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class PlayerListComponent implements OnInit {
   banker: Account;
-  players!: Observable<Account[]>;
+  players: Account[] = [];
 
-  constructor(private auth: AuthService) {
+  constructor(
+    private auth: AuthService,
+    private dialog: MatDialog) {
+
     this.banker = this.auth.getLoggedAccount();
   }
 
   ngOnInit() {
-    this.players = this.auth.getOtherPlayers(this.banker, true);
+    this.auth.getOtherPlayers(this.banker, true)
+      .subscribe(players => this.push(...players));
+  }
+
+  openDialog() {
+    const data: DialogData = {
+      gameId: this.banker.gameId,
+      existingPlayers: this.players,
+    };
+
+    this.dialog.open(AddPlayerComponent, { data })
+      .afterClosed().subscribe((player: Account) => {
+        if (player) {
+          this.push(player);
+        }
+      });
+  }
+
+  private push(...accounts: Account[]) {
+    this.players.push(...accounts);
+    this.players = orderBy(this.players, ['name']);
   }
 }

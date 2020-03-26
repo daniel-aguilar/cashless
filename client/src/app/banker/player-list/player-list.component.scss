@@ -1,4 +1,9 @@
 @import "variables";
+@import "breakpoints";
+
+.container {
+  font-size: large;
+}
 
 .pin {
   font-family: monospace;
@@ -10,6 +15,18 @@ table {
 
   & p {
     font-size: medium;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  table {
+    width: 60%;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  table {
+    width: 100%;
   }
 }
 
@@ -26,4 +43,11 @@ thead {
 
 p {
   text-align: center;
+}
+
+button {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 1.2em;
 }

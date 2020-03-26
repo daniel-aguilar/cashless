@@ -35,7 +35,7 @@ public class Account {
 	public Account() {
 		generatePin();
 	}
-	
+
 	public Integer getGameId() {
 		return game.getId();
 	}

@@ -64,6 +64,14 @@ export class AuthService implements CanActivate {
     );
   }
 
+  addPlayer(name: string, gameId: number) {
+    const url = `${env.apiURL}/game/${gameId}/players/add/`;
+    const data = new FormData();
+    data.set('playerName', name);
+
+    return this.http.post<Account>(url, data);
+  }
+
   leaveGame() {
     delete this.account;
     this.isLoggedIn.next(false);

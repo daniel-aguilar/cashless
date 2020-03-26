@@ -1,20 +1,16 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
+import { snackConfig } from 'src/app/snackbar-config';
 import { PlayerService } from '../player.service';
 
 interface TransactionForm {
   amount: string;
   recipientId: string;
 }
-
-const snackConfig: MatSnackBarConfig = {
-  duration: 5000,
-  panelClass: 'custom-snackbar',
-};
 
 @Component({
   selector: 'app-transfer-money',

@@ -10,7 +10,8 @@ CREATE TABLE account (
   game_id INTEGER NOT NULL REFERENCES game (id),
   name VARCHAR(25) NOT NULL,
   balance INTEGER NOT NULL,
-  pin CHAR(4) NOT NULL
+  pin CHAR(4) NOT NULL,
+  UNIQUE(game_id, name)
 );
 
 -- Common syntax for Postgres & H2
