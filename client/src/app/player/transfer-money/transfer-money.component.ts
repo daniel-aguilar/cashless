@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
@@ -20,9 +20,6 @@ interface TransactionForm {
 export class TransferMoneyComponent implements OnInit {
   txForm: FormGroup;
   recipients: Account[] = [];
-
-  @Output()
-  balanceChange = new EventEmitter();
 
   private get player() {
     return this.currentPlayer.account;
@@ -56,7 +53,6 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   private success(amount: number, name: string) {
-    this.balanceChange.emit();
     this.snack.open(`Transfered $${amount} to ${name}!`, 'Ok', snackConfig);
   }
 }
