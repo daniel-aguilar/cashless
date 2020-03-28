@@ -1,7 +1,6 @@
 package org.danielaguilar.monopoly.model;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +16,6 @@ public class Game {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	private String name;
 
 	@OneToOne
 	@JoinColumn(name = "bank_id")
@@ -37,14 +34,6 @@ public class Game {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Account getBank() {
@@ -69,22 +58,5 @@ public class Game {
 
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof Game)) {
-			return false;
-		}
-		Game other = (Game) obj;
-		return Objects.equals(name, other.name);
 	}
 }

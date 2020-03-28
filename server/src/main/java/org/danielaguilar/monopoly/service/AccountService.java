@@ -29,4 +29,13 @@ public class AccountService {
 
 		return accountRepository.save(account);
 	}
+
+	public Account createBankAccount(Game game) {
+		var account = new Account();
+		account.setName("Bank");
+		account.setGame(game);
+		account.setBalance(1000000);
+
+		return accountRepository.save(account);
+	}
 }

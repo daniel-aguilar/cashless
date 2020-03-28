@@ -1,8 +1,7 @@
 --liquibase formatted sql
 --changeset Daniel Aguilar:1
 CREATE TABLE game (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(25) NOT NULL
+  id SERIAL PRIMARY KEY
 );
 
 CREATE TABLE account (
@@ -27,7 +26,8 @@ CREATE TABLE transaction (
 );
 
 --changeset Daniel Aguilar:1574640900 context:test
-INSERT INTO game (id, name) VALUES (1, 'game');
+INSERT INTO game (id) VALUES (1);
+INSERT INTO game (id) VALUES (2);
 
 INSERT INTO account VALUES (1, 1, 'Bank', 1000, '0000');
 INSERT INTO account VALUES (2, 1, 'Banker', 100, '1234');
