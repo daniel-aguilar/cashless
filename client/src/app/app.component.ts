@@ -9,7 +9,7 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  account?: Account;
+  account: Account;
 
   constructor(
     private auth: AuthService,

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
@@ -7,19 +7,17 @@ import { GameService } from 'src/app/game.service';
 import { snackConfig } from 'src/app/snackbar-config';
 import { PlayerService } from '../player.service';
 
-interface TransactionForm {
-  amount: string;
-  recipientId: string;
-}
-
 @Component({
   selector: 'app-transfer-money',
   templateUrl: './transfer-money.component.html',
   styleUrls: ['./transfer-money.component.scss'],
 })
 export class TransferMoneyComponent implements OnInit {
-  txForm: FormGroup;
+  form: FormGroup;
   recipients: Account[] = [];
+
+  @ViewChild(FormGroupDirective)
+  fg: FormGroupDirective;
 
   private get player() {
     return this.currentPlayer.account;
@@ -32,8 +30,11 @@ export class TransferMoneyComponent implements OnInit {
     private game: GameService,
     private bank: BankService) {
 
-    this.txForm = this.fb.group({
-      amount: ['', Validators.required],
+    this.form = this.fb.group({
+      amount: ['', [
+        Validators.required,
+        Validators.min(1),
+      ]],
       recipientId: ['', Validators.required],
     });
   }
@@ -43,16 +44,16 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   makeTransaction() {
-    const form = this.txForm.value as TransactionForm;
-    const recipient = this.recipients.find(a => a.id === +form.recipientId);
+    const data = this.form.value;
+    const recipient = this.recipients.find(a => a.id === +data.recipientId);
 
-    if (recipient) {
-      this.bank.makeTransaction(this.player, +form.amount, recipient).subscribe(() =>
-        this.success(+form.amount, recipient.name));
-    }
+    this.bank.makeTransaction(this.player, +data.amount, recipient).subscribe(
+      () => this.success(+data.amount, recipient.name),
+      () => this.snack.open('Non-Sufficient Funds', null, { panelClass: 'snack-error' }));
   }
 
   private success(amount: number, name: string) {
-    this.snack.open(`Transfered $${amount} to ${name}!`, 'Ok', snackConfig);
+    this.fg.resetForm({ recipientId: '' });
+    this.snack.open(`Transfered $${amount} to ${name}!`);
   }
 }

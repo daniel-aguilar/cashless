@@ -1,28 +1,41 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { GameService } from '../game.service';
-import { AuthService } from '../auth/auth.service';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
-  styleUrls: ['./new-game.component.scss']
 })
 export class NewGameComponent {
-  name = new FormControl('', Validators.required);
+  form: FormGroup;
+
+  get name() {
+    return this.form.get('name');
+  }
 
   constructor(
+    private fb: FormBuilder,
     private game: GameService,
     private auth: AuthService,
     private router: Router) {
 
+    this.form = this.fb.group({
+      name: ['', [Validators.required, noBankName]],
+    });
   }
 
   createGame() {
-    this.game.newGame(this.name.value).subscribe(account => {
+    const name = this.form.value.name as string;
+    this.game.newGame(name).subscribe(account => {
       this.auth.login(account);
       this.router.navigateByUrl('/account/banker');
     });
   }
+}
+
+function noBankName(control: AbstractControl): ValidationErrors | null {
+  const name = control.value as string;
+  return name.toLowerCase() === 'bank' ? { noBankName: true } : null;
 }

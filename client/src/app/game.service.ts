@@ -20,7 +20,10 @@ export class GameService {
   }
 
   newGame(bankerName: string) {
-    return this.http.post<Account>(`${env.apiURL}/new/`, bankerName);
+    const data = new FormData();
+    data.set('bankerName', bankerName);
+
+    return this.http.post<Account>(`${env.apiURL}/new/`, data);
   }
 
   joinGame(pin: string) {

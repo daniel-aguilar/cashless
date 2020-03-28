@@ -11,7 +11,7 @@ import { Account } from '../auth/account';
 })
 export class BankerComponent implements OnInit {
   player: Account;
-  bank?: Account;
+  bank: Account;
 
   constructor(
     private bankService: BankService,

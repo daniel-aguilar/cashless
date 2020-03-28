@@ -1,11 +1,14 @@
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="joinGame()">
     <div class="row justify-content-center">
-      <div class="input-col col-md-4">
+      <div class="col-md-4 d-flex flex-column">
         <mat-form-field>
-          <input type="text" autocomplete="off" matInput placeholder="Pin" formControlName="pin">
+          <input matInput placeholder="Pin" autocomplete="off"
+              formControlName="pin" minlength="4" maxlength="4">
         </mat-form-field>
-        <button mat-raised-button color="primary">OK</button>
+        <button mat-raised-button color="primary"
+            [disabled]="form.invalid">OK</button>
+        <p class="error" *ngIf="error">No account found</p>
       </div>
     </div>
   </form>

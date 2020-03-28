@@ -5,7 +5,7 @@ import { Account } from './account';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService implements CanActivate {
-  private account?: Account;
+  private account: Account;
   private isLoggedIn = new BehaviorSubject(false);
 
   constructor(private router: Router) {

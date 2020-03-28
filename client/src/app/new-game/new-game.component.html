@@ -1,14 +1,15 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <mat-form-field class="d-block">
-        <input matInput placeholder="Player Name" [formControl]="name">
-      </mat-form-field>
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="name.invalid"
-        (click)="createGame()">OK</button>
+  <form [formGroup]="form" (ngSubmit)="createGame()">
+    <div class="row justify-content-center">
+      <div class="col-md-4 d-flex flex-column">
+        <mat-form-field>
+          <input matInput placeholder="Player Name" autocomplete="off"
+              formControlName="name">
+          <mat-error *ngIf="name.errors?.noBankName">That name is reserved</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary"
+            [disabled]="form.invalid">OK</button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>

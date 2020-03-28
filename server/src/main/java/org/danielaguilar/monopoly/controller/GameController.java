@@ -1,18 +1,19 @@
 package org.danielaguilar.monopoly.controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Game;
 import org.danielaguilar.monopoly.service.AccountService;
 import org.danielaguilar.monopoly.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class GameController {
@@ -24,13 +25,17 @@ public class GameController {
 	private AccountService accountService;
 
 	@PostMapping("/new/")
-	public Account newGame(@RequestBody String bankerName) {
+	public Account newGame(String bankerName) {
 		return gameService.createGame(bankerName);
 	}
 
 	@PostMapping("/join/")
 	public Account joinGame(String pin) {
-		return accountService.getAccount(pin).get();
+		try {
+			return accountService.getAccount(pin).get();
+		} catch (NoSuchElementException e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No account found");
+		}
 	}
 
 	@GetMapping("/game/{id}/players/")
@@ -39,7 +44,7 @@ public class GameController {
 	}
 
 	@PostMapping("/game/{id}/players/add/")
-	public Account addPlayer(@PathVariable("id") Game game, @RequestParam String playerName) {
+	public Account addPlayer(@PathVariable("id") Game game, String playerName) {
 		return accountService.addAccount(playerName, game);
 	}
 
