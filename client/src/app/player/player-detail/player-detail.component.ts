@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import { BankService } from 'src/app/banker/bank.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Account } from 'src/app/auth/account';
+import { BankService } from 'src/app/banker/bank.service';
 import { PlayerService } from '../player.service';
 
 @Component({
@@ -18,6 +17,9 @@ export class PlayerDetailComponent implements OnInit {
   set account(account: Account) {
     this.player = this.currentPlayer.account = account;
   }
+
+  @Input()
+  isBank = false;
 
   constructor(
     private currentPlayer: PlayerService,

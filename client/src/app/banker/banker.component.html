@@ -6,7 +6,7 @@
     </mat-tab>
     <mat-tab label="Bank">
         <div class="tab-content" *ngIf="bank">
-            <app-player-detail [account]="bank"></app-player-detail>
+            <app-player-detail [account]="bank" [isBank]="true"></app-player-detail>
         </div>
     </mat-tab>
 </mat-tab-group>

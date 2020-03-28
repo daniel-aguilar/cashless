@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="mat-title">Account Info</h2>
-  <p>Name: {{ player.name }}</p>
+  <p class="name" *ngIf="!isBank">Name: {{ player.name }}</p>
   <p>Balance: {{ balance | currency:'USD':'symbol':'1.0-0' }}</p>
 
   <mat-divider></mat-divider>
