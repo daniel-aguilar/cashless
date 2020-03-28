@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { orderBy } from 'lodash';
 import { Account } from 'src/app/auth/account';
 import { AuthService } from 'src/app/auth/auth.service';
+import { GameService } from 'src/app/game.service';
 import { AddPlayerComponent, DialogData } from '../add-player/add-player.component';
 
 @Component({
@@ -16,13 +17,14 @@ export class PlayerListComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
+    private game: GameService,
     private dialog: MatDialog) {
 
     this.banker = this.auth.getLoggedAccount();
   }
 
   ngOnInit() {
-    this.auth.getOtherPlayers(this.banker, true)
+    this.game.getOtherPlayers(this.banker, true)
       .subscribe(players => this.push(...players));
   }
 

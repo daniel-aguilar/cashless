@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
-import { AuthService } from 'src/app/auth/auth.service';
+import { GameService } from 'src/app/game.service';
 import { snackConfig } from 'src/app/snackbar-config';
 import { uniqueName } from './unique-name';
 
@@ -22,7 +22,7 @@ export class AddPlayerComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
     private dialogRef: MatDialogRef<AddPlayerComponent>,
-    private auth: AuthService,
+    private game: GameService,
     private snack: MatSnackBar) {
 
     this.playerName = new FormControl('',
@@ -30,7 +30,7 @@ export class AddPlayerComponent {
   }
 
   addPlayer() {
-    this.auth.addPlayer(this.playerName.value, this.data.gameId).subscribe(p => {
+    this.game.addPlayer(this.playerName.value, this.data.gameId).subscribe(p => {
       this.dialogRef.close(p);
       this.snack.open(`Player ${p.name} added!`, 'Ok', snackConfig);
     });

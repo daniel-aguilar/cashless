@@ -28,12 +28,11 @@ describe('BankServiceTest', () => {
       ],
     });
 
+    service = TestBed.inject(BankService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('Should get correct balance', (done: DoneFn) => {
-    service = TestBed.inject(BankService);
-
     service.getBalance(player).subscribe(n => {
       expect(n).toBe(100);
       done();
@@ -45,7 +44,6 @@ describe('BankServiceTest', () => {
   });
 
   it('Should transfer amount', () => {
-    service = TestBed.inject(BankService);
     service.makeTransaction(player, 100, banker).subscribe();
 
     req = httpTestingController.expectOne(`${apiURL}/1/transfer/`);

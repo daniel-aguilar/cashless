@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
-import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
+import { GameService } from 'src/app/game.service';
 import { snackConfig } from 'src/app/snackbar-config';
 import { PlayerService } from '../player.service';
 
@@ -29,7 +29,7 @@ export class TransferMoneyComponent implements OnInit {
     private fb: FormBuilder,
     private snack: MatSnackBar,
     private currentPlayer: PlayerService,
-    private auth: AuthService,
+    private game: GameService,
     private bank: BankService) {
 
     this.txForm = this.fb.group({
@@ -39,7 +39,7 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.auth.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
+    this.game.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
   }
 
   makeTransaction() {

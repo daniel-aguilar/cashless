@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GameService } from 'src/app/game.service';
 import { Account } from '../account';
 import { AuthService } from '../auth.service';
 
@@ -15,6 +16,7 @@ export class JoinGameComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private game: GameService,
     private auth: AuthService) {
 
     this.form = this.fb.group({ pin: '' });
@@ -24,7 +26,7 @@ export class JoinGameComponent {
     const pin = this.form.value.pin as string;
     let account: Account;
 
-    this.auth.joinGame(pin).subscribe({
+    this.game.joinGame(pin).subscribe({
       complete: () => {
         account = this.auth.getLoggedAccount();
 

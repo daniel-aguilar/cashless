@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Account } from './auth/account';
 import { AuthService } from './auth/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   leaveGame() {
-    this.auth.leaveGame();
+    this.auth.logout();
     this.router.navigateByUrl('/');
   }
 }
