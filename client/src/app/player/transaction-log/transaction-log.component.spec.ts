@@ -9,11 +9,12 @@ import { PlayerService } from '../player.service';
 import { TransactionLogComponent } from './transaction-log.component';
 
 describe('TransactionLogComponentTest', () => {
-  let component: TransactionLogComponent;
   let fixture: ComponentFixture<TransactionLogComponent>;
+  let component: TransactionLogComponent;
 
   beforeEach(() => {
-    const authSpy: jasmine.SpyObj<AuthService> = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
+    let authSpy: jasmine.SpyObj<AuthService>;
+    authSpy = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
     authSpy.getLoggedAccount.and.returnValue({} as Account);
 
     TestBed.configureTestingModule({
@@ -25,8 +26,7 @@ describe('TransactionLogComponentTest', () => {
       ],
       imports: [HttpClientTestingModule],
       schemas: [NO_ERRORS_SCHEMA],
-    })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TransactionLogComponent);
     component = fixture.componentInstance;

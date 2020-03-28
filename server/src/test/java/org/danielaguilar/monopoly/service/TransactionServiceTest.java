@@ -1,8 +1,6 @@
 package org.danielaguilar.monopoly.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 
 import org.danielaguilar.monopoly.model.Account;
 import org.danielaguilar.monopoly.model.Transaction;
@@ -11,9 +9,11 @@ import org.danielaguilar.monopoly.repository.TransactionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest(properties = "spring.profiles.active = test")
+@SpringBootTest
+@ActiveProfiles("test")
 public class TransactionServiceTest {
 
 	@Autowired
@@ -22,11 +22,13 @@ public class TransactionServiceTest {
 	@Autowired
 	private TransactionService transactionService;
 
-	@MockBean
+	@Autowired
 	private TransactionRepository transactionRepository;
 
 	@Test
+	@Transactional
 	public void testTransferAmount() {
+		Transaction tx;
 		Account banker = accountRepository.findById(2).get();
 		Account player = accountRepository.findById(3).get();
 
@@ -34,6 +36,11 @@ public class TransactionServiceTest {
 
 		assertEquals(70, banker.getBalance());
 		assertEquals(130, player.getBalance());
-		verify(transactionRepository).save(any(Transaction.class));
+
+		assertEquals(1, transactionRepository.count());
+		tx = transactionRepository.findAll().iterator().next();
+		assertEquals(banker, tx.getSender());
+		assertEquals(player, tx.getRecipient());
+		assertEquals(30, tx.getAmount());
 	}
 }

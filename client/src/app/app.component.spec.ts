@@ -49,7 +49,7 @@ describe('AppComponentTest', () => {
     fixture.detectChanges();
     playersLink = fixture.nativeElement.querySelector('a');
 
-    expect(component.account?.isBanker).toBe(true);
+    expect(component.account.isBanker).toBe(true);
     expect(playersLink).toBeDefined();
   });
 });

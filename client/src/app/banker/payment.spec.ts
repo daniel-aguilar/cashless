@@ -1,36 +1,15 @@
 import { Account } from '../auth/account';
-import { Transaction } from './transaction';
 import { Payment } from './payment';
+import { Transaction } from './transaction';
 
 describe('PaymentTest', () => {
+  it('Should create payment', () => {
+    const sender = { id: 1 } as Account;
+    const recipient = { id: 2 } as Account;
+    const tx = { sender, recipient } as Transaction;
 
-    it('Should create payment', () => {
-        const sender: Account = {
-            id: 1,
-            name: 'Sender',
-            pin: '',
-            gameId: 1,
-            isBanker: false,
-        };
-
-        const recipient: Account = {
-            id: 2,
-            name: 'Recipient',
-            pin: '',
-            gameId: 1,
-            isBanker: false,
-        };
-
-        const tx: Transaction = {
-            id: 1,
-            sender,
-            recipient,
-            amount: 100,
-            date: '2020-01-03',
-        };
-
-        const payment = new Payment(tx, sender);
-        expect(payment.isIncoming).toBe(false);
-        expect(payment.account).toBe(recipient);
-    });
+    const payment = new Payment(tx, sender);
+    expect(payment.isIncoming).toBeFalse();
+    expect(payment.account).toBe(recipient);
+  });
 });

@@ -1,11 +1,11 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { AuthService } from 'src/app/auth/auth.service';
-import { BankService } from './bank.service';
+import { environment as env } from 'src/environments/environment';
 import { Account } from '../auth/account';
+import { BankService } from './bank.service';
 
-const apiURL = 'http://localhost:8080/account';
+const apiURL = `${env.apiURL}/account`;
 
 describe('BankServiceTest', () => {
   const player = { id: 1 } as Account;

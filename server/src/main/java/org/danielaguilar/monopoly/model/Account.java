@@ -28,7 +28,7 @@ public class Account {
 	private String name;
 
 	@JsonIgnore
-	private Integer balance = 0;
+	private Integer balance = 1500;
 
 	private String pin;
 
@@ -53,8 +53,7 @@ public class Account {
 		if (balance - amount >= 0) {
 			balance -= amount;
 		} else {
-			// TODO: Find more appropriate exception
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Non-Sufficient Funds");
 		}
 	}
 

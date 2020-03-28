@@ -21,16 +21,16 @@ public class TransactionService {
 	private AccountRepository accountRepository;
 
 	public Transaction transfer(Account sender, Account recipient, Integer amount) {
-		var transaction = new Transaction();
-		transaction.setSender(sender);
-		transaction.setRecipient(recipient);
-		transaction.setAmount(amount);
+		var tx = new Transaction();
+		tx.setSender(sender);
+		tx.setRecipient(recipient);
+		tx.setAmount(amount);
 
 		sender.withdraw(amount);
 		recipient.deposit(amount);
 
 		accountRepository.saveAll(Arrays.asList(sender, recipient));
-		return transactionRepository.save(transaction);
+		return transactionRepository.save(tx);
 	}
 
 	public List<Transaction> getLastestTransactions(Account account) {
