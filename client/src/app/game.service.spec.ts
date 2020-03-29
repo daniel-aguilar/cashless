@@ -13,7 +13,7 @@ describe('GameService', () => {
 
   const player = { id: 1, gameId: 1 } as Account;
   const banker = { id: 2 } as Account;
-  const bank = {} as Account;
+  const bank = { isBank: true } as Account;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -43,12 +43,8 @@ describe('GameService', () => {
       done();
     });
 
-    let req = httpTestingController.expectOne(`${apiURL}/1/players/`);
+    const req = httpTestingController.expectOne(`${apiURL}/1/players/`);
     req.flush([player, banker, bank]);
-
-    req = httpTestingController.expectOne(`${apiURL}/1/bank/`);
-    req.flush(bank);
-
     httpTestingController.verify();
   });
 });

@@ -13,7 +13,7 @@ describe('PlayerDetailComponentTest', () => {
   beforeEach(() => {
     let authSpy: jasmine.SpyObj<AuthService>;
     authSpy = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
-    authSpy.getLoggedAccount.and.returnValue({} as Account);
+    authSpy.getLoggedAccount.and.returnValue({ isBank: true } as Account);
 
     TestBed.configureTestingModule({
       declarations: [PlayerDetailComponent],
@@ -32,7 +32,6 @@ describe('PlayerDetailComponentTest', () => {
   });
 
   it('Should hide bank name', () => {
-    component.isBank = true;
     fixture.detectChanges();
     const shown = fixture.nativeElement.querySelector('p.name');
     expect(shown).toBeNull();

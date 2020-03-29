@@ -14,7 +14,11 @@
         <mat-select formControlName="recipientId">
           <mat-option value="">Choose a Player</mat-option>
           <mat-option *ngFor="let r of recipients" [value]="r.id">
-            {{ r.name }}
+            <div *ngIf="r.isBank; else displayName">
+              Bank
+              <i class="fas fa-university"></i>
+            </div>
+            <ng-template #displayName>{{ r.name }}</ng-template>
           </mat-option>
         </mat-select>
       </mat-form-field>

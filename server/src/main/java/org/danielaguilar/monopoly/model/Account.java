@@ -40,6 +40,11 @@ public class Account {
 		return game.getId();
 	}
 
+	@JsonProperty("isBank")
+	public Boolean isBank() {
+		return game.getBank().equals(this);
+	}
+
 	@JsonProperty("isBanker")
 	public Boolean isBanker() {
 		return game.getBanker().equals(this);

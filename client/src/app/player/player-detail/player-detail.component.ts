@@ -18,9 +18,6 @@ export class PlayerDetailComponent implements OnInit {
     this.player = this.currentPlayer.account = account;
   }
 
-  @Input()
-  isBank = false;
-
   constructor(
     private currentPlayer: PlayerService,
     private bank: BankService) {

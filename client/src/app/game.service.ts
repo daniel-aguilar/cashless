@@ -48,13 +48,11 @@ export class GameService {
     const gameId = except.gameId;
 
     return this.getPlayers(gameId).pipe(
-      switchMap(accounts => {
+      map(accounts => {
         if (skipBank) {
-          return this.bank.getBankAccount(gameId).pipe(
-            map(bank => accounts.filter(a => a.id !== bank.id))
-          );
+          return accounts.filter(a => !a.isBank);
         }
-        return of(accounts);
+        return accounts;
       }),
       map(accounts => accounts.filter(a => a.id !== except.id))
     );

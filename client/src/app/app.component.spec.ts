@@ -10,7 +10,6 @@ import { AuthService } from './auth/auth.service';
 describe('AppComponentTest', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  let playersLink: HTMLAnchorElement;
 
   let spy: jasmine.SpyObj<AuthService>;
   const loginStatus = new BehaviorSubject(false);
@@ -28,28 +27,27 @@ describe('AppComponentTest', () => {
       ],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    component.ngOnInit();
+    fixture.detectChanges();
   });
 
   it('Should have default values', () => {
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
-    playersLink = fixture.nativeElement.querySelector('a');
+    const links = fixture.nativeElement.querySelectorAll('a') as NodeList;
 
     expect(component.account).toBeUndefined();
-    expect(playersLink).toBeNull();
+    expect(links.length).toBe(0);
   });
 
   it('Should display players link', () => {
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
     spy.getLoggedAccount.and.returnValue({ isBanker: true } as Account);
-
-    component.ngOnInit();
     loginStatus.next(true);
     fixture.detectChanges();
-    playersLink = fixture.nativeElement.querySelector('a');
+    const link = fixture.nativeElement.querySelector('a[title=Players]');
 
     expect(component.account.isBanker).toBe(true);
-    expect(playersLink).toBeDefined();
+    expect(link).not.toBeNull();
   });
 });

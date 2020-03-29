@@ -3,5 +3,6 @@ export interface Account {
   name: string;
   pin: string;
   gameId: number;
+  isBank: boolean;
   isBanker: boolean;
 }
