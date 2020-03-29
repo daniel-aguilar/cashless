@@ -4,7 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
 import { GameService } from 'src/app/game.service';
-import { snackConfig } from 'src/app/snackbar-config';
 import { PlayerService } from '../player.service';
 
 @Component({
