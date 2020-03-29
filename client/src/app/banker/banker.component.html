@@ -1,10 +1,10 @@
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Player">
+    <mat-tab i18n-label label="Player">
         <div class="tab-content">
             <app-player-detail [account]="player"></app-player-detail>
         </div>
     </mat-tab>
-    <mat-tab label="Bank">
+    <mat-tab i18n-label label="Bank">
         <div class="tab-content" *ngIf="bank">
             <app-player-detail [account]="bank"></app-player-detail>
         </div>

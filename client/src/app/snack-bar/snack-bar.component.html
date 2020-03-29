@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="data.message">
+  <span i18n *ngSwitchCase="0">Transfered ${{ body.amount }} to {{ body.name }}</span>
+  <span i18n *ngSwitchCase="1">Non-Sufficient Funds</span>
+  <span i18n *ngSwitchCase="2">Player {{ body.name }} added</span>
+  <span *ngSwitchDefault>No message provided</span>
+</ng-container>

@@ -1,10 +1,10 @@
 <table class="mx-auto my-3 mat-typography">
   <thead>
     <tr>
-      <th>Time</th>
-      <th>Type</th>
-      <th>Account</th>
-      <th>Amount</th>
+      <th i18n>Time</th>
+      <th i18n>Type</th>
+      <th i18n>Account</th>
+      <th i18n>Amount</th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +14,10 @@
         <i *ngIf="p.isIncoming; else elseBlock" class="fas fa-arrow-down"></i>
         <ng-template #elseBlock><i class="fas fa-arrow-up"></i></ng-template>
       </td>
-      <td>{{ p.account.name }}</td>
+      <td>
+        <span i18n *ngIf="p.account.isBank; else displayName">Bank</span>
+        <ng-template #displayName>{{ p.account.name }}</ng-template>
+      </td>
       <td>${{ p.tx.amount }}</td>
     </tr>
     <tr *ngIf="payments.length === 0">

@@ -3,9 +3,9 @@
     <div class="row justify-content-center">
       <div class="col-md-4 d-flex flex-column">
         <mat-form-field>
-          <input matInput placeholder="Player Name" autocomplete="off"
+          <input matInput i18n-placeholder placeholder="Player Name" autocomplete="off"
               formControlName="name">
-          <mat-error *ngIf="name.errors?.noBankName">That name is reserved</mat-error>
+          <mat-error i18n *ngIf="name.errors?.noBankName">That name is reserved</mat-error>
         </mat-form-field>
         <button mat-raised-button color="primary"
             [disabled]="form.invalid">OK</button>

@@ -4,6 +4,11 @@
   "newProjectRoot": "projects",
   "projects": {
     "monopoly": {
+      "i18n": {
+        "locales": {
+          "es-CR": "src/messages.es.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {

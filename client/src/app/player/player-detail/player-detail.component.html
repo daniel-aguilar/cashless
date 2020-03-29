@@ -1,11 +1,11 @@
 <div class="container">
-  <h2 class="mat-title">Account Info</h2>
-  <p class="name" *ngIf="!player.isBank">Name: {{ player.name }}</p>
-  <p>Balance: {{ balance | currency:'USD':'symbol':'1.0-0' }}</p>
+  <h2 i18n class="mat-title">Account Info</h2>
+  <p i18n class="name" *ngIf="!player.isBank">Name: {{ player.name }}</p>
+  <p i18n>Balance: {{ balance | currency:'USD':'symbol':'1.0-0':'en-US' }}</p>
 
   <mat-divider></mat-divider>
 
-  <h2 class="mat-title">Transfer Money</h2>
+  <h2 i18n class="mat-title">Transfer Money</h2>
   <app-transfer-money></app-transfer-money>
 
   <app-transaction-log (balanceChange)="updateBalance()"></app-transaction-log>

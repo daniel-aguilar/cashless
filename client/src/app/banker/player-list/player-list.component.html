@@ -1,10 +1,10 @@
 <div class="container">
-  <p>Your pin is <span class="pin" appPinHider>{{ banker.pin }}</span></p>
+  <p i18n>Your pin is <span class="pin" appPinHider>{{ banker.pin }}</span></p>
   <table class="mx-auto my-3">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Pin</th>
+        <th i18n>Name</th>
+        <th i18n>Pin</th>
       </tr>
     </thead>
     <tbody>
@@ -14,7 +14,7 @@
       </tr>
     </tbody>
   </table>
-  <button title="Add Player" mat-fab color="primary" (click)="openDialog()">
+  <button i18n-title title="Add Player" mat-fab color="primary" (click)="openDialog()">
     <i class="fas fa-plus"></i>
   </button>
 </div>

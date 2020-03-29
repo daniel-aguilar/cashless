@@ -2,11 +2,11 @@
   <h1>Monopoly</h1>
 
   <div class="ml-auto">
-    <a title="Players" mat-button *ngIf="account?.isBanker" routerLink="/players">
+    <a i18n-title title="Players" mat-button *ngIf="account?.isBanker" routerLink="/players">
       <i class="fas fa-users"></i>
     </a>
 
-    <a title="Leave Game" mat-button *ngIf="account" (click)="leaveGame()">
+    <a i18n-title title="Quit" mat-button *ngIf="account" (click)="leaveGame()">
       <i class="fas fa-sign-out-alt"></i>
     </a>
   </div>
