@@ -5,13 +5,8 @@
 $monopoly-primary: mat-palette($mat-red, 900);
 $monopoly-accent: mat-palette($mat-grey, 50);
 
-$monopoly-typography: mat-typography-config(
-  $font-family: 'Didact Gothic, sans-serif'
-);
-
 $monopoly-theme: mat-light-theme($monopoly-primary, $monopoly-accent);
 @include angular-material-theme($monopoly-theme);
-@include mat-base-typography($monopoly-typography);
 
 .mat-snack-bar-container {
   color: black;
