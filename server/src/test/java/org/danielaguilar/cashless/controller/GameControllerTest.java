@@ -1,4 +1,4 @@
-package org.danielaguilar.monopoly.controller;
+package org.danielaguilar.cashless.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

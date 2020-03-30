@@ -12,7 +12,7 @@
   </parent>
 
   <groupId>org.danielaguilar</groupId>
-  <artifactId>monopoly</artifactId>
+  <artifactId>cashless</artifactId>
   <version>0.0.0</version>
 
   <properties>

@@ -1,4 +1,4 @@
-package org.danielaguilar.monopoly.config;
+package org.danielaguilar.cashless.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

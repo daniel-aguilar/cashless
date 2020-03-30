@@ -1,12 +1,12 @@
-package org.danielaguilar.monopoly.controller;
+package org.danielaguilar.cashless.controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.danielaguilar.monopoly.model.Account;
-import org.danielaguilar.monopoly.model.Game;
-import org.danielaguilar.monopoly.service.AccountService;
-import org.danielaguilar.monopoly.service.GameService;
+import org.danielaguilar.cashless.model.Account;
+import org.danielaguilar.cashless.model.Game;
+import org.danielaguilar.cashless.service.AccountService;
+import org.danielaguilar.cashless.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

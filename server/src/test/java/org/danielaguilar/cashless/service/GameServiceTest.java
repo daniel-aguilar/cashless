@@ -1,4 +1,4 @@
-package org.danielaguilar.monopoly.service;
+package org.danielaguilar.cashless.service;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

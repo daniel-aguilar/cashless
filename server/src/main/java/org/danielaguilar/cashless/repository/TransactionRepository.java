@@ -1,9 +1,9 @@
-package org.danielaguilar.monopoly.repository;
+package org.danielaguilar.cashless.repository;
 
 import java.util.List;
 
-import org.danielaguilar.monopoly.model.Account;
-import org.danielaguilar.monopoly.model.Transaction;
+import org.danielaguilar.cashless.model.Account;
+import org.danielaguilar.cashless.model.Transaction;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;

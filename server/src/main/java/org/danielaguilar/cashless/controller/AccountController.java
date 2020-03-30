@@ -1,11 +1,11 @@
-package org.danielaguilar.monopoly.controller;
+package org.danielaguilar.cashless.controller;
 
 import java.util.List;
 
-import org.danielaguilar.monopoly.model.Account;
-import org.danielaguilar.monopoly.model.Transaction;
-import org.danielaguilar.monopoly.service.AccountService;
-import org.danielaguilar.monopoly.service.TransactionService;
+import org.danielaguilar.cashless.model.Account;
+import org.danielaguilar.cashless.model.Transaction;
+import org.danielaguilar.cashless.service.AccountService;
+import org.danielaguilar.cashless.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

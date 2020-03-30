@@ -1,12 +1,12 @@
-package org.danielaguilar.monopoly.service;
+package org.danielaguilar.cashless.service;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.danielaguilar.monopoly.model.Account;
-import org.danielaguilar.monopoly.model.Transaction;
-import org.danielaguilar.monopoly.repository.AccountRepository;
-import org.danielaguilar.monopoly.repository.TransactionRepository;
+import org.danielaguilar.cashless.model.Account;
+import org.danielaguilar.cashless.model.Transaction;
+import org.danielaguilar.cashless.repository.AccountRepository;
+import org.danielaguilar.cashless.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
-package org.danielaguilar.monopoly.repository;
+package org.danielaguilar.cashless.repository;
 
 import java.util.Optional;
 
-import org.danielaguilar.monopoly.model.Account;
+import org.danielaguilar.cashless.model.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

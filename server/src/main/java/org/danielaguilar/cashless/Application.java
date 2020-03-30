@@ -1,12 +1,12 @@
-package org.danielaguilar.monopoly;
+package org.danielaguilar.cashless;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MonopolyApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MonopolyApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

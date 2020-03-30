@@ -1,4 +1,4 @@
-package org.danielaguilar.monopoly.model;
+package org.danielaguilar.cashless.model;
 
 import java.util.List;
 

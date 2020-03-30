@@ -2,10 +2,10 @@
 @import 'variables';
 @include mat-core();
 
-$monopoly-primary: mat-palette($mat-red, 900);
-$monopoly-accent: mat-palette($mat-grey, 50);
+$primary: mat-palette($mat-red, 900);
+$accent: mat-palette($mat-grey, 50);
 
-$monopoly-theme: mat-light-theme($monopoly-primary, $monopoly-accent);
+$monopoly-theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($monopoly-theme);
 
 .mat-snack-bar-container {
@@ -14,8 +14,4 @@ $monopoly-theme: mat-light-theme($monopoly-primary, $monopoly-accent);
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
               0px 6px 10px 0px rgba(0, 0, 0, 0.14),
               0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-}
-
-.mat-simple-snackbar-action {
-  color: inherit;
 }

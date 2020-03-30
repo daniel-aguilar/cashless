@@ -1,4 +1,4 @@
-package org.danielaguilar.monopoly.model;
+package org.danielaguilar.cashless.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

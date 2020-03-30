@@ -1,6 +1,6 @@
-package org.danielaguilar.monopoly.repository;
+package org.danielaguilar.cashless.repository;
 
-import org.danielaguilar.monopoly.model.Game;
+import org.danielaguilar.cashless.model.Game;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
