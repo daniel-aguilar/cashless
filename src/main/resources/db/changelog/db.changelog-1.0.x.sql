@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset Daniel Aguilar:1
+--changeset Daniel Aguilar:1.0.0
 CREATE TABLE game (
   id SERIAL PRIMARY KEY
 );
