@@ -17,7 +17,7 @@ export class BankService {
 
   constructor(private http: HttpClient) {
     this.transactionWS = new Client({
-      brokerURL: 'ws://localhost:8080/websocket',
+      brokerURL: env.wsURL,
       onConnect: () => this.listenToTransactions(),
     });
     this.transactionWS.activate();
