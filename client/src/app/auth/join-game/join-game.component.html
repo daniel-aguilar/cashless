@@ -4,7 +4,7 @@
       <div class="col-md-4 d-flex flex-column">
         <mat-form-field>
           <input matInput placeholder="Pin" autocomplete="off"
-              formControlName="pin" minlength="4" maxlength="4">
+              formControlName="pin" minlength="4" maxlength="4" pattern="[0-9]{4}">
         </mat-form-field>
         <button mat-raised-button color="primary"
             [disabled]="form.invalid">OK</button>

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
@@ -25,8 +25,10 @@ export class AddPlayerComponent {
     private game: GameService,
     private snack: MatSnackBar) {
 
-    this.playerName = new FormControl('',
-      uniqueName(this.data.existingPlayers));
+    this.playerName = new FormControl('', [
+      Validators.required,
+      uniqueName(this.data.existingPlayers),
+    ]);
   }
 
   addPlayer() {
