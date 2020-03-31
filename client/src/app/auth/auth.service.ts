@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Account } from './account';
 
@@ -9,7 +9,7 @@ export class AuthService implements CanActivate {
   private isLoggedIn = new BehaviorSubject(false);
 
   constructor(private router: Router) {
-
+    this.watchPointOfNoReturnRoutes();
   }
 
   canActivate() {
@@ -18,6 +18,17 @@ export class AuthService implements CanActivate {
     } catch (error) {
       return this.router.parseUrl('/');
     }
+  }
+
+  watchPointOfNoReturnRoutes() {
+    const routes = ['/', '/join', '/new'];
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        if (routes.includes(e.url)) {
+          this.logout();
+        }
+      }
+    });
   }
 
   // This could be an accessor, but Jasmine's
