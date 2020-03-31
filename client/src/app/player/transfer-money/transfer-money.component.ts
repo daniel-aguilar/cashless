@@ -48,7 +48,7 @@ export class TransferMoneyComponent implements OnInit {
     const recipient = this.recipients.find(a => a.id === +data.recipientId);
 
     this.bank.makeTransaction(this.player, +data.amount, recipient).subscribe(
-      () => this.success(+data.amount, recipient.name),
+      () => this.success(+data.amount, recipient),
       () => this.snack.openFromComponent(SnackBarComponent, {
         data: { message: Message.InsufficientFunds },
         panelClass: 'snack-error',
@@ -56,12 +56,12 @@ export class TransferMoneyComponent implements OnInit {
     );
   }
 
-  private success(amount: number, name: string) {
+  private success(amount: number, recipient: Account) {
     this.fg.resetForm({ recipientId: '' });
     this.snack.openFromComponent(SnackBarComponent, {
       data: {
         message: Message.TransactionMade,
-        body: { amount, name }
+        body: { amount, recipient },
       }
     });
   }

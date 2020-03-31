@@ -39,7 +39,7 @@
         <target>Jugadores</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b8b93bc0eac8671911d054ebf0dcd22aa8e041b5" datatype="html">
@@ -47,7 +47,7 @@
         <target>Salir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b59b2e7dfb52cbf0c5114f296c5ef6579a9695f7" datatype="html">
@@ -82,12 +82,32 @@
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0cd7239b3bce9fb2537e719c6f73ebeaf50c3eb8" datatype="html">
-        <source>Transfered $<x id="INTERPOLATION" equiv-text="{{ body.amount }}"/> to <x id="INTERPOLATION_1" equiv-text="{{ body.name }}"/></source>
-        <target>Se han transferido $<x id="INTERPOLATION" equiv-text="{{ body.amount }}"/> a <x id="INTERPOLATION_1" equiv-text="{{ body.name }}"/></target>
+      <trans-unit id="dc223f7590b789c9381af9c89a47d4da19a0d991" datatype="html">
+        <source>Transfered $<x id="INTERPOLATION" equiv-text="{{ body.amount }}"/> to </source>
+        <target>Se han transferido $<x id="INTERPOLATION" equiv-text="{{ body.amount }}"/> a </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/snack-bar/snack-bar.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cdfd4bf758f129ba17916e920b7495ad821cb3fb" datatype="html">
+        <source>Bank</source>
+        <target>Banco</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/snack-bar/snack-bar.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/banker.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="47f6587f0802697048340cde892040206b76ce84" datatype="html">
@@ -95,7 +115,7 @@
         <target>Fondos insuficientes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/snack-bar/snack-bar.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="38a2a6b1fd74a6971164409afac6bba62b93029f" datatype="html">
@@ -103,7 +123,7 @@
         <target>Jugador <x id="INTERPOLATION" equiv-text="{{ body.name }}"/> agregado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/snack-bar/snack-bar.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="0e4766587b66fc18289d355dad97990c871b4b4f" datatype="html">
@@ -144,22 +164,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
           <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cdfd4bf758f129ba17916e920b7495ad821cb3fb" datatype="html">
-        <source>Bank</source>
-        <target>Banco</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/banker.component.html</context>
-          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b06b5c367ee0089aa1f9937e4ee495e81662523e" datatype="html">

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+import { Account } from 'src/app/auth/account';
 
 export enum Message {
   TransactionMade,
@@ -19,6 +20,10 @@ export class SnackBarComponent {
 
   get body() {
     return this.data.body;
+  }
+
+  get recipient() {
+    return this.data.body.recipient as Account;
   }
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
