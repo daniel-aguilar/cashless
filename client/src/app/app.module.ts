@@ -32,7 +32,7 @@ const routes: Route[] = [
     ReactiveFormsModule,
     HttpClientModule,
     MatToolbarModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     MaterialModule,
     AuthModule,
     PlayerModule,
