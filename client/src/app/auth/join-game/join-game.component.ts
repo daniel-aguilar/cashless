@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/game.service';
+import { LoadingService } from 'src/app/loading/loading.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class JoinGameComponent {
     private fb: FormBuilder,
     private router: Router,
     private game: GameService,
-    private auth: AuthService) {
+    private auth: AuthService,
+    private loading: LoadingService) {
 
     this.form = this.fb.group({
       pin: ['', Validators.required],
@@ -26,8 +28,10 @@ export class JoinGameComponent {
 
   joinGame() {
     const pin = this.form.value.pin as string;
+    this.loading.show();
     this.game.joinGame(pin).subscribe({
       complete: () => {
+        this.loading.hide();
         const account = this.auth.getLoggedAccount();
 
         if (account.isBanker) {
@@ -36,7 +40,10 @@ export class JoinGameComponent {
           this.router.navigateByUrl('/account/player');
         }
       },
-      error: () => this.displayError(),
+      error: () => {
+        this.loading.hide();
+        this.displayError();
+      },
     });
   }
 

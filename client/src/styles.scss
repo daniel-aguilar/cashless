@@ -9,6 +9,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.loading-backdrop {
+  overflow: hidden;
+}
+
 .snack-error {
   color: white;
   background: $monopoly-red;

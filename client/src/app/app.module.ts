@@ -8,6 +8,7 @@ import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { BankerModule } from './banker/banker.module';
+import { LoadingComponent } from './loading/loading.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MaterialModule } from './material.module';
 import { NewGameComponent } from './new-game/new-game.component';
@@ -25,6 +26,7 @@ const routes: Route[] = [
     MainMenuComponent,
     NewGameComponent,
     SnackBarComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
