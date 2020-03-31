@@ -1,6 +1,6 @@
 package org.danielaguilar.cashless.model;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +35,7 @@ public class Transaction {
 
 	private Integer amount;
 
-	private LocalDateTime date = LocalDateTime.now();
+	private ZonedDateTime date = ZonedDateTime.now();
 
 	public Integer getId() {
 		return id;
@@ -69,11 +69,11 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public LocalDateTime getDate() {
+	public ZonedDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(ZonedDateTime date) {
 		this.date = date;
 	}
 }

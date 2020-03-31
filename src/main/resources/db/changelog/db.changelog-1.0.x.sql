@@ -25,6 +25,9 @@ CREATE TABLE transaction (
   date TIMESTAMP NOT NULL
 );
 
+--changeset Daniel Aguilar:1.0.1
+ALTER TABLE transaction ALTER date TYPE TIMESTAMP WITH TIME ZONE;
+
 --changeset Daniel Aguilar:1574640900 context:test
 INSERT INTO game (id) VALUES (1);
 INSERT INTO game (id) VALUES (2);
