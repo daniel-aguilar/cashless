@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { orderBy } from 'lodash';
+import { orderBy } from 'lodash-es';
 import { Account } from 'src/app/auth/account';
 import { AuthService } from 'src/app/auth/auth.service';
 import { GameService } from 'src/app/game.service';
