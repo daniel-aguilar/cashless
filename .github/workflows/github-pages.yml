@@ -1,0 +1,34 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    paths:
+      - 'client/**'
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npx ng build --prod --localize
+      - name: Deploy
+        run: |
+          cd dist/cashless/es-CR
+          git init
+          git config user.name Octocat
+          git config user.email "octocat@users.noreply.github.com"
+          git add -A
+          git commit -qm "Deploy from ${GITHUB_SHA}"
+          git push -f "https://${{ secrets.CASHLESS_PAT }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
