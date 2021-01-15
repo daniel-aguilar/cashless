@@ -73,6 +73,10 @@
           <context context-type="sourcefile">src/app/new-game/new-game.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/add-player/add-player.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="ff947be217e02b0c4eea4f3c6e1fdfadc9d8945d" datatype="html">
         <source>That name is reserved</source>
@@ -208,14 +212,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/player-list/player-list.component.html</context>
           <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ac2ae8055d7a7bea2bf323152612bd6b31afd6ae" datatype="html">
-        <source>Player name</source>
-        <target>Nombre del Jugador</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/add-player/add-player.component.html</context>
-          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e9ebace8acb07939beb1c8fab9096a81bc5f7976" datatype="html">
