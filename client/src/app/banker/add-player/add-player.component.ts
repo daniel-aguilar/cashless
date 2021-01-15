@@ -4,7 +4,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
 import { GameService } from 'src/app/game.service';
-import { Message, SnackBarComponent } from 'src/app/snack-bar/snack-bar.component';
 import { uniqueName } from './unique-name';
 
 export interface DialogData {
@@ -34,12 +33,7 @@ export class AddPlayerComponent {
   addPlayer() {
     this.game.addPlayer(this.playerName.value, this.data.gameId).subscribe(p => {
       this.dialogRef.close(p);
-      this.snack.openFromComponent(SnackBarComponent, {
-        data: {
-          message: Message.PlayerAdded,
-          body: { name: p.name },
-        }
-      });
+      this.snack.open($localize `Player ${p.name} added`);
     });
   }
 }

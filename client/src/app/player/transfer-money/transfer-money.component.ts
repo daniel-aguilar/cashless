@@ -4,7 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
 import { GameService } from 'src/app/game.service';
-import { Message, SnackBarComponent } from 'src/app/snack-bar/snack-bar.component';
 import { PlayerService } from '../player.service';
 
 @Component({
@@ -49,20 +48,16 @@ export class TransferMoneyComponent implements OnInit {
 
     this.bank.makeTransaction(this.player, +data.amount, recipient).subscribe(
       () => this.success(+data.amount, recipient),
-      () => this.snack.openFromComponent(SnackBarComponent, {
-        data: { message: Message.InsufficientFunds },
-        panelClass: 'snack-error',
-      })
+      () => this.snack.open($localize `Non-Sufficient Funds`, '',
+          { panelClass: 'snack-error' })
     );
   }
 
   private success(amount: number, recipient: Account) {
+    const bankName = $localize `Bank`;
+    const recipientName = recipient.isBank ? bankName : recipient.name;
+
     this.fg.resetForm({ recipientId: '' });
-    this.snack.openFromComponent(SnackBarComponent, {
-      data: {
-        message: Message.TransactionMade,
-        body: { amount, recipient },
-      }
-    });
+    this.snack.open($localize `Transfered $${amount} to ${recipientName}`);
   }
 }

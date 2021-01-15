@@ -13,7 +13,6 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MaterialModule } from './material.module';
 import { NewGameComponent } from './new-game/new-game.component';
 import { PlayerModule } from './player/player.module';
-import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 const routes: Route[] = [
   { path: '', pathMatch: 'full', component: MainMenuComponent },
@@ -25,7 +24,6 @@ const routes: Route[] = [
     AppComponent,
     MainMenuComponent,
     NewGameComponent,
-    SnackBarComponent,
     LoadingComponent,
   ],
   imports: [
@@ -40,7 +38,6 @@ const routes: Route[] = [
     PlayerModule,
     BankerModule,
   ],
-  entryComponents: [SnackBarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
