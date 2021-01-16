@@ -31,7 +31,7 @@ export class PlayerListComponent implements OnInit {
   openDialog() {
     const data: DialogData = {
       gameId: this.banker.gameId,
-      existingPlayers: this.players,
+      existingPlayers: this.players.concat(this.banker), // Don't leave banker out
     };
 
     this.dialog.open(AddPlayerComponent, { data })
