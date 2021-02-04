@@ -24,7 +24,7 @@
     "@angular/router": "~11.1.2",
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@stomp/stompjs": "^5.4.3",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "lodash-es": "^4.17.20",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
