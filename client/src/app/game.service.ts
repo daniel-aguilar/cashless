@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, of } from 'rxjs';
+import { EMPTY } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { environment as env } from '../environments/environment';
 import { Account } from './auth/account';
 import { AuthService } from './auth/auth.service';
-import { BankService } from './banker/bank.service';
 
 const apiURL = `${env.apiURL}/game`;
 
@@ -14,8 +13,7 @@ export class GameService {
 
   constructor(
     private http: HttpClient,
-    private auth: AuthService,
-    private bank: BankService) {
+    private auth: AuthService) {
 
   }
 
