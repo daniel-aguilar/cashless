@@ -7,12 +7,14 @@ import { MaterialModule } from '../material.module';
 import { PlayerModule } from '../player/player.module';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { BankerComponent } from './banker.component';
+import { BankerGuard } from './banker.guard';
 import { PinHiderDirective } from './pin-hider.directive';
 import { PlayerListComponent } from './player-list/player-list.component';
 
+const guards = [AuthService, BankerGuard];
 const routes: Route[] = [
-  { path: 'account/banker', component: BankerComponent, canActivate: [AuthService] },
-  { path: 'players', component: PlayerListComponent, canActivate: [AuthService] },
+  { path: 'account/banker', component: BankerComponent, canActivate: guards },
+  { path: 'players', component: PlayerListComponent, canActivate: guards },
 ];
 
 @NgModule({
@@ -22,7 +24,7 @@ const routes: Route[] = [
     PinHiderDirective,
     AddPlayerComponent,
   ],
-  providers: [],
+  providers: [BankerGuard],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
