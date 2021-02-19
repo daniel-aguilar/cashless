@@ -17,6 +17,7 @@ import { PlayerModule } from './player/player.module';
 const routes: Route[] = [
   { path: '', pathMatch: 'full', component: MainMenuComponent },
   { path: 'new', component: NewGameComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
