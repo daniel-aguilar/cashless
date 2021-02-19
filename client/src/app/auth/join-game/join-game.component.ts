@@ -35,9 +35,9 @@ export class JoinGameComponent {
         const account = this.auth.getLoggedAccount();
 
         if (account.isBanker) {
-          this.router.navigateByUrl('/account/banker');
+          this.router.navigateByUrl('/banker');
         } else {
-          this.router.navigateByUrl('/account/player');
+          this.router.navigateByUrl('/player');
         }
       },
       error: () => {

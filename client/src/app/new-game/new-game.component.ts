@@ -34,7 +34,7 @@ export class NewGameComponent {
     this.game.newGame(name).subscribe(account => {
       this.loading.hide();
       this.auth.login(account);
-      this.router.navigateByUrl('/account/banker');
+      this.router.navigateByUrl('/banker');
     });
   }
 }

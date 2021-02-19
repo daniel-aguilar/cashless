@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { BankerModule } from './banker/banker.module';
 import { LoadingComponent } from './loading/loading.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MaterialModule } from './material.module';
@@ -17,6 +16,11 @@ import { PlayerModule } from './player/player.module';
 const routes: Route[] = [
   { path: '', pathMatch: 'full', component: MainMenuComponent },
   { path: 'new', component: NewGameComponent },
+  {
+    path: 'banker',
+    loadChildren: () => import('./banker/banker.module')
+        .then(m => m.BankerModule)
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -37,7 +41,6 @@ const routes: Route[] = [
     MaterialModule,
     AuthModule,
     PlayerModule,
-    BankerModule,
   ],
   bootstrap: [AppComponent]
 })

@@ -10,7 +10,7 @@ import { TransactionLogComponent } from './transaction-log/transaction-log.compo
 import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
 
 const routes: Route[] = [
-  { path: 'account/player', component: PlayerDetailComponent, canActivate: [AuthService] },
+  { path: 'player', component: PlayerDetailComponent, canActivate: [AuthService] },
 ];
 
 @NgModule({

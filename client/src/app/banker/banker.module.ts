@@ -13,7 +13,7 @@ import { PlayerListComponent } from './player-list/player-list.component';
 
 const guards = [AuthService, BankerGuard];
 const routes: Route[] = [
-  { path: 'account/banker', component: BankerComponent, canActivate: guards },
+  { path: '', component: BankerComponent, canActivate: guards },
   { path: 'players', component: PlayerListComponent, canActivate: guards },
 ];
 
