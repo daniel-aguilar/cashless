@@ -22,7 +22,7 @@
     "@angular/platform-browser": "~11.2.5",
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
-    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@stomp/stompjs": "^5.4.3",
     "bootstrap": "^4.6.0",
     "lodash-es": "^4.17.21",
