@@ -17,7 +17,7 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   @Output()
   balanceChange = new EventEmitter();
 
-  private subPayments: Subscription;
+  private currentPayments: Subscription;
 
   private get player() {
     return this.currentPlayer.account;
@@ -30,9 +30,9 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const lastest = this.bank.getLastestPayments(this.player);
+    const lastThree = this.bank.getLastestPayments(this.player);
 
-    this.subPayments = lastest.pipe(
+    this.currentPayments = lastThree.pipe(
       switchMap(payments => {
         this.payments = payments;
         return this.bank.getPayments(this.player);
@@ -41,7 +41,7 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subPayments.unsubscribe();
+    this.currentPayments.unsubscribe();
   }
 
   addToLog(p: Payment) {
