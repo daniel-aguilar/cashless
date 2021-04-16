@@ -21,14 +21,14 @@ export class GameService {
     const data = new FormData();
     data.set('bankerName', bankerName);
 
-    return this.http.post<Account>(`${env.apiURL}/new/`, data);
+    return this.http.post<Account>(`${apiURL}/new/`, data);
   }
 
   joinGame(pin: string) {
     const data = new FormData();
     data.set('pin', pin);
 
-    return this.http.post<Account>(`${env.apiURL}/join/`, data).pipe(
+    return this.http.post<Account>(`${apiURL}/join/`, data).pipe(
       tap(a => this.auth.login(a)),
       switchMap(() => EMPTY)
     );

@@ -12,10 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@RequestMapping("/game")
 public class GameController {
 
 	@Autowired
@@ -38,17 +40,17 @@ public class GameController {
 		}
 	}
 
-	@GetMapping("/game/{id}/players/")
+	@GetMapping("/{id}/players/")
 	public List<Account> getPlayers(@PathVariable("id") Game game) {
 		return game.getAccounts();
 	}
 
-	@PostMapping("/game/{id}/players/add/")
+	@PostMapping("/{id}/players/add/")
 	public Account addPlayer(@PathVariable("id") Game game, String playerName) {
 		return accountService.addAccount(playerName, game);
 	}
 
-	@GetMapping("/game/{id}/bank/")
+	@GetMapping("/{id}/bank/")
 	public Account getBank(@PathVariable("id") Game game) {
 		return game.getBank();
 	}
