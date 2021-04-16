@@ -6,11 +6,11 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { Payment } from 'src/app/banker/payment';
 import { PlayerService } from '../player.service';
-import { TransactionLogComponent } from './transaction-log.component';
+import { PaymentLogComponent } from './payment-log.component';
 
-describe('TransactionLogComponentTest', () => {
-  let fixture: ComponentFixture<TransactionLogComponent>;
-  let component: TransactionLogComponent;
+describe('PaymentLogComponentTest', () => {
+  let fixture: ComponentFixture<PaymentLogComponent>;
+  let component: PaymentLogComponent;
 
   beforeEach(() => {
     let authSpy: jasmine.SpyObj<AuthService>;
@@ -18,7 +18,7 @@ describe('TransactionLogComponentTest', () => {
     authSpy.getLoggedAccount.and.returnValue({} as Account);
 
     TestBed.configureTestingModule({
-      declarations: [TransactionLogComponent],
+      declarations: [PaymentLogComponent],
       providers: [
         PlayerService,
         BankService,
@@ -28,7 +28,7 @@ describe('TransactionLogComponentTest', () => {
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TransactionLogComponent);
+    fixture = TestBed.createComponent(PaymentLogComponent);
     component = fixture.componentInstance;
     component.ngOnInit();
   });

@@ -94,7 +94,7 @@
           <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
           <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
@@ -154,6 +154,42 @@
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="8497528947328199741" datatype="html">
+        <source>Time</source>
+        <target>Hora</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8650499415827640724" datatype="html">
+        <source>Type</source>
+        <target>Tipo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
+        <target>Cuenta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6533918067030990396" datatype="html">
+        <source>Amount</source>
+        <target>Monto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1332214193580122293" datatype="html">
         <source>Account Info</source>
         <target>Información de la Cuenta</target>
@@ -184,42 +220,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
           <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8497528947328199741" datatype="html">
-        <source>Time</source>
-        <target>Hora</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8650499415827640724" datatype="html">
-        <source>Type</source>
-        <target>Tipo</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4086606389696938932" datatype="html">
-        <source>Account</source>
-        <target>Cuenta</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6533918067030990396" datatype="html">
-        <source>Amount</source>
-        <target>Monto</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
-          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6772263888516057659" datatype="html">

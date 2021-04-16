@@ -4,9 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MaterialModule } from '../material.module';
+import { PaymentLogComponent } from './payment-log/payment-log.component';
+import { PaymentTypeDirective } from './payment-log/payment-type.directive';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
-import { PaymentTypeDirective } from './transaction-log/payment-type.directive';
-import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
 
 const routes: Route[] = [
@@ -17,7 +17,7 @@ const routes: Route[] = [
   declarations: [
     PlayerDetailComponent,
     TransferMoneyComponent,
-    TransactionLogComponent,
+    PaymentLogComponent,
     PaymentTypeDirective,
   ],
   imports: [

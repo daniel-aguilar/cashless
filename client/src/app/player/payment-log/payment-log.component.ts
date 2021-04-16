@@ -6,11 +6,11 @@ import { Payment } from 'src/app/banker/payment';
 import { PlayerService } from '../player.service';
 
 @Component({
-  selector: 'app-transaction-log',
-  templateUrl: './transaction-log.component.html',
-  styleUrls: ['./transaction-log.component.scss']
+  selector: 'app-payment-log',
+  templateUrl: './payment-log.component.html',
+  styleUrls: ['./payment-log.component.scss']
 })
-export class TransactionLogComponent implements OnInit, OnDestroy {
+export class PaymentLogComponent implements OnInit, OnDestroy {
   emptyLines = new Array(4);
   payments: Payment[] = [];
 
