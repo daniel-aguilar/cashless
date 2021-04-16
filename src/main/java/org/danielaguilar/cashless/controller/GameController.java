@@ -26,12 +26,12 @@ public class GameController {
 	@Autowired
 	private AccountService accountService;
 
-	@PostMapping("/new/")
+	@PostMapping("/new")
 	public Account newGame(String bankerName) {
 		return gameService.createGame(bankerName);
 	}
 
-	@PostMapping("/join/")
+	@PostMapping("/join")
 	public Account joinGame(String pin) {
 		try {
 			return accountService.getAccount(pin).get();
@@ -40,17 +40,17 @@ public class GameController {
 		}
 	}
 
-	@GetMapping("/{id}/players/")
+	@GetMapping("/{id}/players")
 	public List<Account> getPlayers(@PathVariable("id") Game game) {
 		return game.getAccounts();
 	}
 
-	@PostMapping("/{id}/players/add/")
+	@PostMapping("/{id}/players/add")
 	public Account addPlayer(@PathVariable("id") Game game, String playerName) {
 		return accountService.addAccount(playerName, game);
 	}
 
-	@GetMapping("/{id}/bank/")
+	@GetMapping("/{id}/bank")
 	public Account getBank(@PathVariable("id") Game game) {
 		return game.getBank();
 	}

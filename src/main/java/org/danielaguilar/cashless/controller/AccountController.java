@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("account/")
+@RequestMapping("/account")
 public class AccountController {
 
 	@Autowired
@@ -30,12 +30,12 @@ public class AccountController {
 	@Autowired
 	private SimpMessagingTemplate template;
 
-	@GetMapping("{id}/balance/")
+	@GetMapping("/{id}/balance")
 	public Integer getBalance(@PathVariable("id") Account account) {
 		return account.getBalance();
 	}
 
-	@PostMapping("{id}/transfer/")
+	@PostMapping("/{id}/transfer")
 	public void transfer(@PathVariable("id") Account sender, @RequestBody Transaction.JSON transaction) {
 		try {
 			Account recipient = accountService.getAccount(transaction.recipientId).get();
@@ -46,7 +46,7 @@ public class AccountController {
 		}
 	}
 
-	@GetMapping("{id}/transactions/")
+	@GetMapping("/{id}/transactions")
 	public List<Transaction> getLastestTransactions(@PathVariable("id") Account account) {
 		return transactionService.getLastestTransactions(account);
 	}
