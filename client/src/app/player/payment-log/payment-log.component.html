@@ -14,10 +14,7 @@
         <i *ngIf="p.isIncoming; else elseBlock" class="fas fa-arrow-down"></i>
         <ng-template #elseBlock><i class="fas fa-arrow-up"></i></ng-template>
       </td>
-      <td>
-        <span i18n *ngIf="p.account.isBank; else displayName">Bank</span>
-        <ng-template #displayName>{{ p.account.name }}</ng-template>
-      </td>
+      <td>{{ p.account.name | localizeName }}</td>
       <td>${{ p.tx.amount }}</td>
     </tr>
     <tr *ngIf="payments.length === 0">

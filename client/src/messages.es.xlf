@@ -94,12 +94,8 @@
           <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="sourcefile">src/app/player/localize-name.pipe.ts</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.ts</context>
@@ -235,7 +231,7 @@
         <target>Transferir Monto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8657498830247797615" datatype="html">
