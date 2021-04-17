@@ -1,13 +1,7 @@
-@import "variables";
-@import "breakpoints";
+@import 'breakpoints';
 
 .container {
   font-size: large;
-}
-
-.pin {
-  font-family: monospace;
-  font-size: 16px;
 }
 
 @include media-breakpoint-up(md) {
@@ -22,13 +16,6 @@
   }
 }
 
-p {
+h2 {
   text-align: center;
-}
-
-button {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  font-size: 1.2em;
 }

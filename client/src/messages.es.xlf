@@ -157,6 +157,10 @@
           <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="8650499415827640724" datatype="html">
         <source>Type</source>
@@ -182,8 +186,20 @@
           <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3469006812684256209" datatype="html">
+        <source>View Transaction Log</source>
+        <target>Ver Bitácora de Transacciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1332214193580122293" datatype="html">
@@ -216,6 +232,30 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7470090122060093243" datatype="html">
+        <source>Transaction Log</source>
+        <target>Bitácora de Transacciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5203279511751768967" datatype="html">
+        <source>From</source>
+        <target>Origen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1640609344969975994" datatype="html">
+        <source>To</source>
+        <target>Destino</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6772263888516057659" datatype="html">

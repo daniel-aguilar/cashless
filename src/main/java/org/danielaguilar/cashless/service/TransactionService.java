@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.danielaguilar.cashless.model.Account;
+import org.danielaguilar.cashless.model.Game;
 import org.danielaguilar.cashless.model.Transaction;
 import org.danielaguilar.cashless.repository.AccountRepository;
 import org.danielaguilar.cashless.repository.TransactionRepository;
@@ -36,5 +37,9 @@ public class TransactionService {
 	public List<Transaction> getLastestTransactions(Account account) {
 		PageRequest page = PageRequest.of(0, 3);
 		return transactionRepository.findLastestTransactions(account, page);
+	}
+
+	public List<Transaction> getTransactions(Game game) {
+		return transactionRepository.findByGame(game);
 	}
 }

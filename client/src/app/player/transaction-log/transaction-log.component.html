@@ -1,0 +1,22 @@
+<div class="container pb-3">
+  <h2 i18n class="mat-title">Transaction Log</h2>
+
+  <table class="mx-auto monopoly-table">
+    <thead>
+      <tr>
+        <th i18n>Time</th>
+        <th i18n>From</th>
+        <th i18n>To</th>
+        <th i18n>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tx of transactions">
+        <td>{{ tx.date | date:'h:mm a' }}</td>
+        <td>{{ tx.sender.name | localizeName }}</td>
+        <td>{{ tx.recipient.name | localizeName }}</td>
+        <td>${{ tx.amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -12,8 +12,13 @@ const apiURL = `${env.apiURL}/account`;
 
 @Injectable({ providedIn: 'root' })
 export class BankService {
+
+  get transactions() {
+    return this.txs.asObservable();
+  }
+
   private transactionWS: Client;
-  private transactions = new Subject<Transaction>();
+  private txs = new Subject<Transaction>();
 
   constructor(private http: HttpClient) {
     this.transactionWS = new Client({
@@ -28,7 +33,7 @@ export class BankService {
   }
 
   getPayments(account: Account) {
-    return this.transactions.asObservable().pipe(
+    return this.transactions.pipe(
       filter(tx => {
         const isSender = tx.sender.id === account.id;
         const isRecipient = tx.recipient.id === account.id;
@@ -37,6 +42,11 @@ export class BankService {
       }),
       map(tx => new Payment(tx, account))
     );
+  }
+
+  getTransactionLog(gameId: number) {
+    const url = `${env.apiURL}/game/${gameId}/transactions/`;
+    return this.http.get<Transaction[]>(url);
   }
 
   makeTransaction(sender: Account, amount: number, recipient: Account) {
@@ -61,7 +71,7 @@ export class BankService {
 
     this.transactionWS.subscribe('/queue/transactions', (msg: Message) => {
       tx = JSON.parse(msg.body);
-      this.transactions.next(tx);
+      this.txs.next(tx);
     });
   }
 }

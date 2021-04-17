@@ -5,8 +5,10 @@ import java.util.NoSuchElementException;
 
 import org.danielaguilar.cashless.model.Account;
 import org.danielaguilar.cashless.model.Game;
+import org.danielaguilar.cashless.model.Transaction;
 import org.danielaguilar.cashless.service.AccountService;
 import org.danielaguilar.cashless.service.GameService;
+import org.danielaguilar.cashless.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +27,9 @@ public class GameController {
 
 	@Autowired
 	private AccountService accountService;
+
+	@Autowired
+	private TransactionService txService;
 
 	@PostMapping("/new")
 	public Account newGame(String bankerName) {
@@ -53,5 +58,10 @@ public class GameController {
 	@GetMapping("/{id}/bank")
 	public Account getBank(@PathVariable("id") Game game) {
 		return game.getBank();
+	}
+
+	@GetMapping("/{id}/transactions")
+	public List<Transaction> getTransactions(@PathVariable("id") Game game) {
+		return txService.getTransactions(game);
 	}
 }
