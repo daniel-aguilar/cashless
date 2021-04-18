@@ -20,6 +20,6 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
 
 	@Query("FROM Transaction "
          + "WHERE sender.game = ?1 AND recipient.game = ?1 "
-         + "ORDER BY date ASC")
+         + "ORDER BY date DESC")
 	List<Transaction> findByGame(Game game);
 }

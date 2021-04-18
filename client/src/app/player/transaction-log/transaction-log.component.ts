@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import reverse from 'lodash-es/reverse';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { Transaction } from 'src/app/banker/transaction';
+import { LoadingService } from 'src/app/loading/loading.service';
 
 @Component({
   selector: 'app-transaction-log',
@@ -11,12 +11,7 @@ import { Transaction } from 'src/app/banker/transaction';
   styleUrls: ['./transaction-log.component.scss']
 })
 export class TransactionLogComponent implements OnInit, OnDestroy {
-
-  get transactions() {
-    return reverse(this.txs);
-  }
-
-  private txs: Transaction[] = [];
+  transactions: Transaction[] = [];
   private txSub: Subscription;
 
   private get player() {
@@ -25,15 +20,18 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
 
   constructor(
     private auth: AuthService,
-    private bank: BankService) {
+    private bank: BankService,
+    private loading: LoadingService) {
 
   }
 
   ngOnInit() {
     const gameId = this.player.gameId;
+    this.loading.show();
     this.bank.getTransactionLog(gameId).subscribe(txs => {
-      this.txs = txs;
+      this.transactions = txs;
       this.listenToTransactions();
+      this.loading.hide();
     });
   }
 
@@ -42,6 +40,6 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   }
 
   private listenToTransactions() {
-    this.txSub = this.bank.transactions.subscribe(tx => this.txs.push(tx));
+    this.txSub = this.bank.transactions.subscribe(tx => this.transactions.unshift(tx));
   }
 }
