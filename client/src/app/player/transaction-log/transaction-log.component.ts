@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { Transaction } from 'src/app/banker/transaction';
@@ -12,11 +13,9 @@ import { LoadingService } from 'src/app/loading/loading.service';
 })
 export class TransactionLogComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
-  private txSub: Subscription;
 
-  private get player() {
-    return this.auth.getLoggedAccount();
-  }
+  private gameId = 0;
+  private txSub: Subscription;
 
   constructor(
     private auth: AuthService,
@@ -26,9 +25,9 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const gameId = this.player.gameId;
+    this.gameId = this.auth.getLoggedAccount().gameId;
     this.loading.show();
-    this.bank.getTransactionLog(gameId).subscribe(txs => {
+    this.bank.getTransactionLog(this.gameId).subscribe(txs => {
       this.transactions = txs;
       this.listenToTransactions();
       this.loading.hide();
@@ -40,6 +39,14 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   }
 
   private listenToTransactions() {
-    this.txSub = this.bank.transactions.subscribe(tx => this.transactions.unshift(tx));
+    this.txSub = this.bank.transactions.pipe(
+      filter(tx => this.isFromThisGame(tx))
+    ).subscribe(tx => this.transactions.unshift(tx));
+  }
+
+  private isFromThisGame(tx: Transaction) {
+    const sameGame = tx.sender.gameId === tx.recipient.gameId;
+    const thisGame = tx.sender.gameId === this.gameId;
+    return sameGame && thisGame;
   }
 }
