@@ -1,12 +1,12 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import 'variables';
-@include mat-core();
+@include mat.core();
 
-$primary: mat-palette($mat-red, 900);
-$accent: mat-palette($mat-grey, 50);
+$primary: mat.define-palette(mat.$red-palette, 900);
+$accent: mat.define-palette(mat.$grey-palette, 50);
 
-$monopoly-theme: mat-light-theme($primary, $accent);
-@include angular-material-theme($monopoly-theme);
+$monopoly-theme: mat.define-light-theme($primary, $accent);
+@include mat.all-component-themes($monopoly-theme);
 
 .mat-snack-bar-container {
   color: black;

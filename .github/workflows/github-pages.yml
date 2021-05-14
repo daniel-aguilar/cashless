@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npx ng build --prod
+        run: npx ng build
       - name: Deploy
         run: |
           cd dist/cashless/es-CR
