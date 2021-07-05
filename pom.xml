@@ -13,7 +13,7 @@
 
   <groupId>org.danielaguilar</groupId>
   <artifactId>cashless</artifactId>
-  <version>1.2.12</version>
+  <version>1.2.13</version>
 
   <properties>
     <java.version>11</java.version>
