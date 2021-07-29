@@ -24,7 +24,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.game.getOtherPlayers(this.banker, true)
+    this.game.getOtherPlayersExcept(this.banker, true)
       .subscribe(players => this.players = players);
   }
 

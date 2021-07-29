@@ -44,7 +44,7 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.game.getOtherPlayers(this.player).subscribe(a => this.recipients = a);
+    this.game.getOtherPlayersExcept(this.player).subscribe(a => this.recipients = a);
   }
 
   makeTransaction() {

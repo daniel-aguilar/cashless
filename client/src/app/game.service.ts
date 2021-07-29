@@ -42,8 +42,8 @@ export class GameService {
     return this.http.post<Account>(url, data);
   }
 
-  getOtherPlayers(except: Account, skipBank = false) {
-    const gameId = except.gameId;
+  getOtherPlayersExcept(player: Account, skipBank = false) {
+    const gameId = player.gameId;
 
     return this.getPlayers(gameId).pipe(
       map(accounts => {
@@ -52,7 +52,7 @@ export class GameService {
         }
         return accounts;
       }),
-      map(accounts => accounts.filter(a => a.id !== except.id))
+      map(accounts => accounts.filter(a => a.id !== player.id))
     );
   }
 

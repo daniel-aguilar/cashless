@@ -27,7 +27,7 @@ describe('GameService', () => {
   });
 
   it('Should get other players', (done: DoneFn) => {
-    service.getOtherPlayers(player).subscribe(p => {
+    service.getOtherPlayersExcept(player).subscribe(p => {
       expect(p).toEqual([banker, bank]);
       done();
     });
@@ -38,7 +38,7 @@ describe('GameService', () => {
   });
 
   it('Should get other players, skipping the bank', (done: DoneFn) => {
-    service.getOtherPlayers(player, true).subscribe(p => {
+    service.getOtherPlayersExcept(player, true).subscribe(p => {
       expect(p).toEqual([banker]);
       done();
     });
