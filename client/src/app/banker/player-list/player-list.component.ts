@@ -25,7 +25,7 @@ export class PlayerListComponent implements OnInit {
 
   ngOnInit() {
     this.game.getOtherPlayers(this.banker, true)
-      .subscribe(players => this.push(...players));
+      .subscribe(players => this.players = players);
   }
 
   openDialog() {
@@ -42,8 +42,8 @@ export class PlayerListComponent implements OnInit {
       });
   }
 
-  private push(...accounts: Account[]) {
-    this.players.push(...accounts);
+  private push(account: Account) {
+    this.players.push(account);
     this.players = orderBy(this.players, ['name']);
   }
 }

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Game {
@@ -26,6 +27,7 @@ public class Game {
 	private Account banker;
 
 	@OneToMany(mappedBy = "game")
+	@OrderBy("name ASC")
 	private List<Account> accounts;
 
 	public Integer getId() {
