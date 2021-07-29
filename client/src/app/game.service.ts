@@ -52,7 +52,7 @@ export class GameService {
         }
         return accounts;
       }),
-      map(accounts => accounts.filter(a => a.id !== player.id))
+      map(accounts => accounts.filter(account => account.id !== player.id))
     );
   }
 
