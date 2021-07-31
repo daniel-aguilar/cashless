@@ -11,8 +11,8 @@ export class Gateway {
   constructor(
     private router: Router,
     private game: GameService,
-    private auth: AuthService,
     private loading: LoadingService,
+    protected auth: AuthService,
     /* HACK: Adding all services here so I won't have
        to declare them in every child constructor */
     protected fb: FormBuilder) {

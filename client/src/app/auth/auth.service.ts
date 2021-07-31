@@ -3,13 +3,18 @@ import { CanActivate, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Account } from './account';
 
+const pinKey = 'pin';
+
 @Injectable({ providedIn: 'root' })
 export class AuthService implements CanActivate {
+  savedPin: string;
+
   private account: Account;
   private isLoggedIn = new BehaviorSubject(false);
 
   constructor(private router: Router) {
     this.watchPointOfNoReturnRoutes();
+    this.savedPin = localStorage.getItem(pinKey);
   }
 
   canActivate() {
@@ -25,7 +30,7 @@ export class AuthService implements CanActivate {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         if (routes.includes(e.url)) {
-          this.logout();
+          this.removeAccountAndNotify();
         }
       }
     });
@@ -46,10 +51,17 @@ export class AuthService implements CanActivate {
 
   login(account: Account) {
     this.account = account;
+    localStorage.setItem(pinKey, account.pin);
     this.isLoggedIn.next(true);
   }
 
   logout() {
+    this.savedPin = null;
+    localStorage.removeItem(pinKey);
+    this.removeAccountAndNotify();
+  }
+
+  private removeAccountAndNotify() {
     delete this.account;
     this.isLoggedIn.next(false);
   }
