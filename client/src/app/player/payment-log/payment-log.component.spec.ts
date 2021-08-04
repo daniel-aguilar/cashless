@@ -1,8 +1,4 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Account } from 'src/app/auth/account';
-import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { Payment } from 'src/app/banker/payment';
 import { PlayerService } from '../player.service';
@@ -13,24 +9,16 @@ describe('PaymentLogComponentTest', () => {
   let component: PaymentLogComponent;
 
   beforeEach(() => {
-    let authSpy: jasmine.SpyObj<AuthService>;
-    authSpy = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
-    authSpy.getLoggedAccount.and.returnValue({} as Account);
-
     TestBed.configureTestingModule({
       declarations: [PaymentLogComponent],
       providers: [
-        PlayerService,
-        BankService,
-        { provide: AuthService, useValue: authSpy },
+        { provide: PlayerService, useValue: null },
+        { provide: BankService, useValue: null },
       ],
-      imports: [HttpClientTestingModule],
-      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PaymentLogComponent);
     component = fixture.componentInstance;
-    component.ngOnInit();
   });
 
   it('Should add payments', () => {
