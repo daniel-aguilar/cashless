@@ -17,8 +17,8 @@ describe('TransactionLogComponentTest', () => {
     bankSpy.getTransactionLog.and.returnValue(of([]));
     bankSpy.transactions = txs;
 
-    let authSpy: jasmine.SpyObj<AuthService>;
-    authSpy = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
+    const authSpy: jasmine.SpyObj<AuthService>
+        = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
     authSpy.getLoggedAccount.and.returnValue({ gameId: 1 } as Account);
 
     TestBed.configureTestingModule({

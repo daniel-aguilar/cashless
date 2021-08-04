@@ -10,8 +10,7 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
+          "tsconfig.json"
         ],
         "createDefaultProgram": true
       },
@@ -36,7 +35,8 @@
             "style": "kebab-case"
           }
         ],
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "prefer-const": ["error"]
       }
     },
     {
