@@ -30,7 +30,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatProgressSpinnerModule,
   ],
   providers: [
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 }}
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ]
 })
 export class MaterialModule { }
