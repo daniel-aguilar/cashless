@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Account } from 'src/app/auth/account';
@@ -31,6 +32,7 @@ describe('PlayerDetailComponentTest', () => {
       providers: [
         { provide: BankService, useClass: MockBankService },
       ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PlayerDetailComponent);
