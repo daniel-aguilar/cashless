@@ -18,23 +18,22 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [
-    BankerComponent,
-    PlayerListComponent,
-    PinHiderDirective,
-    AddPlayerComponent,
-  ],
-  providers: [BankerGuard],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MaterialModule,
-    PlayerModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    RouterModule,
-  ],
-  entryComponents: [AddPlayerComponent],
+    declarations: [
+        BankerComponent,
+        PlayerListComponent,
+        PinHiderDirective,
+        AddPlayerComponent,
+    ],
+    providers: [BankerGuard],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MaterialModule,
+        PlayerModule,
+        ReactiveFormsModule,
+    ],
+    exports: [
+        RouterModule,
+    ]
 })
 export class BankerModule { }
