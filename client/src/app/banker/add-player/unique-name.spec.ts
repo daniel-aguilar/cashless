@@ -1,6 +1,6 @@
-import { uniqueName } from './unique-name';
 import { FormControl } from '@angular/forms';
 import { Account } from 'src/app/auth/account';
+import { uniqueName } from './unique-name';
 
 describe('uniqueNameTest', () => {
   it('Should validate control', () => {

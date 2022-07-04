@@ -1,5 +1,4 @@
 import { Directive } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/game.service';
 import { LoadingService } from 'src/app/loading/loading.service';
@@ -12,10 +11,7 @@ export class Gateway {
     private router: Router,
     private game: GameService,
     private loading: LoadingService,
-    protected auth: AuthService,
-    /* HACK: Adding all services here so I won't have
-       to declare them in every child constructor */
-    protected fb: FormBuilder) {
+    protected auth: AuthService) {
 
   }
 

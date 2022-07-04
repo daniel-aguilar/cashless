@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
-  FormBuilder, FormGroup,
+  FormControl, FormGroup,
   FormGroupDirective, Validators
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +16,14 @@ import { PlayerService } from '../player.service';
   styleUrls: ['./transfer-money.component.scss'],
 })
 export class TransferMoneyComponent implements OnInit {
-  form: FormGroup;
+  form = new FormGroup({
+    amount: new FormControl<number>(null, { validators: [
+      Validators.required,
+      Validators.min(1),
+    ]}), // eslint-disable-line object-curly-spacing
+    recipientId: new FormControl('', { validators: Validators.required }),
+  });
+
   recipients: Account[] = [];
   isLoading = false;
 
@@ -28,19 +35,11 @@ export class TransferMoneyComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
     private snack: MatSnackBar,
     private currentPlayer: PlayerService,
     private game: GameService,
     private bank: BankService) {
 
-    this.form = this.fb.group({
-      amount: ['', [
-        Validators.required,
-        Validators.min(1),
-      ]],
-      recipientId: ['', Validators.required],
-    });
   }
 
   ngOnInit() {
@@ -53,10 +52,10 @@ export class TransferMoneyComponent implements OnInit {
     const recipient = this.recipients.find(a => a.id === +data.recipientId);
 
     this.isLoading = true;
-    this.bank.makeTransaction(this.player, +data.amount, recipient)
+    this.bank.makeTransaction(this.player, data.amount, recipient)
         .pipe(finalize(() => this.isLoading = false))
         .subscribe(
-          () => this.success(+data.amount, recipient),
+          () => this.success(data.amount, recipient),
           () => this.snack.open($localize `Non-Sufficient Funds`, '',
               { panelClass: 'snack-error' })
         );

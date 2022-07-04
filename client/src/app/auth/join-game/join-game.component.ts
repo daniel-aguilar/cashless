@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Gateway } from '../gateway';
 
 @Component({
@@ -8,17 +8,17 @@ import { Gateway } from '../gateway';
   styleUrls: ['./join-game.component.scss']
 })
 export class JoinGameComponent extends Gateway implements OnInit {
-  form: FormGroup;
+  form: FormGroup<{ pin: FormControl<string> }>;
   error = false;
 
   ngOnInit() {
-    this.form = this.fb.group({
-      pin: ['', Validators.required],
+    this.form = new FormGroup({
+      pin: new FormControl('', { validators: Validators.required }),
     });
   }
 
   async joinGame() {
-    const pin = this.form.value.pin as string;
+    const pin = this.form.value.pin;
     try {
       await this.enterGame(pin);
     }

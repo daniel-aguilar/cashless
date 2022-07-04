@@ -16,7 +16,10 @@ export interface DialogData {
   templateUrl: './add-player.component.html',
 })
 export class AddPlayerComponent {
-  playerName: FormControl;
+  playerName = new FormControl('', [
+    Validators.required,
+    uniqueName(this.data.existingPlayers),
+  ]);
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
@@ -24,10 +27,6 @@ export class AddPlayerComponent {
     private game: GameService,
     private snack: MatSnackBar) {
 
-    this.playerName = new FormControl('', [
-      Validators.required,
-      uniqueName(this.data.existingPlayers),
-    ]);
   }
 
   addPlayer() {

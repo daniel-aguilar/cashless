@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { GameService } from '../game.service';
@@ -10,26 +10,24 @@ import { LoadingService } from '../loading/loading.service';
   templateUrl: './new-game.component.html',
 })
 export class NewGameComponent {
-  form: FormGroup;
+  form = new FormGroup({
+    name: new FormControl('', { validators: [Validators.required, noBankName] }),
+  });
 
   get name() {
     return this.form.get('name');
   }
 
   constructor(
-    private fb: FormBuilder,
     private game: GameService,
     private auth: AuthService,
     private router: Router,
     private loading: LoadingService) {
 
-    this.form = this.fb.group({
-      name: ['', [Validators.required, noBankName]],
-    });
   }
 
   createGame() {
-    const name = this.form.value.name as string;
+    const name = this.form.value.name;
     this.loading.show();
     this.game.newGame(name).subscribe(account => {
       this.loading.hide();
