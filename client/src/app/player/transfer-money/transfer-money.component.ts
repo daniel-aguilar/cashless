@@ -54,11 +54,11 @@ export class TransferMoneyComponent implements OnInit {
     this.isLoading = true;
     this.bank.makeTransaction(this.player, data.amount, recipient)
         .pipe(finalize(() => this.isLoading = false))
-        .subscribe(
-          () => this.success(data.amount, recipient),
-          () => this.snack.open($localize `Non-Sufficient Funds`, '',
-              { panelClass: 'snack-error' })
-        );
+        .subscribe({
+          next: () => this.success(data.amount, recipient),
+          error: () => this.snack.open($localize `Non-Sufficient Funds`, '',
+          { panelClass: 'snack-error' })
+        });
   }
 
   private success(amount: number, recipient: Account) {

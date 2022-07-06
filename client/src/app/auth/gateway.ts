@@ -1,5 +1,6 @@
 import { Directive } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { GameService } from 'src/app/game.service';
 import { LoadingService } from 'src/app/loading/loading.service';
 import { AuthService } from './auth.service';
@@ -17,8 +18,10 @@ export class Gateway {
 
   enterGame(pin: string) {
     this.loading.show();
-    return this.game.joinGame(pin).toPromise()
-        .then(() => {
+    return this.game.joinGame(pin)
+      .pipe(finalize(() => this.loading.hide()))
+      .subscribe({
+        complete: () => {
           const account = this.auth.getLoggedAccount();
 
           if (account.isBanker) {
@@ -26,7 +29,7 @@ export class Gateway {
           } else {
             this.router.navigateByUrl('/player');
           }
-        })
-        .finally(() => this.loading.hide());
+        }
+      });
   }
 }
