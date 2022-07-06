@@ -11,6 +11,7 @@ import { PlayerService } from '../player.service';
 })
 export class PlayerDetailComponent implements OnInit {
   player: Account;
+  updatingBalance = true;
   balance = 0;
 
   @Input()
@@ -30,6 +31,9 @@ export class PlayerDetailComponent implements OnInit {
   }
 
   updateBalance() {
-    this.bank.getBalance(this.player).subscribe(n => this.balance = n);
+    this.bank.getBalance(this.player).subscribe(n => {
+      this.balance = n;
+      this.updatingBalance = false;
+    });
   }
 }

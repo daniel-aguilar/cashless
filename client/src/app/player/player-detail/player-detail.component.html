@@ -1,7 +1,13 @@
 <div class="container">
   <h2 i18n class="mat-title">Account Info</h2>
-  <p i18n class="name" *ngIf="!player.isBank">Name: {{ player.name }}</p>
-  <p i18n>Balance: {{ balance | currency:'USD':'symbol':'1.0-0':'en-US' }}</p>
+  <p i18n class="detail" *ngIf="!player.isBank">Name: {{ player.name }}</p>
+  <p i18n class="detail">
+    Balance:
+    <ng-template *ngIf="updatingBalance; else elseBlock">—</ng-template>
+    <ng-template #elseBlock>
+      {{ balance | currency:'USD':'symbol':'1.0-0':'en-US' }}
+    </ng-template>
+  </p>
 
   <mat-divider></mat-divider>
 
