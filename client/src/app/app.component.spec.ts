@@ -45,7 +45,7 @@ describe('AppComponentTest', () => {
     spy.getLoggedAccount.and.returnValue({ isBanker: true } as Account);
     loginStatus.next(true);
     fixture.detectChanges();
-    const link = fixture.nativeElement.querySelector('a[title=Players]');
+    const link = fixture.nativeElement.querySelector('a[title="Manage Players"]');
 
     expect(component.account.isBanker).toBe(true);
     expect(link).not.toBeNull();
