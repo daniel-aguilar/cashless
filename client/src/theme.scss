@@ -1,11 +1,24 @@
 @use '@angular/material' as mat;
 @use 'variables' as *;
-@include mat.core();
+
+$didact-gothic: mat.define-typography-config(
+  $font-family: '"Josefin Sans", sans-serif',
+  $title: mat.define-typography-level(20px, 20px, 500),
+  $body-1: mat.define-typography-level(16px, 16px, 300),
+  $button: mat.define-typography-level(16px, 16px, 500),
+);
+
+@include mat.core($didact-gothic);
 
 $primary: mat.define-palette(mat.$red-palette, 900);
 $accent: mat.define-palette(mat.$grey-palette, 50);
-
-$monopoly-theme: mat.define-light-theme($primary, $accent);
+$monopoly-theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  ),
+  typography: $didact-gothic,
+));
 @include mat.all-component-themes($monopoly-theme);
 
 .mat-snack-bar-container {
