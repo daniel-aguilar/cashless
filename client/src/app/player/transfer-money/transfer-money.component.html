@@ -15,7 +15,7 @@
           <mat-option i18n value="">Choose a Player</mat-option>
           <mat-option *ngFor="let r of recipients" [value]="r.id">
             {{ r.name | localizeName }}
-            <i class="fas fa-university" *ngIf="r.isBank"></i>
+            <mat-icon *ngIf="r.isBank" fontIcon="account_balance"></mat-icon>
           </mat-option>
         </mat-select>
       </mat-form-field>

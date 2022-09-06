@@ -11,8 +11,8 @@
     <tr *ngFor="let p of payments">
       <td>{{ p.tx.date | date:'h:mm a' }}</td>
       <td appPaymentType [isIncoming]="p.isIncoming">
-        <i *ngIf="p.isIncoming; else elseBlock" class="fas fa-arrow-down"></i>
-        <ng-template #elseBlock><i class="fas fa-arrow-up"></i></ng-template>
+        <mat-icon *ngIf="p.isIncoming; else elseBlock" fontIcon="arrow_downward"></mat-icon>
+        <ng-template #elseBlock><mat-icon fontIcon="arrow_upward"></mat-icon></ng-template>
       </td>
       <td>{{ p.account.name | localizeName }}</td>
       <td>${{ p.tx.amount }}</td>

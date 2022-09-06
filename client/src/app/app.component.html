@@ -4,11 +4,11 @@
 
   <div class="ms-auto">
     <a i18n-title title="Manage Players" mat-button *ngIf="account?.isBanker" routerLink="/banker/players">
-      <i class="fas fa-users-gear"></i>
+      <mat-icon fontIcon="manage_accounts"></mat-icon>
     </a>
 
     <a i18n-title title="Quit" mat-button *ngIf="account" (click)="leaveGame()">
-      <i class="fas fa-sign-out-alt"></i>
+      <mat-icon fontIcon="logout"></mat-icon>
     </a>
   </div>
 </mat-toolbar>
