@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiURL: 'https://monopoly-cashless.herokuapp.com',
-  wsURL: 'wss://monopoly-cashless.herokuapp.com/websocket',
+  apiURL: 'https://cashless-a4jk4xuaoa-uc.a.run.app',
+  wsURL: 'wss://cashless-a4jk4xuaoa-uc.a.run.app/websocket',
 };
