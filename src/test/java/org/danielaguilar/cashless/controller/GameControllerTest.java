@@ -20,6 +20,7 @@ public class GameControllerTest {
 
 	@Test
 	public void testAccountNotFound() throws Exception {
-		mvc.perform(post("/join/").param("pin", "6762")).andExpect(status().isNotFound());
+		mvc.perform(post("/game/join").param("pin", "6762")).andExpect(status().isNotFound())
+				.andExpect(status().reason("No account found"));
 	}
 }

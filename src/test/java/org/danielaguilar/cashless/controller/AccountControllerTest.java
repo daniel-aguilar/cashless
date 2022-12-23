@@ -32,7 +32,7 @@ public class AccountControllerTest {
 		tx.recipientId = 3;
 		var json = mapper.writeValueAsString(tx);
 
-		mvc.perform(post("/account/2/transfer/").content(json).contentType(MediaType.APPLICATION_JSON))
+		mvc.perform(post("/account/2/transfer").content(json).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest());
 	}
 }

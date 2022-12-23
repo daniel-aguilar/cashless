@@ -38,7 +38,7 @@ describe('BankServiceTest', () => {
       done();
     });
 
-    req = httpTestingController.expectOne(`${apiURL}/1/balance/`);
+    req = httpTestingController.expectOne(`${apiURL}/1/balance`);
     req.flush(100);
     httpTestingController.verify();
   });
@@ -46,7 +46,7 @@ describe('BankServiceTest', () => {
   it('Should transfer amount', () => {
     service.makeTransaction(player, 100, banker).subscribe();
 
-    req = httpTestingController.expectOne(`${apiURL}/1/transfer/`);
+    req = httpTestingController.expectOne(`${apiURL}/1/transfer`);
     expect(req.request.body).toEqual({ amount: 100, to: 2 });
 
     req.flush(null);

@@ -29,7 +29,7 @@ export class BankService {
   }
 
   getBalance(account: Account) {
-    return this.http.get<number>(`${apiURL}/${account.id}/balance/`);
+    return this.http.get<number>(`${apiURL}/${account.id}/balance`);
   }
 
   getPayments(account: Account) {
@@ -45,22 +45,22 @@ export class BankService {
   }
 
   getTransactionLog(gameId: number) {
-    const url = `${env.apiURL}/game/${gameId}/transactions/`;
+    const url = `${env.apiURL}/game/${gameId}/transactions`;
     return this.http.get<Transaction[]>(url);
   }
 
   makeTransaction(sender: Account, amount: number, recipient: Account) {
-    return this.http.post<never>(`${apiURL}/${sender.id}/transfer/`,
+    return this.http.post<never>(`${apiURL}/${sender.id}/transfer`,
       { amount, to: recipient.id });
   }
 
   getBankAccount(gameId: number) {
-    const url = `${env.apiURL}/game/${gameId}/bank/`;
+    const url = `${env.apiURL}/game/${gameId}/bank`;
     return this.http.get<Account>(url);
   }
 
   getLastestPayments(account: Account) {
-    const url = `${apiURL}/${account.id}/transactions/`;
+    const url = `${apiURL}/${account.id}/transactions`;
     return this.http.get<Transaction[]>(url).pipe(
       map(list => list.map(tx => new Payment(tx, account)))
     );

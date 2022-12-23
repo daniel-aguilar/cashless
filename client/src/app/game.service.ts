@@ -21,21 +21,21 @@ export class GameService {
     const data = new FormData();
     data.set('bankerName', bankerName);
 
-    return this.http.post<Account>(`${apiURL}/new/`, data);
+    return this.http.post<Account>(`${apiURL}/new`, data);
   }
 
   joinGame(pin: string) {
     const data = new FormData();
     data.set('pin', pin);
 
-    return this.http.post<Account>(`${apiURL}/join/`, data).pipe(
+    return this.http.post<Account>(`${apiURL}/join`, data).pipe(
       tap(a => this.auth.login(a)),
       switchMap(() => EMPTY)
     );
   }
 
   addPlayer(name: string, gameId: number) {
-    const url = `${apiURL}/${gameId}/players/add/`;
+    const url = `${apiURL}/${gameId}/players/add`;
     const data = new FormData();
     data.set('playerName', name);
 
@@ -57,6 +57,6 @@ export class GameService {
   }
 
   private getPlayers(gameId: number) {
-    return this.http.get<Account[]>(`${apiURL}/${gameId}/players/`);
+    return this.http.get<Account[]>(`${apiURL}/${gameId}/players`);
   }
 }

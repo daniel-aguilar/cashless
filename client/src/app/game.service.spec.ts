@@ -32,7 +32,7 @@ describe('GameService', () => {
       done();
     });
 
-    const req = httpTestingController.expectOne(`${apiURL}/1/players/`);
+    const req = httpTestingController.expectOne(`${apiURL}/1/players`);
     req.flush([player, banker, bank]);
     httpTestingController.verify();
   });
@@ -43,7 +43,7 @@ describe('GameService', () => {
       done();
     });
 
-    const req = httpTestingController.expectOne(`${apiURL}/1/players/`);
+    const req = httpTestingController.expectOne(`${apiURL}/1/players`);
     req.flush([player, banker, bank]);
     httpTestingController.verify();
   });
