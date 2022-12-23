@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
     "@stomp/stompjs": "^5.4.4",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.2.3",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
