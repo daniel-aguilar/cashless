@@ -23,7 +23,7 @@
         <target>Continuar Juego</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/continue-game/continue-game.component.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="485548018329936984" datatype="html">
@@ -31,7 +31,7 @@
         <target>Cuenta no encontrada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/join-game/join-game.component.html</context>
-          <context context-type="linenumber">11,12</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1813754192555569374" datatype="html">

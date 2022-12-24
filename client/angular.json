@@ -16,9 +16,6 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "",
@@ -31,9 +28,10 @@
             "outputPath": "dist/cashless",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
-            "allowedCommonJsDependencies": ["@stomp/stompjs"],
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
@@ -49,7 +47,10 @@
                 "src/partials"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "@stomp/stompjs"
+            ]
           },
           "configurations": {
             "production": {
@@ -71,8 +72,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all",
-              "localize": true
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
@@ -106,10 +106,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
