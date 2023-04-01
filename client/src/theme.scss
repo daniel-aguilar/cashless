@@ -1,10 +1,10 @@
 @use '@angular/material' as mat;
 @use 'variables' as *;
 
-$didact-gothic: mat.define-legacy-typography-config(
+$didact-gothic: mat.define-typography-config(
   $font-family: '"Josefin Sans", sans-serif',
-  $title: mat.define-typography-level(20px, 20px, 500),
-  $body-1: mat.define-typography-level(16px, 16px, 300),
+  $headline-6: mat.define-typography-level(20px, 20px, 500),
+  $body-2: mat.define-typography-level(16px, 16px, 300),
   $button: mat.define-typography-level(16px, 16px, 500),
 );
 
@@ -16,8 +16,8 @@ $didact-gothic: mat.define-legacy-typography-config(
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($didact-gothic);`
-@include mat.all-legacy-component-typographies($didact-gothic);
-@include mat.legacy-core();
+@include mat.all-component-typographies($didact-gothic);
+@include mat.core();
 
 $primary: mat.define-palette(mat.$red-palette, 900);
 $accent: mat.define-palette(mat.$grey-palette, 50);
@@ -28,9 +28,9 @@ $monopoly-theme: mat.define-light-theme((
   ),
   typography: $didact-gothic,
 ));
-@include mat.all-legacy-component-themes($monopoly-theme);
+@include mat.all-component-themes($monopoly-theme);
 
-.mat-snack-bar-container {
+.mat-mdc-snack-bar-container {
   color: black;
   background: $monopoly-green;
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
