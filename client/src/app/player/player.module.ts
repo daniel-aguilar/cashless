@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -11,9 +11,10 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
 
+const guard = () => inject(AuthService).canActivate();
 const routes: Route[] = [
-  { path: 'player', component: PlayerDetailComponent, canActivate: [AuthService] },
-  { path: 'transactions', component: TransactionLogComponent, canActivate: [AuthService] },
+  { path: 'player', component: PlayerDetailComponent, canActivate: [guard] },
+  { path: 'transactions', component: TransactionLogComponent, canActivate: [guard] },
 ];
 
 @NgModule({

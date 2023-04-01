@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Account } from './account';
 
 const pinKey = 'pin';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService implements CanActivate {
+export class AuthService {
   savedPin: string;
 
   private account: Account;

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -11,7 +11,10 @@ import { BankerGuard } from './banker.guard';
 import { PinHiderDirective } from './pin-hider.directive';
 import { PlayerListComponent } from './player-list/player-list.component';
 
-const guards = [AuthService, BankerGuard];
+const guards = [
+  () => inject(AuthService).canActivate(),
+  () => inject(BankerGuard).canActivate(),
+];
 const routes: Route[] = [
   { path: '', component: BankerComponent, canActivate: guards },
   { path: 'players', component: PlayerListComponent, canActivate: guards },
