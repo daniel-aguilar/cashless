@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { Account } from './auth/account';
 import { AuthService } from './auth/auth.service';
 
@@ -10,6 +11,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
   account: Account;
+  addMargin = true;
 
   constructor(
     private auth: AuthService,
@@ -23,10 +25,20 @@ export class AppComponent implements OnInit {
         delete this.account;
       }
     });
+    this.listenForBankerRoute();
   }
 
   leaveGame() {
     this.auth.logout();
     this.router.navigateByUrl('/');
+  }
+
+  private listenForBankerRoute() {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)
+    ).subscribe(e => {
+      const end = e as NavigationEnd;
+      this.addMargin = end.url !== '/banker';
+    })
   }
 }
