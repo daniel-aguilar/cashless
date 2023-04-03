@@ -1,2 +1,6 @@
-$monopoly-green: #CEE6D0;
-$monopoly-red: #B71C1C;
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+$monopoly-green: map.get(mat.$green-palette, 100);
+$monopoly-red: map.get(mat.$red-palette, 900);
+$monopoly-red-palette: mat.define-palette(mat.$red-palette, 900);

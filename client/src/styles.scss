@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@use 'variables' as *;
+@use 'variables' as v;
 
 html, body {
   height: 100%;
@@ -16,20 +16,15 @@ body {
   margin: 0;
 }
 
-.loading-backdrop {
-  overflow: hidden;
-}
-
-.snack-error {
-  color: white;
-  background: $monopoly-red;
+.custom-snack simple-snack-bar div[matsnackbarlabel] {
+  color: v.$monopoly-green;
 }
 
 table.monopoly-table {
   border-collapse: collapse;
 
   thead {
-    background: $monopoly-red;
+    background: v.$monopoly-red;
     color: white;
   }
 

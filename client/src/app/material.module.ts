@@ -6,8 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSnackBarConfig, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+
+const snackBarOpts: MatSnackBarConfig = {
+  duration: 2500,
+  panelClass: 'custom-snack',
+};
 
 @NgModule({
   imports: [
@@ -33,7 +38,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatIconModule,
   ],
   providers: [
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: snackBarOpts }
   ]
 })
 export class MaterialModule { }
