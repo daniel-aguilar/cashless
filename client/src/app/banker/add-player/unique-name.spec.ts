@@ -8,12 +8,17 @@ describe('uniqueNameTest', () => {
     const fn = uniqueName([
       { name: 'Alice' } as Account,
       { name: 'Bob' } as Account,
+      { name: 'Bank' } as Account,
     ]);
+    const error = { uniqueName: true };
 
     control.setValue('alice');
-    expect(fn(control)).toEqual({ uniqueName: true });
+    expect(fn(control)).toEqual(error);
 
     control.setValue('Daniel');
     expect(fn(control)).toBeNull();
+
+    control.setValue('Bank');
+    expect(fn(control)).toEqual(error);
   });
 });
