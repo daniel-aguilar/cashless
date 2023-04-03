@@ -3,7 +3,8 @@
     <div class="row justify-content-center">
       <div class="col-md-4 d-flex flex-column">
         <mat-form-field>
-          <input matInput i18n-placeholder placeholder="Player Name" autocomplete="off"
+          <mat-label i18n>Player Name</mat-label>
+          <input matInput i18n-placeholder placeholder="Ex. Elizabeth" autocomplete="off"
               formControlName="name">
           <mat-error i18n *ngIf="name.errors?.['noBankName']">That name is reserved</mat-error>
         </mat-form-field>
