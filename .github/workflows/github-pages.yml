@@ -18,6 +18,8 @@ jobs:
           cache-dependency-path: client/package-lock.json
       - name: Install Dependencies
         run: npm install
+      - name: Lint
+        run: npx ng lint
       - name: Build
         run: npx ng build
       - name: Deploy
