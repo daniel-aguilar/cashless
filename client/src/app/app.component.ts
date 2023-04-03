@@ -39,6 +39,6 @@ export class AppComponent implements OnInit {
     ).subscribe(e => {
       const end = e as NavigationEnd;
       this.addMargin = end.url !== '/banker';
-    })
+    });
   }
 }
