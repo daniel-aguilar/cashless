@@ -1,4 +1,4 @@
-<mat-tab-group mat-align-tabs="center">
+<mat-tab-group mat-align-tabs="center" [mat-stretch-tabs]="isHandset">
     <mat-tab i18n-label label="Player">
         <div class="tab-content">
             <app-player-detail [account]="player"></app-player-detail>
