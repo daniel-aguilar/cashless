@@ -22,7 +22,7 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="row">
+  <div class="row" [class.center]="isHandset">
     <div class="col-6">
       <button mat-raised-button color="primary"
           [disabled]="form.invalid || isLoading">

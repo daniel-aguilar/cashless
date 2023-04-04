@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -13,6 +14,7 @@ import { LoadingService } from 'src/app/loading/loading.service';
 })
 export class TransactionLogComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
+  isHandset = false;
 
   private gameId = 0;
   private txSub: Subscription;
@@ -20,7 +22,8 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
   constructor(
     private auth: AuthService,
     private bank: BankService,
-    private loading: LoadingService) {
+    private loading: LoadingService,
+    private breakpointObserver: BreakpointObserver) {
 
   }
 
@@ -32,6 +35,9 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
       this.listenToTransactions();
       this.loading.hide();
     });
+    this.breakpointObserver
+        .observe([Breakpoints.HandsetPortrait])
+        .subscribe(res => this.isHandset = res.matches);
   }
 
   ngOnDestroy() {

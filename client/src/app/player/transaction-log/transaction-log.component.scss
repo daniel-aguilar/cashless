@@ -1,19 +1,13 @@
-@import 'breakpoints';
-
 .container {
   font-size: large;
 }
 
-@include media-breakpoint-up(md) {
-  table {
-    width: 60%;
-  }
+table {
+  width: 60%;
 }
 
-@include media-breakpoint-down(md) {
-  table {
-    width: 100%;
-  }
+table.full-width {
+  width: 100%;
 }
 
 h2 {

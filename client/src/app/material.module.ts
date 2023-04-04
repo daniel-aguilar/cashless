@@ -1,3 +1,4 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -25,6 +26,7 @@ const snackBarOpts: MatSnackBarConfig = {
     MatDialogModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    LayoutModule,
   ],
   exports: [
     MatButtonModule,
@@ -36,6 +38,7 @@ const snackBarOpts: MatSnackBarConfig = {
     MatDialogModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    LayoutModule,
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: snackBarOpts }

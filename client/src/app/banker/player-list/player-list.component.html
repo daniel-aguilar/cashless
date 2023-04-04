@@ -1,6 +1,6 @@
 <div class="container">
   <p i18n>Your PIN is <span class="pin" appPinHider>{{ banker.pin }}</span></p>
-  <table class="mx-auto my-3 monopoly-table">
+  <table class="mx-auto my-3 monopoly-table" [class.full-width]="isHandset">
     <thead>
       <tr>
         <th i18n>Name</th>

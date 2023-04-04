@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import orderBy from 'lodash-es/orderBy';
@@ -14,11 +15,13 @@ import { AddPlayerComponent, DialogData } from '../add-player/add-player.compone
 export class PlayerListComponent implements OnInit {
   banker: Account;
   players: Account[] = [];
+  isHandset = false;
 
   constructor(
     private auth: AuthService,
     private game: GameService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver) {
 
     this.banker = this.auth.getLoggedAccount();
   }
@@ -26,6 +29,9 @@ export class PlayerListComponent implements OnInit {
   ngOnInit() {
     this.game.getOtherPlayersExcept(this.banker, true)
       .subscribe(players => this.players = players);
+    this.breakpointObserver
+        .observe([Breakpoints.HandsetPortrait])
+        .subscribe(res => this.isHandset = res.matches);
   }
 
   openDialog() {

@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl, FormGroup,
@@ -26,6 +27,7 @@ export class TransferMoneyComponent implements OnInit {
 
   recipients: Account[] = [];
   isLoading = false;
+  isHandset = false;
 
   @ViewChild(FormGroupDirective)
   fg: FormGroupDirective;
@@ -38,13 +40,17 @@ export class TransferMoneyComponent implements OnInit {
     private snack: MatSnackBar,
     private currentPlayer: PlayerService,
     private game: GameService,
-    private bank: BankService) {
+    private bank: BankService,
+    private breakpointObserver: BreakpointObserver) {
 
   }
 
   ngOnInit() {
     this.game.getOtherPlayersExcept(this.player)
         .subscribe(players => this.recipients = players);
+    this.breakpointObserver
+        .observe([Breakpoints.HandsetPortrait])
+        .subscribe(res => this.isHandset = res.matches);
   }
 
   makeTransaction() {
