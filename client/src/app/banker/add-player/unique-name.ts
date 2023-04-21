@@ -6,7 +6,7 @@ export function uniqueName(existingPlayers: Account[]): ValidatorFn {
     const name = control.value as string;
     const exists = existingPlayers
       .find(p => p.name.toLowerCase() === name.toLowerCase());
-    const hasBankName = name === 'Bank';
+    const hasBankName = name.toLowerCase() === 'bank';
     return exists || hasBankName ? { uniqueName: true } : null;
   };
 }

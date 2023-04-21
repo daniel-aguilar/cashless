@@ -9,6 +9,7 @@ describe('uniqueNameTest', () => {
       { name: 'Alice' } as Account,
       { name: 'Bob' } as Account,
       { name: 'Bank' } as Account,
+      { name: 'banK' } as Account,
     ]);
     const error = { uniqueName: true };
 
