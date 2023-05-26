@@ -19,7 +19,9 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
-      "plugins": ["deprecation"],
+      "plugins": [
+        "deprecation"
+      ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -37,12 +39,27 @@
             "style": "kebab-case"
           }
         ],
-        "comma-dangle": ["error", "only-multiline"],
-        "deprecation/deprecation": ["warn"],
-        "object-curly-spacing": ["error", "always"],
-        "prefer-const": ["error"],
-        "quotes": ["error", "single"],
-        "semi": ["error"]
+        "comma-dangle": [
+          "error",
+          "only-multiline"
+        ],
+        "deprecation/deprecation": [
+          "warn"
+        ],
+        "object-curly-spacing": [
+          "error",
+          "always"
+        ],
+        "prefer-const": [
+          "error"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "semi": [
+          "error"
+        ]
       }
     },
     {
