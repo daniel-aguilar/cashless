@@ -24,7 +24,7 @@ jobs:
         run: npx ng build
       - name: Deploy
         run: |
-          cd dist/cashless/es-CR
+          cd dist/cashless/browser/es-CR
           git init
           git config user.name Octocat
           git config user.email "octocat@users.noreply.github.com"
