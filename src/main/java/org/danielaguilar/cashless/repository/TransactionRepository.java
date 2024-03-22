@@ -18,7 +18,7 @@ public interface TransactionRepository
 	@Query("FROM Transaction "
          + "WHERE sender = ?1 OR recipient = ?1 "
          + "ORDER BY date DESC")
-	List<Transaction> findLastestTransactions(Account account, Pageable page);
+	List<Transaction> findLatestTransactions(Account account, Pageable page);
 
 	@Query("FROM Transaction "
          + "WHERE sender.game = ?1 AND recipient.game = ?1 "

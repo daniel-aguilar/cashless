@@ -47,7 +47,7 @@ public class AccountController {
 	}
 
 	@GetMapping("/{id}/transactions")
-	public List<Transaction> getLastestTransactions(@PathVariable("id") Account account) {
-		return transactionService.getLastestTransactions(account);
+	public List<Transaction> getLatestTransactions(@PathVariable("id") Account account) {
+		return transactionService.getLatestTransactions(account);
 	}
 }

@@ -34,9 +34,9 @@ public class TransactionService {
 		return transactionRepository.save(tx);
 	}
 
-	public List<Transaction> getLastestTransactions(Account account) {
+	public List<Transaction> getLatestTransactions(Account account) {
 		PageRequest page = PageRequest.of(0, 3);
-		return transactionRepository.findLastestTransactions(account, page);
+		return transactionRepository.findLatestTransactions(account, page);
 	}
 
 	public List<Transaction> getTransactions(Game game) {

@@ -30,7 +30,7 @@ export class PaymentLogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const lastThree = this.bank.getLastestPayments(this.player);
+    const lastThree = this.bank.getLatestPayments(this.player);
 
     this.currentPayments = lastThree.pipe(
       switchMap(payments => {

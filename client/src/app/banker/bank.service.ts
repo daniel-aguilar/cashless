@@ -59,7 +59,7 @@ export class BankService {
     return this.http.get<Account>(url);
   }
 
-  getLastestPayments(account: Account) {
+  getLatestPayments(account: Account) {
     const url = `${apiURL}/${account.id}/transactions`;
     return this.http.get<Transaction[]>(url).pipe(
       map(list => list.map(tx => new Payment(tx, account)))
