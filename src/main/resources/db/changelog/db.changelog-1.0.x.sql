@@ -12,7 +12,8 @@ CREATE TABLE account (
   balance INTEGER NOT NULL,
   pin CHAR(4) NOT NULL,
   CONSTRAINT account_pkey PRIMARY KEY (id),
-  CONSTRAINT account_key UNIQUE (game_id, account_name),
+  CONSTRAINT account_name_key UNIQUE (game_id, account_name),
+  CONSTRAINT account_pin_key UNIQUE (pin),
   CONSTRAINT account_game_fkey
     FOREIGN KEY (game_id) REFERENCES game (id)
 );
