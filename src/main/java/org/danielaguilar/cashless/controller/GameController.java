@@ -38,11 +38,11 @@ public class GameController {
 
 	@PostMapping("/join")
 	public Account joinGame(String pin) {
-		try {
-			return accountService.getAccount(pin).get();
-		} catch (NoSuchElementException e) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No account found");
+		var accountQuery = accountService.getAccount(pin);
+		if (accountQuery.isPresent()) {
+			return accountQuery.get();
 		}
+		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No account found");
 	}
 
 	@GetMapping("/{id}/players")
