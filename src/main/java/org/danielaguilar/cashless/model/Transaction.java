@@ -3,11 +3,15 @@ package org.danielaguilar.cashless.model;
 import java.time.ZonedDateTime;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "exchange")
+@Getter
+@Setter
 public class Transaction {
 
 	public static class JSON {
@@ -33,44 +37,4 @@ public class Transaction {
 
 	@Column(name = "exchange_date")
 	private ZonedDateTime date = ZonedDateTime.now();
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Account getSender() {
-		return sender;
-	}
-
-	public void setSender(Account sender) {
-		this.sender = sender;
-	}
-
-	public Account getRecipient() {
-		return recipient;
-	}
-
-	public void setRecipient(Account recipient) {
-		this.recipient = recipient;
-	}
-
-	public Integer getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
-
-	public ZonedDateTime getDate() {
-		return date;
-	}
-
-	public void setDate(ZonedDateTime date) {
-		this.date = date;
-	}
 }

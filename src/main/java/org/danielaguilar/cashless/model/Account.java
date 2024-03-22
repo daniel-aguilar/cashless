@@ -7,8 +7,14 @@ import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Account {
 
 	@Id
@@ -26,6 +32,7 @@ public class Account {
 	@JsonIgnore
 	private Integer balance = 1500;
 
+	@EqualsAndHashCode.Include
 	private String pin;
 
 	public Account() {
@@ -56,63 +63,6 @@ public class Account {
 		} else {
 			throw new IllegalArgumentException("Non-Sufficient Funds");
 		}
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Integer balance) {
-		this.balance = balance;
-	}
-
-	public String getPin() {
-		return pin;
-	}
-
-	public void setPin(String pin) {
-		this.pin = pin;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(pin);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof Account)) {
-			return false;
-		}
-		Account other = (Account) obj;
-		return Objects.equals(pin, other.pin);
 	}
 
 	private void generatePin() {
