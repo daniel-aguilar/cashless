@@ -2,16 +2,12 @@ package org.danielaguilar.cashless.model;
 
 import java.time.ZonedDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
+@Table(name = "exchange")
 public class Transaction {
 
 	public static class JSON {
@@ -35,6 +31,7 @@ public class Transaction {
 
 	private Integer amount;
 
+	@Column(name = "exchange_date")
 	private ZonedDateTime date = ZonedDateTime.now();
 
 	public Integer getId() {
