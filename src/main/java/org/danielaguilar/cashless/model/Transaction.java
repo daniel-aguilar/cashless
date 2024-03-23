@@ -36,5 +36,5 @@ public class Transaction {
 	private int amount;
 
 	@Column(name = "exchange_date")
-	private ZonedDateTime date = ZonedDateTime.now();
+	private final ZonedDateTime date = ZonedDateTime.now();
 }
