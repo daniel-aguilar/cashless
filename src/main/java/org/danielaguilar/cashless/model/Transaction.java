@@ -1,12 +1,11 @@
 package org.danielaguilar.cashless.model;
 
-import java.time.ZonedDateTime;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "exchange")

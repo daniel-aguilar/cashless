@@ -1,15 +1,13 @@
 package org.danielaguilar.cashless.model;
 
-import java.util.Objects;
-import java.util.Random;
-
-import jakarta.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Random;
 
 @Entity
 @Getter
