@@ -18,7 +18,7 @@ public class Game {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@OneToOne
 	@JoinColumn(name = "bank_id")

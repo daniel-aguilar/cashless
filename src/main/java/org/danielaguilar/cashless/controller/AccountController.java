@@ -31,7 +31,7 @@ public class AccountController {
 	private SimpMessagingTemplate template;
 
 	@GetMapping("/{id}/balance")
-	public Integer getBalance(@PathVariable("id") Account account) {
+	public int getBalance(@PathVariable("id") Account account) {
 		return account.getBalance();
 	}
 

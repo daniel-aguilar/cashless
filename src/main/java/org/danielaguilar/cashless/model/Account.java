@@ -19,7 +19,7 @@ public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@JsonIgnore
 	@ManyToOne
@@ -30,7 +30,7 @@ public class Account {
 	private String name;
 
 	@JsonIgnore
-	private Integer balance = 1500;
+	private int balance = 1500;
 
 	@EqualsAndHashCode.Include
 	private String pin;
@@ -39,7 +39,7 @@ public class Account {
 		generatePin();
 	}
 
-	public Integer getGameId() {
+	public int getGameId() {
 		return game.getId();
 	}
 
@@ -53,11 +53,11 @@ public class Account {
 		return game.getBanker().equals(this);
 	}
 
-	public void deposit(Integer amount) {
+	public void deposit(int amount) {
 		balance += amount;
 	}
 
-	public void withdraw(Integer amount) {
+	public void withdraw(int amount) {
 		if (balance - amount >= 0) {
 			balance -= amount;
 		} else {

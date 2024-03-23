@@ -15,15 +15,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Transaction {
 
 	public static class JSON {
-		public Integer amount;
+		public int amount;
 
 		@JsonProperty("to")
-		public Integer recipientId;
+		public int recipientId;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@ManyToOne
 	@JoinColumn(name = "sender_id")
@@ -33,7 +33,7 @@ public class Transaction {
 	@JoinColumn(name = "recipient_id")
 	private Account recipient;
 
-	private Integer amount;
+	private int amount;
 
 	@Column(name = "exchange_date")
 	private ZonedDateTime date = ZonedDateTime.now();
