@@ -5,8 +5,7 @@ import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatToolbarHarness } from '@angular/material/toolbar/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, provideRouter } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AppComponent } from './app.component';
 import { Account } from './auth/account';
@@ -30,13 +29,14 @@ describe('AppComponentTest', () => {
 
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      providers: [{ provide: AuthService, useValue: spy }],
+      providers: [
+        { provide: AuthService, useValue: spy },
+        provideRouter([
+          { path: 'banker', component: BlankComponent },
+        ])
+      ],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule.withRoutes([
-          { path: '', component: BlankComponent },
-          { path: 'banker', component: BlankComponent },
-        ]),
         MatToolbarModule,
       ],
       schemas: [NO_ERRORS_SCHEMA],

@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Account } from './account';
 import { AuthService } from './auth.service';
 
@@ -8,7 +7,6 @@ describe('AccountServiceTest', () => {
 
   function setup() {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
       providers: [AuthService],
     });
     service = TestBed.inject(AuthService);
