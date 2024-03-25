@@ -1,3 +1,4 @@
 /target/
 /src/main/resources/config/application-dev.properties
 /src/main/resources/db/liquibase.properties
+*.crt
