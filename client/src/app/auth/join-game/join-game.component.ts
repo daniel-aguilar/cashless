@@ -17,14 +17,11 @@ export class JoinGameComponent extends Gateway implements OnInit {
     });
   }
 
-  async joinGame() {
+  joinGame() {
     const pin = this.form.value.pin;
-    try {
-      await this.enterGame(pin);
-    }
-    catch (error) {
-      this.displayError();
-    }
+    this.enterGame(pin).subscribe({
+      error: () => this.displayError(),
+    });
   }
 
   private displayError() {

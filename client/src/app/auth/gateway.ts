@@ -19,17 +19,15 @@ export class Gateway {
   enterGame(pin: string) {
     this.loading.show();
     return this.game.joinGame(pin)
-      .pipe(finalize(() => this.loading.hide()))
-      .subscribe({
-        complete: () => {
-          const account = this.auth.getLoggedAccount();
+      .pipe(finalize(() => {
+        this.loading.hide();
+        const account = this.auth.getLoggedAccount();
 
-          if (account.isBanker) {
-            this.router.navigateByUrl('/banker');
-          } else {
-            this.router.navigateByUrl('/player');
-          }
+        if (account.isBanker) {
+          this.router.navigateByUrl('/banker');
+        } else {
+          this.router.navigateByUrl('/player');
         }
-      });
+      }));
   }
 }

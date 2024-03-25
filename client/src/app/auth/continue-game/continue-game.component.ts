@@ -16,12 +16,11 @@ export class ContinueGameComponent extends Gateway implements OnInit {
   }
 
   async continueGame() {
-    try {
-      await this.enterGame(this.pin);
-    }
-    catch (error) {
-      this.canContinueGame = false;
-      this.auth.logout();
-    }
+    this.enterGame(this.pin).subscribe({
+      error: () => {
+        this.canContinueGame = false;
+        this.auth.logout();
+      }
+    });
   }
 }
