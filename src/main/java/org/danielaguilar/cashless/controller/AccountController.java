@@ -33,7 +33,7 @@ public class AccountController {
 	@PostMapping("/{id}/transfer")
 	public void transfer(@PathVariable("id") Account sender, @RequestBody Transaction.JSON transaction) {
 		try {
-			Account recipient = accountService.getAccount(transaction.recipientId);
+			Account recipient = accountService.getAccount(transaction.recipientId).get();
 			Transaction tx = transactionService.transfer(sender, recipient, transaction.amount);
 			template.convertAndSend("/queue/transactions", tx);
 		} catch (IllegalArgumentException e) {

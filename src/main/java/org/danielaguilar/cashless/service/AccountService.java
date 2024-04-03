@@ -14,8 +14,8 @@ public class AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 
-	public Account getAccount(int id) {
-		return accountRepository.getReferenceById(id);
+	public Optional<Account> getAccount(int id) {
+		return accountRepository.findById(id);
 	}
 
 	public Optional<Account> getAccount(String pin) {
