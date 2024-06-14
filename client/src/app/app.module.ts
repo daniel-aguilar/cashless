@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,13 +35,15 @@ const routes: Route[] = [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatToolbarModule,
     RouterModule.forRoot(routes, { useHash: true }),
     MaterialModule,
     AuthModule,
     PlayerModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    provideHttpClient(),
+  ]
 })
 export class AppModule { }

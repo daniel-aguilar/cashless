@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-$monopoly-green: map.get(mat.$green-palette, 100);
-$monopoly-red: map.get(mat.$red-palette, 900);
-$monopoly-red-palette: mat.define-palette(mat.$red-palette, 900);
+$monopoly-green: map.get(mat.$m2-green-palette, 100);
+$monopoly-red: map.get(mat.$m2-red-palette, 900);
+$monopoly-red-palette: mat.m2-define-palette(mat.$m2-red-palette, 900);

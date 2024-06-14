@@ -1,6 +1,7 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of, Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { Account } from 'src/app/auth/account';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
@@ -26,8 +27,9 @@ describe('TransactionLogComponentTest', () => {
       providers: [
         { provide: AuthService, useValue: authSpy },
         { provide: BankService, useValue: bankSpy },
-      ],
-      imports: [HttpClientTestingModule],
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TransactionLogComponent);

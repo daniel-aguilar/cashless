@@ -1,8 +1,9 @@
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatToolbarHarness } from '@angular/material/toolbar/testing';
 import { Router, provideRouter } from '@angular/router';
@@ -33,12 +34,11 @@ describe('AppComponentTest', () => {
         { provide: AuthService, useValue: spy },
         provideRouter([
           { path: 'banker', component: BlankComponent },
-        ])
+        ]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ],
-      imports: [
-        HttpClientTestingModule,
-        MatToolbarModule,
-      ],
+      imports: [MatToolbarModule],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

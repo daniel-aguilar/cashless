@@ -3,17 +3,17 @@
 
 @include mat.core();
 
-$didact-gothic: mat.define-typography-config(
+$didact-gothic: mat.m2-define-typography-config(
   $font-family: '"Josefin Sans", sans-serif',
-  $headline-6: mat.define-typography-level(20px, 20px, 500),
-  $body-1: mat.define-typography-level(16px, 24px, 400),
-  $body-2: mat.define-typography-level(18px, 16px, 300),
-  $button: mat.define-typography-level(16px, 16px, 500),
+  $headline-6: mat.m2-define-typography-level(20px, 20px, 500),
+  $body-1: mat.m2-define-typography-level(16px, 24px, 400),
+  $body-2: mat.m2-define-typography-level(18px, 16px, 300),
+  $button: mat.m2-define-typography-level(16px, 16px, 500),
 );
 
 $primary: v.$monopoly-red-palette;
-$accent: mat.define-palette(mat.$grey-palette, 50);
-$monopoly-theme: mat.define-light-theme((
+$accent: mat.m2-define-palette(mat.$m2-grey-palette, 50);
+$monopoly-theme: mat.m2-define-light-theme((
   color: (
     primary: $primary,
     accent: $accent,

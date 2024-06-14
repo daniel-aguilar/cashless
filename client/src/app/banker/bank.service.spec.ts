@@ -1,4 +1,5 @@
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from 'src/app/auth/auth.service';
 import { environment as env } from 'src/environments/environment';
@@ -21,11 +22,12 @@ describe('BankServiceTest', () => {
     authSpy.getLoggedAccount.and.returnValue(player);
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
       providers: [
         BankService,
         { provide: AuthService, useValue: authSpy },
-      ],
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ]
     });
 
     service = TestBed.inject(BankService);
