@@ -1,9 +1,9 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
-@use 'variables' as v;
 
 @include mat.core();
 
-$didact-gothic: mat.m2-define-typography-config(
+$typography-config: mat.m2-define-typography-config(
   $font-family: '"Josefin Sans", sans-serif',
   $headline-6: mat.m2-define-typography-level(20px, 20px, 500),
   $body-1: mat.m2-define-typography-level(16px, 24px, 400),
@@ -11,14 +11,44 @@ $didact-gothic: mat.m2-define-typography-config(
   $button: mat.m2-define-typography-level(16px, 16px, 500),
 );
 
-$primary: v.$monopoly-red-palette;
-$accent: mat.m2-define-palette(mat.$m2-grey-palette, 50);
 $monopoly-theme: mat.m2-define-light-theme((
   color: (
-    primary: $primary,
-    accent: $accent,
+    primary: mat.m2-define-palette(mat.$m2-red-palette, 900),
+    accent: mat.m2-define-palette(mat.$m2-grey-palette, 50),
   ),
-  typography: $didact-gothic,
+  typography: $typography-config,
 ));
-@include mat.typography-hierarchy($didact-gothic);
-@include mat.all-component-themes($monopoly-theme);
+
+html {
+  @include mat.all-component-themes($monopoly-theme);
+}
+@include mat.typography-hierarchy($typography-config);
+
+
+$monopoly-green: map.get(mat.$m2-green-palette, 100);
+$monopoly-red: map.get(mat.$m2-red-palette, 900);
+
+.app-background {
+  background-color: white;
+}
+
+mat-toolbar.app-toolbar {
+  background-color: $monopoly-green;
+}
+
+app-payment-log table {
+  th, td {
+    border: 1px solid #E0E0E0;
+  }
+}
+
+table.monopoly-table {
+  thead {
+    background: $monopoly-red;
+    color: white;
+  }
+
+  th, td {
+    border: 1px solid black;
+  }
+}

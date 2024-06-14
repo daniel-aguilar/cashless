@@ -45,11 +45,6 @@
               "src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/partials"
-              ]
-            },
             "scripts": [],
             "allowedCommonJsDependencies": [
               "@stomp/stompjs"
@@ -119,11 +114,6 @@
             "styles": [
               "src/styles.scss"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/partials"
-              ]
-            },
             "scripts": []
           }
         },

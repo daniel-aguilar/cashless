@@ -1,4 +1,4 @@
-<table class="mx-auto my-3 mat-typography">
+<table class="mx-auto my-3">
   <thead>
     <tr>
       <th i18n>Time</th>
@@ -11,8 +11,8 @@
     <tr *ngFor="let p of payments">
       <td>{{ p.tx.date | date:'h:mm a' }}</td>
       <td appPaymentType [isIncoming]="p.isIncoming">
-        <mat-icon *ngIf="p.isIncoming; else elseBlock" fontIcon="arrow_downward"></mat-icon>
-        <ng-template #elseBlock><mat-icon fontIcon="arrow_upward"></mat-icon></ng-template>
+        <mat-icon *ngIf="p.isIncoming; else elseBlock">arrow_downward</mat-icon>
+        <ng-template #elseBlock><mat-icon>arrow_upward</mat-icon></ng-template>
       </td>
       <td>{{ p.account.name | localizeName }}</td>
       <td>${{ p.tx.amount }}</td>
@@ -24,7 +24,7 @@
 </table>
 
 <div class="d-flex justify-content-center">
-  <a class="mb-3" mat-raised-button color="primary" routerLink="/transactions">
+  <a class="mb-3" mat-flat-button color="primary" routerLink="/transactions">
     <span i18n>View Transaction Log</span>
   </a>
 </div>

@@ -1,14 +1,14 @@
 <app-loading></app-loading>
-<mat-toolbar class="mat-elevation-z4" [style.margin-bottom]="addMargin ? '1em' : ''">
+<mat-toolbar class="app-toolbar" [style.margin-bottom]="addMargin ? '1em' : ''">
   <h1>CASHLESS</h1>
 
   <div class="ms-auto">
-    <a i18n-title title="Manage Players" mat-button *ngIf="account?.isBanker" routerLink="/banker/players">
-      <mat-icon fontIcon="manage_accounts"></mat-icon>
+    <a i18n-title title="Manage Players" mat-icon-button *ngIf="account?.isBanker" routerLink="/banker/players">
+      <mat-icon>manage_accounts</mat-icon>
     </a>
 
-    <a i18n-title title="Quit" mat-button *ngIf="account" (click)="leaveGame()">
-      <mat-icon fontIcon="logout"></mat-icon>
+    <a i18n-title title="Quit" mat-icon-button *ngIf="account" (click)="leaveGame()">
+      <mat-icon>logout</mat-icon>
     </a>
   </div>
 </mat-toolbar>

@@ -8,7 +8,7 @@
               formControlName="name">
           <mat-error i18n *ngIf="name.errors?.['noBankName']">That name is reserved</mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary"
+        <button mat-flat-button color="primary"
             [disabled]="form.invalid">OK</button>
       </div>
     </div>

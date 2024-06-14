@@ -16,7 +16,7 @@
           <mat-option i18n value="">Choose a Player</mat-option>
           <mat-option *ngFor="let r of recipients" [value]="r.id">
             {{ r.name | localizeName }}
-            <mat-icon *ngIf="r.isBank" fontIcon="account_balance"></mat-icon>
+            <mat-icon *ngIf="r.isBank">account_balance</mat-icon>
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -24,7 +24,7 @@
   </div>
   <div class="row" [class.center]="isHandset">
     <div class="col-6">
-      <button mat-raised-button color="primary"
+      <button mat-flat-button color="primary"
           [disabled]="form.invalid || isLoading">
         <span i18n>Transfer Amount</span>
       </button>

@@ -1,6 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@use 'variables' as v;
-
 html, body {
   height: 100%;
   box-sizing: border-box;
@@ -23,14 +21,8 @@ body {
 table.monopoly-table {
   border-collapse: collapse;
 
-  thead {
-    background: v.$monopoly-red;
-    color: white;
-  }
-
   th, td {
     padding: 10px;
-    border: 1px solid black;
     text-align: center;
   }
 }
