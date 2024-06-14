@@ -1,13 +1,16 @@
 <div class="container">
   <h2 i18n class="mat-headline-small">Account Info</h2>
-  <p i18n class="detail" *ngIf="!player.isBank">Name: {{ player.name }}</p>
-  <p i18n class="detail">
-    Balance:
-    <ng-template *ngIf="updatingBalance; else elseBlock">—</ng-template>
-    <ng-template #elseBlock>
-      {{ balance | currency:'USD':'symbol':'1.0-0':'en-US' }}
-    </ng-template>
-  </p>
+
+  <ul>
+    <li i18n *ngIf="!player.isBank">Name: {{ player.name }}</li>
+    <li i18n>
+      Balance:
+      <ng-template *ngIf="updatingBalance; else elseBlock">—</ng-template>
+      <ng-template #elseBlock>
+        {{ balance | currency:'USD':'symbol':'1.0-0':'en-US' }}
+      </ng-template>
+    </li>
+  </ul>
 
   <mat-divider></mat-divider>
 
