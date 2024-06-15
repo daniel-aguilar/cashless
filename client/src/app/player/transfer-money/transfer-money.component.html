@@ -1,9 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="makeTransaction()">
   <div class="row">
     <div class="col-md-4">
-      <mat-form-field>
+      <mat-form-field floatLabel="always">
         <mat-label i18n>Amount</mat-label>
-        <span matPrefix>$</span>
+        <span matTextPrefix>$&nbsp;</span>
         <input autocomplete="off" matInput
             formControlName="amount" pattern="[0-9]*">
       </mat-form-field>
