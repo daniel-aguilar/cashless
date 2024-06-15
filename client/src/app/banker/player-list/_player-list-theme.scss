@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  app-player-list {
+    $censored: black;
+
+    span.pin {
+      color: $censored;
+      background-color: $censored;
+
+      &.visible {
+        color: white;
+      }
+    }
+  }
+}

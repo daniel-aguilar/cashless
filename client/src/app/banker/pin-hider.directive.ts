@@ -1,5 +1,7 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
+const visible = 'visible';
+
 @Directive({ selector: '[appPinHider]' })
 export class PinHiderDirective {
 
@@ -9,13 +11,11 @@ export class PinHiderDirective {
 
   @HostListener('mouseover')
   onMouseOver() {
-    this.el.nativeElement.style.color = 'white';
+    this.el.nativeElement.classList.add(visible);
   }
 
   @HostListener('mouseleave')
   hideContent() {
-    const black = 'black';
-    this.el.nativeElement.style.color = black;
-    this.el.nativeElement.style.background = black;
+    this.el.nativeElement.classList.remove(visible);
   }
 }

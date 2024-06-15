@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 @use './app/player/payment-log/payment-log-theme';
+@use './app/banker/player-list/player-list-theme';
 
 @include mat.core();
 
@@ -21,6 +22,7 @@ $monopoly-theme: mat.m2-define-light-theme((
 ));
 
 @include payment-log-theme.theme($monopoly-theme);
+@include player-list-theme.theme($monopoly-theme);
 
 html {
   @include mat.all-component-themes($monopoly-theme);
