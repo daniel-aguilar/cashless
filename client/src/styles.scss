@@ -14,6 +14,10 @@ body {
   margin: 0;
 }
 
+.loading-backdrop {
+  overflow: hidden;
+}
+
 table.monopoly-table {
   border-collapse: collapse;
 
