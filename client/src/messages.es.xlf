@@ -51,7 +51,7 @@
         <target>Cuenta no encontrada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/join-game/join-game.component.html</context>
-          <context context-type="linenumber">12,13</context>
+          <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1813754192555569374" datatype="html">
@@ -298,7 +298,7 @@
         <target>Transferir Monto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="linenumber">28,29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8657498830247797615" datatype="html">
