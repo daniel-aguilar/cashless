@@ -1,18 +1,22 @@
 @use '@angular/material' as mat;
 
 @mixin theme($theme) {
-  table {
-    th, td {
-      border-color: #E0E0E0;
+  app-payment-log {
+    table {
+      th, td {
+        border-color: mat.get-theme-color($theme, outline-variant);
+      }
     }
-  }
 
-  td {
-    &.incoming {
-      background-color: #C8E6C9;
-    }
-    &.outgoing {
-      background-color: #FFCDD2;
+    td {
+      &.incoming {
+        color: mat.get-theme-color($theme, on-secondary-fixed);
+        background-color: mat.get-theme-color($theme, secondary-fixed);
+      }
+      &.outgoing {
+        color: mat.get-theme-color($theme, on-tertiary-fixed);
+        background-color: mat.get-theme-color($theme, tertiary-fixed-dim);
+      }
     }
   }
 }

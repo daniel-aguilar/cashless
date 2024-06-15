@@ -2,14 +2,14 @@
 
 @mixin theme($theme) {
   app-player-list {
-    $censored: black;
+    $censored: mat.get-theme-color($theme, tertiary);
 
     span.pin {
       color: $censored;
       background-color: $censored;
 
       &.visible {
-        color: white;
+        color: mat.get-theme-color($theme, on-tertiary);
       }
     }
   }

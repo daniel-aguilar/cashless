@@ -1,49 +1,40 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
+@use './app/toolbar-theme';
+@use './app/loading/loading-theme';
 @use './app/player/payment-log/payment-log-theme';
 @use './app/banker/player-list/player-list-theme';
 
 @include mat.core();
 
-$typography-config: mat.m2-define-typography-config(
-  $font-family: '"Josefin Sans", sans-serif',
-  $headline-6: mat.m2-define-typography-level(20px, 20px, 500),
-  $body-1: mat.m2-define-typography-level(16px, 24px, 400),
-  $body-2: mat.m2-define-typography-level(18px, 16px, 300),
-  $button: mat.m2-define-typography-level(16px, 16px, 500),
-);
-
-$monopoly-theme: mat.m2-define-light-theme((
+$theme: mat.define-theme((
   color: (
-    primary: mat.m2-define-palette(mat.$m2-red-palette, 900),
-    accent: mat.m2-define-palette(mat.$m2-grey-palette, 50),
+    theme-type: light,
+    primary: mat.$rose-palette,
+    tertiary: mat.$red-palette,
   ),
-  typography: $typography-config,
 ));
 
-@include payment-log-theme.theme($monopoly-theme);
-@include player-list-theme.theme($monopoly-theme);
+@include toolbar-theme.theme($theme);
+@include loading-theme.theme($theme);
+@include payment-log-theme.theme($theme);
+@include player-list-theme.theme($theme);
 
 html {
-  @include mat.all-component-themes($monopoly-theme);
+  @include mat.all-component-themes($theme);
 }
-@include mat.typography-hierarchy($typography-config);
+@include mat.typography-hierarchy($theme);
 
 
-$monopoly-green: map.get(mat.$m2-green-palette, 100);
-$monopoly-red: map.get(mat.$m2-red-palette, 900);
-
-mat-toolbar.app-toolbar {
-  background-color: $monopoly-green;
+.error {
+  color: mat.get-theme-color($theme, error);
 }
 
 table.monopoly-table {
   thead {
-    background: $monopoly-red;
-    color: white;
+    background-color: mat.get-theme-color($theme, tertiary-container);
   }
 
   th, td {
-    border-color: black;
+    border-color: mat.get-theme-color($theme, outline-variant);
   }
 }
