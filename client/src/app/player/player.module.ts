@@ -6,7 +6,6 @@ import { AuthService } from '../auth/auth.service';
 import { MaterialModule } from '../material.module';
 import { LocalizeNamePipe } from './localize-name.pipe';
 import { PaymentLogComponent } from './payment-log/payment-log.component';
-import { PaymentTypeDirective } from './payment-log/payment-type.directive';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 import { TransferMoneyComponent } from './transfer-money/transfer-money.component';
@@ -22,7 +21,6 @@ const routes: Route[] = [
     PlayerDetailComponent,
     TransferMoneyComponent,
     PaymentLogComponent,
-    PaymentTypeDirective,
     LocalizeNamePipe,
     TransactionLogComponent,
   ],

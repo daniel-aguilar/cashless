@@ -10,7 +10,7 @@
   <tbody>
     <tr *ngFor="let p of payments">
       <td>{{ p.tx.date | date:'h:mm a' }}</td>
-      <td appPaymentType [isIncoming]="p.isIncoming">
+      <td [class]="p.isIncoming ? 'incoming' : 'outgoing'">
         <mat-icon *ngIf="p.isIncoming; else elseBlock">arrow_downward</mat-icon>
         <ng-template #elseBlock><mat-icon>arrow_upward</mat-icon></ng-template>
       </td>

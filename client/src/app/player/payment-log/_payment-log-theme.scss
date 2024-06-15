@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  table {
+    th, td {
+      border-color: #E0E0E0;
+    }
+  }
+
+  td {
+    &.incoming {
+      background-color: #C8E6C9;
+    }
+    &.outgoing {
+      background-color: #FFCDD2;
+    }
+  }
+}
