@@ -24,8 +24,7 @@
   </div>
   <div class="row" [class.center]="isHandset">
     <div class="col-6">
-      <button mat-flat-button color="primary"
-          [disabled]="form.invalid || isLoading">
+      <button mat-flat-button [disabled]="form.invalid || isLoading">
         <span i18n>Transfer Amount</span>
       </button>
     </div>

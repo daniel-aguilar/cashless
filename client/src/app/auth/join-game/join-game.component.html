@@ -7,8 +7,7 @@
           <input matInput placeholder="Ex. 1234" i18n-placeholder autocomplete="off"
               formControlName="pin" minlength="4" maxlength="4" pattern="[0-9]{4}">
         </mat-form-field>
-        <button mat-flat-button color="primary"
-            [disabled]="form.invalid">OK</button>
+        <button mat-flat-button [disabled]="form.invalid">OK</button>
         <p i18n class="error mt-2" *ngIf="error">No account found</p>
       </div>
     </div>
