@@ -28,10 +28,6 @@ html {
 $monopoly-green: map.get(mat.$m2-green-palette, 100);
 $monopoly-red: map.get(mat.$m2-red-palette, 900);
 
-.app-background {
-  background-color: white;
-}
-
 mat-toolbar.app-toolbar {
   background-color: $monopoly-green;
 }
