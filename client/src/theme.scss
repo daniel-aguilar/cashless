@@ -38,7 +38,7 @@ mat-toolbar.app-toolbar {
 
 app-payment-log table {
   th, td {
-    border: 1px solid #E0E0E0;
+    border-color: #E0E0E0;
   }
 }
 
@@ -49,6 +49,6 @@ table.monopoly-table {
   }
 
   th, td {
-    border: 1px solid black;
+    border-color: black;
   }
 }
