@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 i18n>Account Info</h2>
+  <h2 i18n class="mat-headline-medium">Account Info</h2>
 
   <ul>
     <li i18n *ngIf="!player.isBank">Name: {{ player.name }}</li>
@@ -14,7 +14,7 @@
 
   <mat-divider></mat-divider>
 
-  <h2 i18n>Transfer Money</h2>
+  <h2 i18n class="mat-headline-medium">Transfer Money</h2>
   <app-transfer-money></app-transfer-money>
 
   <app-payment-log (balanceChange)="updateBalance()"></app-payment-log>
