@@ -72,7 +72,6 @@ export class TransferMoneyComponent implements OnInit {
     const recipientName = recipient.isBank ? bankName : recipient.name;
 
     this.fg.resetForm({ recipientId: '' });
-    this.snack.open($localize `Transfered $${amount} to ${recipientName}`,
-        '', { duration: 2500 });
+    this.snack.open($localize `Transfered $${amount} to ${recipientName}`);
   }
 }
