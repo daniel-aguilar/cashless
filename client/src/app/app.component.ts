@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { environment as env } from 'src/environments/environment';
 import { Account } from './auth/account';
 import { AuthService } from './auth/auth.service';
 
@@ -30,6 +31,10 @@ export class AppComponent implements OnInit {
   leaveGame() {
     this.auth.logout();
     this.router.navigateByUrl('/');
+  }
+
+  wakeUp() {
+    location.assign(`${env.apiURL}/sb/wake-up`);
   }
 
   private listenForBankerRoute() {
