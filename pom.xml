@@ -118,7 +118,7 @@
             </args>
           </container>
           <from>
-           <image>eclipse-temurin:21-jre-alpine@sha256:8cc1202a100e72f6e91bf05ab274b373a5def789ab6d9e3e293a61236662ac27</image>
+           <image>eclipse-temurin:21-jre-alpine@sha256:03c1fb6fff9b28aa3be69f59df0a274c2c3984189726645cb383217229b25082</image>
           </from>
         </configuration>
       </plugin>
