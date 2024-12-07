@@ -10,7 +10,8 @@ import { LoadingService } from 'src/app/loading/loading.service';
 @Component({
   selector: 'app-transaction-log',
   templateUrl: './transaction-log.component.html',
-  styleUrls: ['./transaction-log.component.scss']
+  styleUrls: ['./transaction-log.component.scss'],
+  standalone: false
 })
 export class TransactionLogComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];

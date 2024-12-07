@@ -8,6 +8,7 @@ import { LoadingService } from '../loading/loading.service';
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
+  standalone: false
 })
 export class NewGameComponent {
   form = new FormGroup({

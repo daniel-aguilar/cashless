@@ -5,7 +5,8 @@ import { Gateway } from '../gateway';
 @Component({
   selector: 'app-join-game',
   templateUrl: './join-game.component.html',
-  styleUrls: ['./join-game.component.scss']
+  styleUrls: ['./join-game.component.scss'],
+  standalone: false
 })
 export class JoinGameComponent extends Gateway implements OnInit {
   form: FormGroup<{ pin: FormControl<string> }>;

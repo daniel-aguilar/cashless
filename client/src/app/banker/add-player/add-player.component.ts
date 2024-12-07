@@ -14,6 +14,7 @@ export interface DialogData {
 @Component({
   selector: 'app-add-player',
   templateUrl: './add-player.component.html',
+  standalone: false
 })
 export class AddPlayerComponent {
   playerName = new FormControl('', [
