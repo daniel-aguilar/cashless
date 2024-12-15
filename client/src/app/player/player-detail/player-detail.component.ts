@@ -8,6 +8,7 @@ import { PlayerService } from '../player.service';
   templateUrl: './player-detail.component.html',
   styleUrls: ['./player-detail.component.scss'],
   providers: [PlayerService],
+  standalone: false
 })
 export class PlayerDetailComponent implements OnInit {
   player: Account;

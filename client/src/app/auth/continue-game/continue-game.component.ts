@@ -4,7 +4,8 @@ import { Gateway } from '../gateway';
 @Component({
   selector: 'app-continue-game',
   templateUrl: './continue-game.component.html',
-  styleUrls: ['./continue-game.component.scss']
+  styleUrls: ['./continue-game.component.scss'],
+  standalone: false
 })
 export class ContinueGameComponent extends Gateway implements OnInit {
   canContinueGame = false;

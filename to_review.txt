@@ -1,0 +1,3 @@
+standalone components (phase out modules?)
+material design custom theme @include statements
+angular-eslint best practices

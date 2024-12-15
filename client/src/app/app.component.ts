@@ -7,6 +7,7 @@ import { AuthService } from './auth/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  standalone: false
 })
 export class AppComponent implements OnInit {
   account: Account;

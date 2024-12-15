@@ -8,7 +8,8 @@ import { PlayerService } from '../player.service';
 @Component({
   selector: 'app-payment-log',
   templateUrl: './payment-log.component.html',
-  styleUrls: ['./payment-log.component.scss']
+  styleUrls: ['./payment-log.component.scss'],
+  standalone: false
 })
 export class PaymentLogComponent implements OnInit, OnDestroy {
   emptyLines = new Array(4);

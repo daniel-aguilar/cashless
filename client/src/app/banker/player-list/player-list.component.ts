@@ -10,7 +10,8 @@ import { AddPlayerComponent, DialogData } from '../add-player/add-player.compone
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.scss']
+  styleUrls: ['./player-list.component.scss'],
+  standalone: false
 })
 export class PlayerListComponent implements OnInit {
   banker: Account;

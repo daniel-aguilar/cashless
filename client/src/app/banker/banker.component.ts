@@ -9,6 +9,7 @@ import { BankService } from './bank.service';
   selector: 'app-banker',
   templateUrl: './banker.component.html',
   styleUrls: ['./banker.component.scss'],
+  standalone: false
 })
 export class BankerComponent implements OnInit {
   player: Account;

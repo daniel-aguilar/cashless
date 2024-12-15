@@ -15,6 +15,7 @@ import { PlayerService } from '../player.service';
   selector: 'app-transfer-money',
   templateUrl: './transfer-money.component.html',
   styleUrls: ['./transfer-money.component.scss'],
+  standalone: false
 })
 export class TransferMoneyComponent implements OnInit {
   form = new FormGroup({

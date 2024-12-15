@@ -14,7 +14,7 @@ import { AuthService } from './auth/auth.service';
 
 describe('AppComponentTest', () => {
   let router: Router;
-  @Component({})
+  @Component({ standalone: false })
   class BlankComponent { }
 
   let component: AppComponent;

@@ -2,7 +2,10 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 
 const visible = 'visible';
 
-@Directive({ selector: '[appPinHider]' })
+@Directive({
+  selector: '[appPinHider]',
+  standalone: false
+})
 export class PinHiderDirective {
 
   constructor(private el: ElementRef) {
