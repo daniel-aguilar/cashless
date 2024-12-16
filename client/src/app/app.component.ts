@@ -1,13 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { MatToolbar } from '@angular/material/toolbar';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { Account } from './auth/account';
 import { AuthService } from './auth/auth.service';
+import { LoadingComponent } from './loading/loading.component';
+import { MaterialModule } from './material.module';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  standalone: false
+  imports: [
+    CommonModule,
+    LoadingComponent,
+    MatToolbar,
+    MaterialModule,
+    RouterOutlet,
+    RouterLink,
+  ]
 })
 export class AppComponent implements OnInit {
   account: Account;

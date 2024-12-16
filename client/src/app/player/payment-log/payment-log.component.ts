@@ -4,12 +4,21 @@ import { switchMap } from 'rxjs/operators';
 import { BankService } from 'src/app/banker/bank.service';
 import { Payment } from 'src/app/banker/payment';
 import { PlayerService } from '../player.service';
+import { CommonModule } from '@angular/common';
+import { LocalizeNamePipe } from '../localize-name.pipe';
+import { MaterialModule } from 'src/app/material.module';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-payment-log',
   templateUrl: './payment-log.component.html',
   styleUrls: ['./payment-log.component.scss'],
-  standalone: false
+  imports: [
+    CommonModule,
+    RouterLink,
+    MaterialModule,
+    LocalizeNamePipe,
+  ],
 })
 export class PaymentLogComponent implements OnInit, OnDestroy {
   emptyLines = new Array(4);

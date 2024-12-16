@@ -2,7 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl, FormGroup,
-  FormGroupDirective, Validators
+  FormGroupDirective, ReactiveFormsModule, Validators
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
@@ -10,12 +10,20 @@ import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
 import { GameService } from 'src/app/game.service';
 import { PlayerService } from '../player.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from 'src/app/material.module';
+import { LocalizeNamePipe } from '../localize-name.pipe';
 
 @Component({
   selector: 'app-transfer-money',
   templateUrl: './transfer-money.component.html',
   styleUrls: ['./transfer-money.component.scss'],
-  standalone: false
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    LocalizeNamePipe,
+  ],
 })
 export class TransferMoneyComponent implements OnInit {
   form = new FormGroup({

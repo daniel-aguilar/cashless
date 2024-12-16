@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { GameService } from '../game.service';
 import { LoadingService } from '../loading/loading.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material.module';
 
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
-  standalone: false
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule,
+  ]
 })
 export class NewGameComponent {
   form = new FormGroup({

@@ -1,4 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -6,12 +7,16 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { Transaction } from 'src/app/banker/transaction';
 import { LoadingService } from 'src/app/loading/loading.service';
+import { LocalizeNamePipe } from '../localize-name.pipe';
 
 @Component({
   selector: 'app-transaction-log',
   templateUrl: './transaction-log.component.html',
   styleUrls: ['./transaction-log.component.scss'],
-  standalone: false
+  imports: [
+    CommonModule,
+    LocalizeNamePipe
+  ],
 })
 export class TransactionLogComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];

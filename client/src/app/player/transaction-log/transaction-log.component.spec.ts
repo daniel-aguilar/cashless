@@ -23,7 +23,6 @@ describe('TransactionLogComponentTest', () => {
     authSpy.getLoggedAccount.and.returnValue({ gameId: 1 } as Account);
 
     TestBed.configureTestingModule({
-      declarations: [TransactionLogComponent],
       providers: [
         { provide: AuthService, useValue: authSpy },
         { provide: BankService, useValue: bankSpy },

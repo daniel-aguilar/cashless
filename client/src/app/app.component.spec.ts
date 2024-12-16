@@ -29,7 +29,6 @@ describe('AppComponentTest', () => {
     spy.getLoginStatus.and.returnValue(loginStatus.asObservable());
 
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
       providers: [
         { provide: AuthService, useValue: spy },
         provideRouter([

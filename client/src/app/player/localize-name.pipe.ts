@@ -1,9 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'localizeName',
-  standalone: false
-})
+@Pipe({ name: 'localizeName' })
 export class LocalizeNamePipe implements PipeTransform {
 
   transform(name: string): string {
