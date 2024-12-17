@@ -1,3 +1,10 @@
-standalone components (phase out modules?)
+switch to standalone components:
+  * Remove usage of MaterialModule in favor of per-component use
+  * Leave Banker module for the time being (research lazy loaded modules/components)
+  * player-detail.component.spec.ts is unnecessarily complex to setup: research how to
+    properly unit test components which have child components (imports)
+    https://spin.atomicobject.com/angular-standalone-components/
+  * Stop using CommonModule (NgIf, NgFor, etc. - prefer template control flow)
+  * consider a SharedModule pattern? (review this thoroughly, what do most people do?)
 material design custom theme @include statements
 angular-eslint best practices
