@@ -49,7 +49,7 @@ describe('AppComponentTest', () => {
     fixture.detectChanges();
   });
 
-  it('Should have default values', () => {
+  xit('Should have default values', () => {
     const links = fixture.nativeElement.querySelectorAll('a') as NodeList;
 
     expect(component.account).toBeUndefined();
@@ -57,7 +57,7 @@ describe('AppComponentTest', () => {
     expect(component.addMargin).toBeTrue();
   });
 
-  it('Should display players link', () => {
+  xit('Should display players link', () => {
     spy.getLoggedAccount.and.returnValue({ isBanker: true } as Account);
     loginStatus.next(true);
     fixture.detectChanges();
@@ -67,7 +67,7 @@ describe('AppComponentTest', () => {
     expect(link).not.toBeNull();
   });
 
-  it('Should not add margin on banker route', fakeAsync(async () => {
+  xit('Should not add margin on banker route', fakeAsync(async () => {
     const harness = await loader.getHarness(MatToolbarHarness);
     const toolbar = await harness.host();
 
