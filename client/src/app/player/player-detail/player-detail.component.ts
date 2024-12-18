@@ -1,12 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDivider } from '@angular/material/divider';
 import { Account } from 'src/app/auth/account';
 import { BankService } from 'src/app/banker/bank.service';
-import { PlayerService } from '../player.service';
-import { CommonModule } from '@angular/common';
 import { PaymentLogComponent } from '../payment-log/payment-log.component';
+import { PlayerService } from '../player.service';
 import { TransferMoneyComponent } from '../transfer-money/transfer-money.component';
-import { MaterialModule } from 'src/app/material.module';
-import { LocalizeNamePipe } from '../localize-name.pipe';
 
 @Component({
   selector: 'app-player-detail',
@@ -14,9 +13,9 @@ import { LocalizeNamePipe } from '../localize-name.pipe';
   styleUrls: ['./player-detail.component.scss'],
   imports: [
     CommonModule,
+    MatDivider,
     TransferMoneyComponent,
     PaymentLogComponent,
-    MaterialModule,
   ],
   providers: [PlayerService],
 })
