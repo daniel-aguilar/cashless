@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
@@ -30,7 +30,7 @@ describe('PlayerDetailComponentTest', () => {
 
     TestBed.overrideComponent(PlayerDetailComponent, {
       set: {
-        imports: [CommonModule],
+        imports: [CurrencyPipe],
         providers: [
           { provide: PlayerService, useValue: mockPlayerService },
         ],

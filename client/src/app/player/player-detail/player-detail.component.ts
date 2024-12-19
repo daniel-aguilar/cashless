@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { Account } from 'src/app/auth/account';
@@ -12,7 +12,7 @@ import { TransferMoneyComponent } from '../transfer-money/transfer-money.compone
   templateUrl: './player-detail.component.html',
   styleUrls: ['./player-detail.component.scss'],
   imports: [
-    CommonModule,
+    CurrencyPipe,
     MatDivider,
     TransferMoneyComponent,
     PaymentLogComponent,

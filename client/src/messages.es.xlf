@@ -238,19 +238,28 @@
           <context context-type="linenumber">2,4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5722235063735091336" datatype="html">
-        <source>Name: <x id="INTERPOLATION" equiv-text="{{ player.name }}"/></source>
-        <target>Nombre: <x id="INTERPOLATION" equiv-text="{{ player.name }}"/></target>
+      <trans-unit id="402785015655073812" datatype="html">
+        <source>Name: </source>
+        <target>Nombre: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
-          <context context-type="linenumber">5,6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9208668043530057480" datatype="html">
-        <source> Balance: <x id="START_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;ng-template *ngIf=&quot;updatingBalance; else elseBlock&quot;&gt;"/>—<x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;"/><x id="START_TAG_NG_TEMPLATE_1" ctype="x-ng_template_1" equiv-text="&lt;ng-template #elseBlock&gt;"/> <x id="INTERPOLATION" equiv-text="{{ balance | currency:&apos;USD&apos;:&apos;symbol&apos;:&apos;1.0-0&apos;:&apos;en-US&apos; }}"/> <x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;"/></source>
+      <trans-unit id="5344234773121446541" datatype="html">
+        <source>Balance: </source>
+        <target>Saldo: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
-          <context context-type="linenumber">7,15</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2849064100927111571" datatype="html">
+        <source>loading...</source>
+        <target>cargando...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8714672674517739175" datatype="html">
