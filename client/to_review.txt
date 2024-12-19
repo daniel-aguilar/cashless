@@ -8,3 +8,6 @@ switch to standalone components:
   * consider a SharedModule pattern? (review this thoroughly, what do most people do?)
 material design custom theme @include statements
 angular-eslint best practices
+i18n: Improve template structure to simplify translation files
+Compare app (configs, component definition, overall structure) with freshly created one
+angular's current best practices
