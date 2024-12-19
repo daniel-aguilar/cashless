@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
@@ -12,23 +13,43 @@ class MockBankService {
   }
 }
 
+const nameElementSelector = 'li.name';
+
 describe('PlayerDetailComponentTest', () => {
   let fixture: ComponentFixture<PlayerDetailComponent>;
-  let component: PlayerDetailComponent;
 
   beforeEach(() => {
     const mockPlayerService = { account: { isBank: true } as Account };
 
     TestBed.configureTestingModule({
+      imports: [PlayerDetailComponent],
       providers: [
         { provide: BankService, useClass: MockBankService },
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    }).compileComponents();
+    });
 
     TestBed.overrideComponent(PlayerDetailComponent, {
       set: {
-        imports: [],
+        imports: [CommonModule],
+        providers: [
+          { provide: PlayerService, useValue: mockPlayerService },
+        ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      },
+    });
+  });
+
+  it('Should hide bank name', () => {
+    fixture = TestBed.createComponent(PlayerDetailComponent);
+    fixture.detectChanges();
+    const nameElement = fixture.nativeElement.querySelector(nameElementSelector);
+    expect(nameElement).toBeNull();
+  });
+
+  it("Should display player's name", () => {
+    const mockPlayerService = { account: { isBank: false } as Account };
+    TestBed.overrideComponent(PlayerDetailComponent, {
+      set: {
         providers: [
           { provide: PlayerService, useValue: mockPlayerService },
         ],
@@ -36,13 +57,8 @@ describe('PlayerDetailComponentTest', () => {
     });
 
     fixture = TestBed.createComponent(PlayerDetailComponent);
-    component = fixture.componentInstance;
-    component.ngOnInit();
-  });
-
-  xit('Should hide bank name', () => {
     fixture.detectChanges();
-    const shown = fixture.nativeElement.querySelector('li.name');
-    expect(shown).toBeNull();
+    const nameElement = fixture.nativeElement.querySelector(nameElementSelector);
+    expect(nameElement).toBeTruthy();
   });
 });
