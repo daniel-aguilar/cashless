@@ -1,7 +1,3 @@
-@use '@angular/material' as mat;
-
-@mixin theme($theme) {
-  app-loading div {
-    background-color: mat.get-theme-color($theme, surface-container);
-  }
+app-loading div {
+  background-color: var(--mat-sys-surface-container)
 }
