@@ -1,5 +1,3 @@
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject, of } from 'rxjs';
 import { Account } from 'src/app/auth/account';
@@ -23,14 +21,12 @@ describe('TransactionLogComponentTest', () => {
     authSpy.getLoggedAccount.and.returnValue({ gameId: 1 } as Account);
 
     TestBed.configureTestingModule({
-      declarations: [TransactionLogComponent],
+      imports: [TransactionLogComponent],
       providers: [
         { provide: AuthService, useValue: authSpy },
         { provide: BankService, useValue: bankSpy },
-        provideHttpClient(),
-        provideHttpClientTesting(),
       ]
-    }).compileComponents();
+    });
 
     fixture = TestBed.createComponent(TransactionLogComponent);
     component = fixture.componentInstance;

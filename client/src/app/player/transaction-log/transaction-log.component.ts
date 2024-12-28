@@ -1,31 +1,29 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { BankService } from 'src/app/banker/bank.service';
 import { Transaction } from 'src/app/banker/transaction';
 import { LoadingService } from 'src/app/loading/loading.service';
+import { LocalizeNamePipe } from '../localize-name.pipe';
 
 @Component({
   selector: 'app-transaction-log',
   templateUrl: './transaction-log.component.html',
-  styleUrls: ['./transaction-log.component.scss']
+  imports: [
+    DatePipe,
+    LocalizeNamePipe,
+  ],
 })
 export class TransactionLogComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
-  isHandset = false;
 
   private gameId = 0;
   private txSub: Subscription;
-
-  constructor(
-    private auth: AuthService,
-    private bank: BankService,
-    private loading: LoadingService,
-    private breakpointObserver: BreakpointObserver) {
-
-  }
+  private auth = inject(AuthService);
+  private bank = inject(BankService);
+  private loading = inject(LoadingService);
 
   ngOnInit() {
     this.gameId = this.auth.getLoggedAccount().gameId;
@@ -35,9 +33,6 @@ export class TransactionLogComponent implements OnInit, OnDestroy {
       this.listenToTransactions();
       this.loading.hide();
     });
-    this.breakpointObserver
-        .observe([Breakpoints.HandsetPortrait])
-        .subscribe(res => this.isHandset = res.matches);
   }
 
   ngOnDestroy() {

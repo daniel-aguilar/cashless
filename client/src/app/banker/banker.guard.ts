@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BankerGuard {
-  constructor(private auth: AuthService) { }
+  private auth = inject(AuthService);
 
   canActivate() {
     const player = this.auth.getLoggedAccount();

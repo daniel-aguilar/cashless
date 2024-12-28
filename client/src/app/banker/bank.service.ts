@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Client, Message } from '@stomp/stompjs';
 import { Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -19,8 +19,9 @@ export class BankService {
 
   private transactionWS: Client;
   private txs = new Subject<Transaction>();
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.transactionWS = new Client({
       brokerURL: env.wsURL,
       onConnect: () => this.listenToTransactions(),

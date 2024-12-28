@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { GameService } from '../game.service';
 import { LoadingService } from '../loading/loading.service';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
 })
 export class NewGameComponent {
   form = new FormGroup({
@@ -18,13 +28,10 @@ export class NewGameComponent {
     return this.form.get('name');
   }
 
-  constructor(
-    private game: GameService,
-    private auth: AuthService,
-    private router: Router,
-    private loading: LoadingService) {
-
-  }
+  private game = inject(GameService);
+  private auth = inject(AuthService);
+  private router = inject(Router);
+  private loading = inject(LoadingService);
 
   createGame() {
     const name = this.form.value.name;

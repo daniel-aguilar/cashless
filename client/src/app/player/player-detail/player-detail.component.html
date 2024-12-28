@@ -1,21 +1,28 @@
-<div class="container">
+<div class="px-1 md:px-5">
   <h2 i18n class="mat-headline-medium">Account Info</h2>
 
-  <ul>
-    <li i18n *ngIf="!player.isBank">Name: {{ player.name }}</li>
-    <li i18n>
-      Balance:
-      <ng-template *ngIf="updatingBalance; else elseBlock">—</ng-template>
-      <ng-template #elseBlock>
+  <ul class="list-none ps-0">
+    @if (!player.isBank) {
+      <li class="name">
+        <ng-container i18n>Name: </ng-container>{{ player.name }}
+      </li>
+    }
+    <li>
+      <ng-container i18n>Balance: </ng-container>
+      @if (updatingBalance) {
+        <ng-container i18n>loading...</ng-container>
+      } @else {
         {{ balance | currency:'USD':'symbol':'1.0-0':'en-US' }}
-      </ng-template>
+      }
     </li>
   </ul>
 
   <mat-divider></mat-divider>
 
-  <h2 i18n class="mat-headline-medium">Transfer Money</h2>
-  <app-transfer-money></app-transfer-money>
+  @defer {
+    <h2 i18n class="mat-headline-medium pt-1">Transfer Money</h2>
+    <app-transfer-money></app-transfer-money>
 
-  <app-payment-log (balanceChange)="updateBalance()"></app-payment-log>
+    <app-payment-log (balanceChange)="updateBalance()"></app-payment-log>
+  }
 </div>

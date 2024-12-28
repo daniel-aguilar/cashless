@@ -1,4 +1,5 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Account } from 'src/app/auth/account';
@@ -12,13 +13,42 @@ class MockBankService {
   }
 }
 
+const nameElementSelector = 'li.name';
+
 describe('PlayerDetailComponentTest', () => {
   let fixture: ComponentFixture<PlayerDetailComponent>;
-  let component: PlayerDetailComponent;
 
   beforeEach(() => {
     const mockPlayerService = { account: { isBank: true } as Account };
 
+    TestBed.configureTestingModule({
+      imports: [PlayerDetailComponent],
+      providers: [
+        { provide: BankService, useClass: MockBankService },
+      ],
+    });
+
+    TestBed.overrideComponent(PlayerDetailComponent, {
+      set: {
+        imports: [CurrencyPipe],
+        providers: [
+          { provide: PlayerService, useValue: mockPlayerService },
+        ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      },
+    });
+  });
+
+  it('Should hide bank name', () => {
+    fixture = TestBed.createComponent(PlayerDetailComponent);
+    fixture.detectChanges();
+    const nameElement = fixture.nativeElement.querySelector(nameElementSelector);
+    expect(nameElement).toBeNull();
+  });
+
+  // eslint-disable-next-line @stylistic/ts/quotes
+  it("Should display player's name", () => {
+    const mockPlayerService = { account: { isBank: false } as Account };
     TestBed.overrideComponent(PlayerDetailComponent, {
       set: {
         providers: [
@@ -27,22 +57,9 @@ describe('PlayerDetailComponentTest', () => {
       },
     });
 
-    TestBed.configureTestingModule({
-      declarations: [PlayerDetailComponent],
-      providers: [
-        { provide: BankService, useClass: MockBankService },
-      ],
-      schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents();
-
     fixture = TestBed.createComponent(PlayerDetailComponent);
-    component = fixture.componentInstance;
-    component.ngOnInit();
-  });
-
-  it('Should hide bank name', () => {
     fixture.detectChanges();
-    const shown = fixture.nativeElement.querySelector('p.name');
-    expect(shown).toBeNull();
+    const nameElement = fixture.nativeElement.querySelector(nameElementSelector);
+    expect(nameElement).toBeTruthy();
   });
 });

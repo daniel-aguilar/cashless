@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { EMPTY } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { environment as env } from '../environments/environment';
@@ -11,11 +11,8 @@ const apiURL = `${env.apiURL}/game`;
 @Injectable({ providedIn: 'root' })
 export class GameService {
 
-  constructor(
-    private http: HttpClient,
-    private auth: AuthService) {
-
-  }
+  private http = inject(HttpClient);
+  private auth = inject(AuthService);
 
   newGame(bankerName: string) {
     const data = new FormData();

@@ -7,7 +7,7 @@
         <target>Gestionar Jugadores</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8446162208830000966" datatype="html">
@@ -15,7 +15,7 @@
         <target>Salir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1313025629521683439" datatype="html">
@@ -23,7 +23,7 @@
         <target>Continuar Juego</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/continue-game/continue-game.component.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2935871829967083793" datatype="html">
@@ -31,11 +31,11 @@
         <target>PIN</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/join-game/join-game.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/player-list/player-list.component.html</context>
-          <context context-type="linenumber">7,8</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6808943571701044686" datatype="html">
@@ -43,7 +43,7 @@
         <target>Ej. 1234</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/join-game/join-game.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="485548018329936984" datatype="html">
@@ -63,7 +63,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/player-list/player-list.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7408681291621365060" datatype="html">
@@ -75,7 +75,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/new-game/new-game.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8437269868071962918" datatype="html">
@@ -83,7 +83,7 @@
         <target>Ese nombre está reservado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/add-player/add-player.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2159130950882492111" datatype="html">
@@ -91,7 +91,7 @@
         <target>Cancelar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/add-player/add-player.component.html</context>
-          <context context-type="linenumber">10,11</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8326917468651479220" datatype="html">
@@ -99,7 +99,7 @@
         <target>Jugador <x id="PH" equiv-text="p.name"/> agregado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/add-player/add-player.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7683705529753923369" datatype="html">
@@ -107,7 +107,7 @@
         <target>Jugador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/banker.component.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">3</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
@@ -127,15 +127,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="826530520789026096" datatype="html">
-        <source>Your PIN is <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;pin&quot; appPinHider&gt;"/><x id="INTERPOLATION" equiv-text="{{ banker.pin }}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
-        <target>Tu PIN es <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;pin&quot; appPinHider&gt;"/><x id="INTERPOLATION" equiv-text="{{ banker.pin }}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+      <trans-unit id="1575479484358204930" datatype="html">
+        <source>Your PIN is </source>
+        <target>Tu PIN es </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/player-list/player-list.component.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8953033926734869941" datatype="html">
@@ -143,7 +143,7 @@
         <target>Nombre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/banker/player-list/player-list.component.html</context>
-          <context context-type="linenumber">6,7</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7130182138525932037" datatype="html">
@@ -151,7 +151,7 @@
         <target>Nuevo Juego</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main-menu/main-menu.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7463083971834019732" datatype="html">
@@ -159,7 +159,7 @@
         <target>Unirse a un Juego</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main-menu/main-menu.component.html</context>
-          <context context-type="linenumber">5,6</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8004047626676879660" datatype="html">
@@ -167,7 +167,7 @@
         <target>Ej. Isabel</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/new-game/new-game.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2190746145582475579" datatype="html">
@@ -227,7 +227,7 @@
         <target>Ver Bitácora de Transacciones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/payment-log/payment-log.component.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">37,38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1332214193580122293" datatype="html">
@@ -238,19 +238,28 @@
           <context context-type="linenumber">2,4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5722235063735091336" datatype="html">
-        <source>Name: <x id="INTERPOLATION" equiv-text="{{ player.name }}"/></source>
-        <target>Nombre: <x id="INTERPOLATION" equiv-text="{{ player.name }}"/></target>
+      <trans-unit id="402785015655073812" datatype="html">
+        <source>Name: </source>
+        <target>Nombre: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
-          <context context-type="linenumber">5,6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9208668043530057480" datatype="html">
-        <source> Balance: <x id="START_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;ng-template *ngIf=&quot;updatingBalance; else elseBlock&quot;&gt;"/>—<x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;"/><x id="START_TAG_NG_TEMPLATE_1" ctype="x-ng_template_1" equiv-text="&lt;ng-template #elseBlock&gt;"/> <x id="INTERPOLATION" equiv-text="{{ balance | currency:&apos;USD&apos;:&apos;symbol&apos;:&apos;1.0-0&apos;:&apos;en-US&apos; }}"/> <x id="CLOSE_TAG_NG_TEMPLATE" ctype="x-ng_template" equiv-text="&lt;/ng-template&gt;"/></source>
+      <trans-unit id="5344234773121446541" datatype="html">
+        <source>Balance: </source>
+        <target>Saldo: </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
-          <context context-type="linenumber">7,15</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2849064100927111571" datatype="html">
+        <source>loading...</source>
+        <target>cargando...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8714672674517739175" datatype="html">
@@ -258,7 +267,7 @@
         <target>Transferir Dinero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player-detail/player-detail.component.html</context>
-          <context context-type="linenumber">17,18</context>
+          <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7470090122060093243" datatype="html">
@@ -298,7 +307,7 @@
         <target>Transferir Monto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">30,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8657498830247797615" datatype="html">
@@ -306,7 +315,7 @@
         <target>Fondos Insuficientes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1641765973195155986" datatype="html">
@@ -314,7 +323,7 @@
         <target>Se han transferido $<x id="PH" equiv-text="amount"/> a <x id="PH_1" equiv-text="recipientName"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.component.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
     </body>

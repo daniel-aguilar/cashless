@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="makeTransaction()">
-  <div class="row">
-    <div class="col-md-4">
-      <mat-form-field floatLabel="always">
+  <div class="flex flex-col md:flex-row">
+    <div class="md:pe-5">
+      <mat-form-field class="w-full" floatLabel="always">
         <mat-label i18n>Amount</mat-label>
         <span matTextPrefix>$&nbsp;</span>
         <input autocomplete="off" matInput
@@ -9,24 +9,24 @@
       </mat-form-field>
     </div>
 
-    <div class="col">
-      <mat-form-field>
+    <div>
+      <mat-form-field class="w-full">
         <mat-label i18n>Player</mat-label>
         <mat-select formControlName="recipientId">
           <mat-option i18n value="">Choose a Player</mat-option>
-          <mat-option *ngFor="let r of recipients" [value]="r.id">
-            {{ r.name | localizeName }}
-            <mat-icon *ngIf="r.isBank">account_balance</mat-icon>
-          </mat-option>
+          @for (r of recipients; track r) {
+            <mat-option [value]="r.id">
+              {{ r.name | localizeName }}
+              @if (r.isBank) {
+                <mat-icon>account_balance</mat-icon>
+              }
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
     </div>
   </div>
-  <div class="row" [class.center]="isHandset">
-    <div class="col-6">
-      <button mat-flat-button [disabled]="form.invalid || isLoading">
-        <span i18n>Transfer Amount</span>
-      </button>
-    </div>
-  </div>
+  <button class="w-full md:w-fit" mat-flat-button [disabled]="form.invalid || isLoading">
+    <span i18n>Transfer Amount</span>
+  </button>
 </form>

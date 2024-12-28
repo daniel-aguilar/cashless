@@ -1,2 +1,4 @@
-<button i18n mat-flat-button *ngIf="canContinueGame"
-    (click)="continueGame()">Continue Game</button>
+@if (canContinueGame) {
+  <button class="w-full" i18n mat-flat-button
+      (click)="continueGame()">Continue Game</button>
+}

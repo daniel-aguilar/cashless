@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Account } from './account';
@@ -11,8 +11,9 @@ export class AuthService {
 
   private account: Account;
   private isLoggedIn = new BehaviorSubject(false);
+  private router = inject(Router);
 
-  constructor(private router: Router) {
+  constructor() {
     this.watchPointOfNoReturnRoutes();
     this.savedPin = localStorage.getItem(pinKey);
   }
@@ -20,7 +21,7 @@ export class AuthService {
   canActivate() {
     try {
       return Boolean(this.getLoggedAccount());
-    } catch (error) {
+    } catch {
       return this.router.parseUrl('/');
     }
   }

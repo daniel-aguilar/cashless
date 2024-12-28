@@ -1,7 +1,7 @@
-<div class="container pb-3">
-  <h2 i18n class="mat-headline-medium">Transaction Log</h2>
+<div class="px-1 pb-1">
+  <h2 i18n class="mat-headline-medium text-center">Transaction Log</h2>
 
-  <table class="mx-auto monopoly-table" [class.full-width]="isHandset">
+  <table class="monopoly-table mx-auto w-full md:w-2/3">
     <thead>
       <tr>
         <th i18n>Time</th>
@@ -11,12 +11,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tx of transactions">
-        <td>{{ tx.date | date:'h:mm a' }}</td>
-        <td>{{ tx.sender.name | localizeName }}</td>
-        <td>{{ tx.recipient.name | localizeName }}</td>
-        <td>${{ tx.amount }}</td>
-      </tr>
+      @for (tx of transactions; track tx) {
+        <tr>
+          <td>{{ tx.date | date:'h:mm a' }}</td>
+          <td>{{ tx.sender.name | localizeName }}</td>
+          <td>{{ tx.recipient.name | localizeName }}</td>
+          <td>${{ tx.amount }}</td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>

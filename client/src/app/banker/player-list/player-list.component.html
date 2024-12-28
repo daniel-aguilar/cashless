@@ -1,6 +1,9 @@
-<div class="container">
-  <p i18n>Your PIN is <span class="pin" appPinHider>{{ banker.pin }}</span></p>
-  <table class="mx-auto my-3 monopoly-table" [class.full-width]="isHandset">
+<div class="px-1">
+  <p class="text-center">
+    <ng-container i18n>Your PIN is </ng-container>
+    <span class="pin font-mono" appPinHider>{{ banker.pin }}</span>
+  </p>
+  <table class="monopoly-table mx-auto w-full md:w-2/3">
     <thead>
       <tr>
         <th i18n>Name</th>
@@ -8,10 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of players">
-        <td>{{ p.name }}</td>
-        <td><span class="pin" appPinHider>{{ p.pin }}</span></td>
-      </tr>
+      @for (p of players; track p) {
+        <tr>
+          <td>{{ p.name }}</td>
+          <td><span class="pin" appPinHider>{{ p.pin }}</span></td>
+        </tr>
+      }
     </tbody>
   </table>
   <button i18n-title title="Add Player" mat-fab (click)="openDialog()">

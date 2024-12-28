@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Account } from '../auth/account';
 import { AuthService } from '../auth/auth.service';
 
@@ -10,7 +10,9 @@ import { AuthService } from '../auth/auth.service';
 export class PlayerService {
   account: Account;
 
-  constructor(private auth: AuthService) {
+  private auth = inject(AuthService);
+
+  constructor() {
     this.account = this.auth.getLoggedAccount();
   }
 }

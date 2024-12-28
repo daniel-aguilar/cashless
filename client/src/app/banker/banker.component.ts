@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatTabsModule } from '@angular/material/tabs';
 import { Account } from '../auth/account';
 import { AuthService } from '../auth/auth.service';
+import { PlayerDetailComponent } from '../player/player-detail/player-detail.component';
 import { BankService } from './bank.service';
 
 @Component({
   selector: 'app-banker',
   templateUrl: './banker.component.html',
-  styleUrls: ['./banker.component.scss'],
+  imports: [
+    MatTabsModule,
+    PlayerDetailComponent,
+  ],
 })
 export class BankerComponent implements OnInit {
   player: Account;
   bank: Account;
   isHandset = false;
 
-  constructor(
-    private bankService: BankService,
-    private auth: AuthService,
-    private breakpointObserver: BreakpointObserver) {
+  private bankService = inject(BankService);
+  private auth = inject(AuthService);
+  private breakpointObserver = inject(BreakpointObserver);
 
+  constructor() {
     this.player = this.auth.getLoggedAccount();
   }
 

@@ -1,11 +1,12 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 
 const visible = 'visible';
 
 @Directive({ selector: '[appPinHider]' })
 export class PinHiderDirective {
+  private el = inject(ElementRef);
 
-  constructor(private el: ElementRef) {
+  constructor() {
     this.hideContent();
   }
 

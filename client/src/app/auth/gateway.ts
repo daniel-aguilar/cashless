@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { GameService } from 'src/app/game.service';
@@ -7,14 +7,10 @@ import { AuthService } from './auth.service';
 
 @Directive()
 export class Gateway {
-
-  constructor(
-    private router: Router,
-    private game: GameService,
-    private loading: LoadingService,
-    protected auth: AuthService) {
-
-  }
+  private router = inject(Router);
+  private game = inject(GameService);
+  private loading = inject(LoadingService);
+  protected auth = inject(AuthService);
 
   enterGame(pin: string) {
     this.loading.show();

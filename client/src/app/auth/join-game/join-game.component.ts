@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Gateway } from '../gateway';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-join-game',
   templateUrl: './join-game.component.html',
-  styleUrls: ['./join-game.component.scss']
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
 })
 export class JoinGameComponent extends Gateway implements OnInit {
   form: FormGroup<{ pin: FormControl<string> }>;

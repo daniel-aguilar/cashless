@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Gateway } from '../gateway';
 
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-continue-game',
   templateUrl: './continue-game.component.html',
-  styleUrls: ['./continue-game.component.scss']
+  imports: [ MatButtonModule ],
 })
 export class ContinueGameComponent extends Gateway implements OnInit {
   canContinueGame = false;
