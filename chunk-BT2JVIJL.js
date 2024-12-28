@@ -1,0 +1,1 @@
+import{lb as i}from"./chunk-NIFQOSTS.js";var t=class e{transform(r){return r==="Bank"?"Banco":r;}static ɵfac=function(a){return new(a||e)();};static ɵpipe=i({name:"localizeName",type:e,pure:!0});};export{t as a};/**i18n:b43e89926e09dd63ffe7aeaa32506b2509c60f4ee32420959a417b82d22832e7*/
