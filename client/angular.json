@@ -13,11 +13,7 @@
         }
       },
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -33,7 +29,6 @@
               "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -42,7 +37,7 @@
             ],
             "styles": [
               "src/theme.scss",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -101,7 +96,6 @@
               "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -109,7 +103,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.css",
               "src/theme.scss"
             ],
             "scripts": []

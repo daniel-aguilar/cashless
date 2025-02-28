@@ -12,7 +12,7 @@ import { PinHiderDirective } from '../pin-hider.directive';
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.scss'],
+  styleUrls: ['./player-list.component.css'],
   imports: [
     PinHiderDirective,
     MatButtonModule,
