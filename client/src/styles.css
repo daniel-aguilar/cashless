@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --spacing-1: 1em;
+  --spacing-2: 2em;
+  --spacing-3: 3em;
+  --spacing-4: 4em;
+  --spacing-5: 5em;
+  --spacing-6: 6em;
+}
 
 html, body {
   height: 100%;
