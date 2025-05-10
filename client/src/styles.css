@@ -10,6 +10,18 @@
   --spacing-6: 6em;
 }
 
+@layer base {
+  h2 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    margin-bottom: 0.75em;
+  }
+}
+
 html, body {
   height: 100%;
 }
