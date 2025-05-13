@@ -4,37 +4,35 @@
 @use './app/player/payment-log/payment-log-theme';
 @use './app/banker/player-list/player-list-theme';
 
-@include mat.elevation-classes();
-@include mat.app-background();
-
-$theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$rose-palette,
-    tertiary: mat.$red-palette,
-  ),
-));
-
-@include toolbar-theme.theme($theme);
-@include loading-theme.theme($theme);
-@include payment-log-theme.theme($theme);
-@include player-list-theme.theme($theme);
+$theme-font: Roboto;
 
 html {
-  @include mat.all-component-themes($theme);
+  color-scheme: light dark;
+  @include mat.theme((
+    color: (
+      primary: mat.$rose-palette,
+      tertiary: mat.$red-palette,
+    ),
+    typography: $theme-font,
+  ));
 }
-@include mat.typography-hierarchy($theme);
+
+body {
+  font-family: $theme-font, "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
 
 .error {
-  color: mat.get-theme-color($theme, error);
+  color: var(--mat-sys-error)
 }
 
 table.monopoly-table {
   thead {
-    background-color: mat.get-theme-color($theme, tertiary-container);
+    background-color: var(--mat-sys-tertiary-container);
   }
 
   th, td {
-    border-color: mat.get-theme-color($theme, outline-variant);
+    border-color: var(--mat-sys-outline-variant);
   }
 }

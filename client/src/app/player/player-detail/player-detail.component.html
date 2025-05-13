@@ -1,9 +1,9 @@
 <div class="px-1 md:px-5">
-  <h2 i18n class="mat-headline-medium">Account Info</h2>
+  <h2 i18n>Account Info</h2>
 
   <ul class="list-none ps-0">
     @if (!player.isBank) {
-      <li class="name">
+      <li class="name pb-[5px]">
         <ng-container i18n>Name: </ng-container>{{ player.name }}
       </li>
     }
@@ -20,7 +20,7 @@
   <mat-divider></mat-divider>
 
   @defer {
-    <h2 i18n class="mat-headline-medium pt-1">Transfer Money</h2>
+    <h2 i18n>Transfer Money</h2>
     <app-transfer-money></app-transfer-money>
 
     <app-payment-log (balanceChange)="updateBalance()"></app-payment-log>

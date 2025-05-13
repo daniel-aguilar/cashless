@@ -1,16 +1,12 @@
-@use '@angular/material' as mat;
+app-player-list {
+  $censored: var(--mat-sys-tertiary);
 
-@mixin theme($theme) {
-  app-player-list {
-    $censored: mat.get-theme-color($theme, tertiary);
+  span.pin {
+    color: $censored;
+    background-color: $censored;
 
-    span.pin {
-      color: $censored;
-      background-color: $censored;
-
-      &.visible {
-        color: mat.get-theme-color($theme, on-tertiary);
-      }
+    &.visible {
+      color: var(--mat-sys-on-tertiary)
     }
   }
 }
