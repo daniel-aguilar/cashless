@@ -1,0 +1,1 @@
+import{la as i}from"./chunk-326AMLNH.js";var t=class e{transform(r){return r==="Bank"?"Banco":r;}static ɵfac=function(a){return new(a||e)();};static ɵpipe=i({name:"localizeName",type:e,pure:!0});};export{t as a};/**i18n:9d31900ba07c3072cf371511ec689cdd59b3851c37c34153f11d6af32292664f*/
