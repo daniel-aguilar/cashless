@@ -2,7 +2,7 @@ import { FormControl } from '@angular/forms';
 import { Account } from 'src/app/auth/account';
 import { uniqueName } from './unique-name';
 
-describe('uniqueNameTest', () => {
+describe('uniqueName', () => {
   it('Should validate control', () => {
     const control = new FormControl();
     const fn = uniqueName([

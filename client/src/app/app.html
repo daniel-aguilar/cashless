@@ -1,0 +1,19 @@
+<app-loading-spinner></app-loading-spinner>
+<mat-toolbar class="app-toolbar" [style.margin-bottom]="addMargin ? '1em' : ''">
+  <h1>CASHLESS</h1>
+
+  <div class="ms-auto">
+    @if (account?.isBanker) {
+      <a i18n-title title="Manage Players" mat-icon-button routerLink="/banker/players">
+        <mat-icon>manage_accounts</mat-icon>
+      </a>
+    }
+
+    @if (account) {
+      <button i18n-title title="Quit" mat-icon-button (click)="leaveGame()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    }
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>
