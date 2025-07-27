@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiURL: 'https://cashless-a4jk4xuaoa-uc.a.run.app',
-  wsURL: 'wss://cashless-a4jk4xuaoa-uc.a.run.app/websocket',
+  apiURL: 'https://cashless-375154748704.us-central1.run.app',
+  wsURL: 'wss://cashless-375154748704.us-central1.run.app/websocket',
 };

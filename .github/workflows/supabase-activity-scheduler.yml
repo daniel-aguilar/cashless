@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send HTTP Request
-        run: curl https://cashless-a4jk4xuaoa-uc.a.run.app/sb/wake-up
+        run: curl https://cashless-375154748704.us-central1.run.app/sb/wake-up
