@@ -13,6 +13,8 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
+      - name: Lint
+        run: mvn spotless:check
       - name: Test
         run: mvn test
   github-pages:
