@@ -17,6 +17,7 @@
 
   <properties>
     <java.version>21</java.version>
+    <argLine /> <!-- For Mockito (see below) -->
   </properties>
 
   <dependencies>
@@ -133,6 +134,27 @@
             <removeUnusedImports />
             <removeWildcardImports />
           </java>
+        </configuration>
+      </plugin>
+
+      <!-- For Mockito (https://javadoc.io/doc/org.mockito/mockito-core/5.19.0/org.mockito/org/mockito/Mockito.html#0.3) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
         </configuration>
       </plugin>
     </plugins>
