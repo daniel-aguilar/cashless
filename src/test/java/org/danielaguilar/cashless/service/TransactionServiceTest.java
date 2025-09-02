@@ -29,8 +29,8 @@ public class TransactionServiceTest {
 	@Transactional
 	public void testTransferAmount() {
 		Transaction tx;
-		Account banker = accountRepository.findById(2).get();
-		Account player = accountRepository.findById(3).get();
+		Account banker = accountRepository.findById(2).orElseThrow();
+		Account player = accountRepository.findById(3).orElseThrow();
 
 		transactionService.transfer(banker, player, 30);
 
@@ -38,7 +38,7 @@ public class TransactionServiceTest {
 		assertEquals(130, player.getBalance());
 
 		assertEquals(1, transactionRepository.count());
-		tx = transactionRepository.findAll().iterator().next();
+		tx = transactionRepository.findAll().getFirst();
 		assertEquals(banker, tx.getSender());
 		assertEquals(player, tx.getRecipient());
 		assertEquals(30, tx.getAmount());

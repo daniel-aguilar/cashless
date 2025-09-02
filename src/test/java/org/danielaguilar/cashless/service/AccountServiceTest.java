@@ -22,7 +22,7 @@ public class AccountServiceTest {
 	@Test
 	@Transactional
 	public void testCreateBankAccount() {
-		var game = gameRepository.findById(2).get();
+		var game = gameRepository.findById(2).orElseThrow();
 		var bank = accountService.createBankAccount(game);
 		assertEquals("Bank", bank.getName());
 		assertEquals(1000000, bank.getBalance());
