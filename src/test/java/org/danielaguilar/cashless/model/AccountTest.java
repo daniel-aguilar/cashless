@@ -1,8 +1,11 @@
 package org.danielaguilar.cashless.model;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +38,7 @@ public class AccountTest {
 
 	@Test
 	public void testGeneratePin() {
-		assertEquals(account.getPin().length(), 4);
-		Integer.parseInt(account.getPin());
+		assertEquals(4, account.getPin().length());
+		assertTrue(StringUtils.isNumeric(account.getPin()));
 	}
 }
