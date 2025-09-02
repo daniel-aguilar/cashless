@@ -4,7 +4,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.danielaguilar.cashless.model.Transaction;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,9 +25,7 @@ public class AccountControllerTest {
 
 	@Test
 	public void testInsufficientFunds() throws Exception {
-		var tx = new Transaction.JSON();
-		tx.amount = 110;
-		tx.recipientId = 3;
+		var tx = new TransactionRequest(110, 3);
 		var json = mapper.writeValueAsString(tx);
 
 		mvc.perform(post("/account/2/transfer").content(json).contentType(MediaType.APPLICATION_JSON))

@@ -35,10 +35,10 @@ public class AccountController {
 	}
 
 	@PostMapping("/{id}/transfer")
-	public void transfer(@PathVariable("id") Account sender, @RequestBody Transaction.JSON transaction) {
+	public void transfer(@PathVariable("id") Account sender, @RequestBody TransactionRequest transaction) {
 		try {
-			Account recipient = accountService.getAccount(transaction.recipientId).get();
-			Transaction tx = transactionService.transfer(sender, recipient, transaction.amount);
+			Account recipient = accountService.getAccount(transaction.recipientId()).get();
+			Transaction tx = transactionService.transfer(sender, recipient, transaction.amount());
 			template.convertAndSend("/queue/transactions", tx);
 		} catch (IllegalArgumentException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());

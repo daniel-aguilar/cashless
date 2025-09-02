@@ -1,6 +1,5 @@
 package org.danielaguilar.cashless.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,13 +17,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Transaction {
-
-	public static class JSON {
-		public int amount;
-
-		@JsonProperty("to")
-		public int recipientId;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
