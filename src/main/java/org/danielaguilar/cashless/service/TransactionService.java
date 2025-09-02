@@ -33,7 +33,7 @@ public class TransactionService {
 		return transactionRepository.save(tx);
 	}
 
-	public List<Transaction> getLatestTransactions(Account account) {
+	public List<Transaction> findLatestTransactions(Account account) {
 		PageRequest page = PageRequest.of(0, 3);
 		return transactionRepository.findLatestTransactions(account, page);
 	}
