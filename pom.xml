@@ -133,6 +133,7 @@
             <importOrder />
             <removeUnusedImports />
             <removeWildcardImports />
+            <googleJavaFormat />
           </java>
         </configuration>
       </plugin>

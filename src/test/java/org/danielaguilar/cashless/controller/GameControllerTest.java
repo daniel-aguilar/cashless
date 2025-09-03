@@ -15,12 +15,12 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 public class GameControllerTest {
 
-	@Autowired
-	private MockMvc mvc;
+  @Autowired private MockMvc mvc;
 
-	@Test
-	public void testAccountNotFound() throws Exception {
-		mvc.perform(post("/game/join").param("pin", "6762")).andExpect(status().isNotFound())
-				.andExpect(status().reason("No account found"));
-	}
+  @Test
+  public void testAccountNotFound() throws Exception {
+    mvc.perform(post("/game/join").param("pin", "6762"))
+        .andExpect(status().isNotFound())
+        .andExpect(status().reason("No account found"));
+  }
 }

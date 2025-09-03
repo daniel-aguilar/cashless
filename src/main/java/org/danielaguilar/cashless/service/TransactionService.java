@@ -14,31 +14,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransactionService {
 
-	@Autowired
-	private TransactionRepository transactionRepository;
+  @Autowired private TransactionRepository transactionRepository;
+  @Autowired private AccountRepository accountRepository;
 
-	@Autowired
-	private AccountRepository accountRepository;
+  public Transaction transfer(Account sender, Account recipient, Integer amount) {
+    var tx = new Transaction();
+    tx.setSender(sender);
+    tx.setRecipient(recipient);
+    tx.setAmount(amount);
 
-	public Transaction transfer(Account sender, Account recipient, Integer amount) {
-		var tx = new Transaction();
-		tx.setSender(sender);
-		tx.setRecipient(recipient);
-		tx.setAmount(amount);
+    sender.withdraw(amount);
+    recipient.deposit(amount);
 
-		sender.withdraw(amount);
-		recipient.deposit(amount);
+    accountRepository.saveAll(Arrays.asList(sender, recipient));
+    return transactionRepository.save(tx);
+  }
 
-		accountRepository.saveAll(Arrays.asList(sender, recipient));
-		return transactionRepository.save(tx);
-	}
+  public List<Transaction> findLatestTransactions(Account account) {
+    PageRequest page = PageRequest.of(0, 3);
+    return transactionRepository.findLatestTransactions(account, page);
+  }
 
-	public List<Transaction> findLatestTransactions(Account account) {
-		PageRequest page = PageRequest.of(0, 3);
-		return transactionRepository.findLatestTransactions(account, page);
-	}
-
-	public List<Transaction> getTransactions(Game game) {
-		return transactionRepository.findByGame(game);
-	}
+  public List<Transaction> getTransactions(Game game) {
+    return transactionRepository.findByGame(game);
+  }
 }

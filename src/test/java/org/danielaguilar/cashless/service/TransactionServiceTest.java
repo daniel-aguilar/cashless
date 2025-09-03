@@ -16,31 +16,26 @@ import org.springframework.transaction.annotation.Transactional;
 @ActiveProfiles("test")
 public class TransactionServiceTest {
 
-	@Autowired
-	private AccountRepository accountRepository;
+  @Autowired private AccountRepository accountRepository;
+  @Autowired private TransactionService transactionService;
+  @Autowired private TransactionRepository transactionRepository;
 
-	@Autowired
-	private TransactionService transactionService;
+  @Test
+  @Transactional
+  public void testTransferAmount() {
+    Transaction tx;
+    Account banker = accountRepository.findById(2).orElseThrow();
+    Account player = accountRepository.findById(3).orElseThrow();
 
-	@Autowired
-	private TransactionRepository transactionRepository;
+    transactionService.transfer(banker, player, 30);
 
-	@Test
-	@Transactional
-	public void testTransferAmount() {
-		Transaction tx;
-		Account banker = accountRepository.findById(2).orElseThrow();
-		Account player = accountRepository.findById(3).orElseThrow();
+    assertEquals(70, banker.getBalance());
+    assertEquals(130, player.getBalance());
 
-		transactionService.transfer(banker, player, 30);
-
-		assertEquals(70, banker.getBalance());
-		assertEquals(130, player.getBalance());
-
-		assertEquals(1, transactionRepository.count());
-		tx = transactionRepository.findAll().getFirst();
-		assertEquals(banker, tx.getSender());
-		assertEquals(player, tx.getRecipient());
-		assertEquals(30, tx.getAmount());
-	}
+    assertEquals(1, transactionRepository.count());
+    tx = transactionRepository.findAll().getFirst();
+    assertEquals(banker, tx.getSender());
+    assertEquals(player, tx.getRecipient());
+    assertEquals(30, tx.getAmount());
+  }
 }

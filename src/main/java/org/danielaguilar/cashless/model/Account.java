@@ -20,57 +20,55 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Account {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "game_id")
-	private Game game;
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(name = "game_id")
+  private Game game;
 
-	@Column(name = "account_name")
-	private String name;
+  @Column(name = "account_name")
+  private String name;
 
-	@JsonIgnore
-	private int balance = 1500;
+  @JsonIgnore private int balance = 1500;
 
-	@EqualsAndHashCode.Include
-	private String pin;
+  @EqualsAndHashCode.Include private String pin;
 
-	public Account() {
-		generatePin();
-	}
+  public Account() {
+    generatePin();
+  }
 
-	public int getGameId() {
-		return game.getId();
-	}
+  public int getGameId() {
+    return game.getId();
+  }
 
-	@JsonProperty("isBank")
-	public Boolean isBank() {
-		return game.getBank().equals(this);
-	}
+  @JsonProperty("isBank")
+  public Boolean isBank() {
+    return game.getBank().equals(this);
+  }
 
-	@JsonProperty("isBanker")
-	public Boolean isBanker() {
-		return game.getBanker().equals(this);
-	}
+  @JsonProperty("isBanker")
+  public Boolean isBanker() {
+    return game.getBanker().equals(this);
+  }
 
-	public void deposit(int amount) {
-		balance += amount;
-	}
+  public void deposit(int amount) {
+    balance += amount;
+  }
 
-	public void withdraw(int amount) {
-		if (balance - amount >= 0) {
-			balance -= amount;
-		} else {
-			throw new IllegalArgumentException("Non-Sufficient Funds");
-		}
-	}
+  public void withdraw(int amount) {
+    if (balance - amount >= 0) {
+      balance -= amount;
+    } else {
+      throw new IllegalArgumentException("Non-Sufficient Funds");
+    }
+  }
 
-	private void generatePin() {
-		Random rand = new Random();
-		int number = rand.nextInt(10000);
-		pin = String.format("%04d", number);
-	}
+  private void generatePin() {
+    Random rand = new Random();
+    int number = rand.nextInt(10000);
+    pin = String.format("%04d", number);
+  }
 }

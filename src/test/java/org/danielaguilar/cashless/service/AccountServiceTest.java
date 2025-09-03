@@ -13,18 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 @ActiveProfiles("test")
 public class AccountServiceTest {
 
-	@Autowired
-	private GameRepository gameRepository;
+  @Autowired private GameRepository gameRepository;
+  @Autowired private AccountService accountService;
 
-	@Autowired
-	private AccountService accountService;
-
-	@Test
-	@Transactional
-	public void testCreateBankAccount() {
-		var game = gameRepository.findById(2).orElseThrow();
-		var bank = accountService.createBankAccount(game);
-		assertEquals("Bank", bank.getName());
-		assertEquals(1000000, bank.getBalance());
-	}
+  @Test
+  @Transactional
+  public void testCreateBankAccount() {
+    var game = gameRepository.findById(2).orElseThrow();
+    var bank = accountService.createBankAccount(game);
+    assertEquals("Bank", bank.getName());
+    assertEquals(1000000, bank.getBalance());
+  }
 }

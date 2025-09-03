@@ -12,13 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 @ActiveProfiles("test")
 public class GameServiceTest {
 
-	@Autowired
-	private GameService gameService;
+  @Autowired private GameService gameService;
 
-	@Test
-	@Transactional
-	public void testCreateGame() {
-		var banker = gameService.createGame("Rich Uncle Pennybags");
-		assertTrue(banker.isBanker());
-	}
+  @Test
+  @Transactional
+  public void testCreateGame() {
+    var banker = gameService.createGame("Rich Uncle Pennybags");
+    assertTrue(banker.isBanker());
+  }
 }

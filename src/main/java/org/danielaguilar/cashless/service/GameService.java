@@ -10,26 +10,23 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class GameService {
 
-	@Autowired
-	private GameRepository gameRepository;
+  @Autowired private GameRepository gameRepository;
+  @Autowired private AccountService accountService;
 
-	@Autowired
-	private AccountService accountService;
+  @Transactional
+  public Account createGame(String bankerName) {
+    var game = new Game();
+    Account bank;
+    Account banker;
 
-	@Transactional
-	public Account createGame(String bankerName) {
-		var game = new Game();
-		Account bank;
-		Account banker;
+    game = gameRepository.save(game);
+    bank = accountService.createBankAccount(game);
+    banker = accountService.addAccount(bankerName, game);
 
-		game = gameRepository.save(game);
-		bank = accountService.createBankAccount(game);
-		banker = accountService.addAccount(bankerName, game);
+    game.setBank(bank);
+    game.setBanker(banker);
+    gameRepository.save(game);
 
-		game.setBank(bank);
-		game.setBanker(banker);
-		gameRepository.save(game);
-
-		return banker;
-	}
+    return banker;
+  }
 }

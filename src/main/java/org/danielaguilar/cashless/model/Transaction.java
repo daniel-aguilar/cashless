@@ -18,20 +18,20 @@ import lombok.Setter;
 @Setter
 public class Transaction {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-	@ManyToOne
-	@JoinColumn(name = "sender_id")
-	private Account sender;
+  @ManyToOne
+  @JoinColumn(name = "sender_id")
+  private Account sender;
 
-	@ManyToOne
-	@JoinColumn(name = "recipient_id")
-	private Account recipient;
+  @ManyToOne
+  @JoinColumn(name = "recipient_id")
+  private Account recipient;
 
-	private int amount;
+  private int amount;
 
-	@Column(name = "exchange_date")
-	private final ZonedDateTime date = ZonedDateTime.now();
+  @Column(name = "exchange_date")
+  private final ZonedDateTime date = ZonedDateTime.now();
 }

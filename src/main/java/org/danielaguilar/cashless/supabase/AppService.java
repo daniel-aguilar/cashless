@@ -11,17 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AppService {
-	private static final Logger logger = LogManager.getLogger();
+  private static final Logger logger = LogManager.getLogger();
 
-	@Autowired
-	private JdbcTemplate jdbc;
+  @Autowired private JdbcTemplate jdbc;
 
-	@Async
-	@Transactional
-	public void preventPausing() {
-		SimpleJdbcCall jdbcCall = new SimpleJdbcCall(jdbc);
-		jdbcCall.withFunctionName("fn_prevent_pausing");
-		int result = jdbcCall.executeFunction(Integer.class);
-		logger.info(result);
-	}
+  @Async
+  @Transactional
+  public void preventPausing() {
+    SimpleJdbcCall jdbcCall = new SimpleJdbcCall(jdbc);
+    jdbcCall.withFunctionName("fn_prevent_pausing");
+    int result = jdbcCall.executeFunction(Integer.class);
+    logger.info(result);
+  }
 }

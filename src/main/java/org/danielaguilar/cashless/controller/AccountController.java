@@ -20,33 +20,29 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/account")
 public class AccountController {
 
-	@Autowired
-	private AccountService accountService;
+  @Autowired private AccountService accountService;
+  @Autowired private TransactionService transactionService;
+  @Autowired private SimpMessagingTemplate template;
 
-	@Autowired
-	private TransactionService transactionService;
+  @GetMapping("/{id}/balance")
+  public int getBalance(@PathVariable("id") Account account) {
+    return account.getBalance();
+  }
 
-	@Autowired
-	private SimpMessagingTemplate template;
+  @PostMapping("/{id}/transfer")
+  public void transfer(
+      @PathVariable("id") Account sender, @RequestBody TransactionRequest transaction) {
+    try {
+      Account recipient = accountService.getAccount(transaction.recipientId()).orElseThrow();
+      Transaction tx = transactionService.transfer(sender, recipient, transaction.amount());
+      template.convertAndSend("/queue/transactions", tx);
+    } catch (IllegalArgumentException e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+  }
 
-	@GetMapping("/{id}/balance")
-	public int getBalance(@PathVariable("id") Account account) {
-		return account.getBalance();
-	}
-
-	@PostMapping("/{id}/transfer")
-	public void transfer(@PathVariable("id") Account sender, @RequestBody TransactionRequest transaction) {
-		try {
-			Account recipient = accountService.getAccount(transaction.recipientId()).orElseThrow();
-			Transaction tx = transactionService.transfer(sender, recipient, transaction.amount());
-			template.convertAndSend("/queue/transactions", tx);
-		} catch (IllegalArgumentException e) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-		}
-	}
-
-	@GetMapping("/{id}/transactions")
-	public List<Transaction> findLatestTransactions(@PathVariable("id") Account account) {
-		return transactionService.findLatestTransactions(account);
-	}
+  @GetMapping("/{id}/transactions")
+  public List<Transaction> findLatestTransactions(@PathVariable("id") Account account) {
+    return transactionService.findLatestTransactions(account);
+  }
 }

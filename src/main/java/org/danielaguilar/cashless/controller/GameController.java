@@ -20,46 +20,41 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/game")
 public class GameController {
 
-	@Autowired
-	private GameService gameService;
+  @Autowired private GameService gameService;
+  @Autowired private AccountService accountService;
+  @Autowired private TransactionService txService;
 
-	@Autowired
-	private AccountService accountService;
+  @PostMapping("/new")
+  public Account newGame(String bankerName) {
+    return gameService.createGame(bankerName);
+  }
 
-	@Autowired
-	private TransactionService txService;
+  @PostMapping("/join")
+  public Account joinGame(String pin) {
+    var accountQuery = accountService.getAccount(pin);
+    if (accountQuery.isPresent()) {
+      return accountQuery.get();
+    }
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No account found");
+  }
 
-	@PostMapping("/new")
-	public Account newGame(String bankerName) {
-		return gameService.createGame(bankerName);
-	}
+  @GetMapping("/{id}/players")
+  public List<Account> getPlayers(@PathVariable("id") Game game) {
+    return game.getAccounts();
+  }
 
-	@PostMapping("/join")
-	public Account joinGame(String pin) {
-		var accountQuery = accountService.getAccount(pin);
-		if (accountQuery.isPresent()) {
-			return accountQuery.get();
-		}
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No account found");
-	}
+  @PostMapping("/{id}/players/add")
+  public Account addPlayer(@PathVariable("id") Game game, String playerName) {
+    return accountService.addAccount(playerName, game);
+  }
 
-	@GetMapping("/{id}/players")
-	public List<Account> getPlayers(@PathVariable("id") Game game) {
-		return game.getAccounts();
-	}
+  @GetMapping("/{id}/bank")
+  public Account getBank(@PathVariable("id") Game game) {
+    return game.getBank();
+  }
 
-	@PostMapping("/{id}/players/add")
-	public Account addPlayer(@PathVariable("id") Game game, String playerName) {
-		return accountService.addAccount(playerName, game);
-	}
-
-	@GetMapping("/{id}/bank")
-	public Account getBank(@PathVariable("id") Game game) {
-		return game.getBank();
-	}
-
-	@GetMapping("/{id}/transactions")
-	public List<Transaction> getTransactions(@PathVariable("id") Game game) {
-		return txService.getTransactions(game);
-	}
+  @GetMapping("/{id}/transactions")
+  public List<Transaction> getTransactions(@PathVariable("id") Game game) {
+    return txService.getTransactions(game);
+  }
 }

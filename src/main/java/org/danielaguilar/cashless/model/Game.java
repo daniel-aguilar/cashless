@@ -17,19 +17,19 @@ import lombok.Setter;
 @Setter
 public class Game {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-	@OneToOne
-	@JoinColumn(name = "bank_id")
-	private Account bank;
+  @OneToOne
+  @JoinColumn(name = "bank_id")
+  private Account bank;
 
-	@OneToOne
-	@JoinColumn(name = "banker_id")
-	private Account banker;
+  @OneToOne
+  @JoinColumn(name = "banker_id")
+  private Account banker;
 
-	@OneToMany(mappedBy = "game")
-	@OrderBy("name ASC")
-	private List<Account> accounts;
+  @OneToMany(mappedBy = "game")
+  @OrderBy("name ASC")
+  private List<Account> accounts;
 }

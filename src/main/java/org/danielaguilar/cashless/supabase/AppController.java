@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sb")
 public class AppController {
 
-	@Autowired
-	private AppService service;
+  @Autowired private AppService service;
 
-	@GetMapping("/wake-up")
-	public String preventPausing() {
-		service.preventPausing();
-		return "OK";
-	}
+  @GetMapping("/wake-up")
+  public String preventPausing() {
+    service.preventPausing();
+    return "OK";
+  }
 }

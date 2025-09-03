@@ -17,18 +17,15 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 public class AccountControllerTest {
 
-	@Autowired
-	private ObjectMapper mapper;
+  @Autowired private ObjectMapper mapper;
+  @Autowired private MockMvc mvc;
 
-	@Autowired
-	private MockMvc mvc;
+  @Test
+  public void testInsufficientFunds() throws Exception {
+    var tx = new TransactionRequest(110, 3);
+    var json = mapper.writeValueAsString(tx);
 
-	@Test
-	public void testInsufficientFunds() throws Exception {
-		var tx = new TransactionRequest(110, 3);
-		var json = mapper.writeValueAsString(tx);
-
-		mvc.perform(post("/account/2/transfer").content(json).contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isBadRequest());
-	}
+    mvc.perform(post("/account/2/transfer").content(json).contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isBadRequest());
+  }
 }

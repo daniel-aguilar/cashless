@@ -11,12 +11,12 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class Application implements AsyncConfigurer {
 
-	@Override
-	public Executor getAsyncExecutor() {
-		return new SimpleAsyncTaskExecutor();
-	}
+  @Override
+  public Executor getAsyncExecutor() {
+    return new SimpleAsyncTaskExecutor();
+  }
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 }
