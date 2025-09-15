@@ -69,8 +69,7 @@ export class TransferMoney implements OnInit {
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
           next: () => this.success(data.amount, recipient),
-          error: () => this.snack.open($localize `Non-Sufficient Funds`, '',
-          { panelClass: 'snack-error' })
+          error: () => this.snack.open($localize `Non-Sufficient Funds`)
         });
   }
 
