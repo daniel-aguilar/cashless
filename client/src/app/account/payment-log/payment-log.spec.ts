@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { EMPTY } from 'rxjs';
 import { Bank } from 'src/app/banker/bank';
 import { Payment } from 'src/app/banker/payment';
-import { Player } from '../player';
+import { CurrentAccount } from '../current-account';
 import { PaymentLog } from './payment-log';
 
 describe('PaymentLog', () => {
@@ -15,7 +15,7 @@ describe('PaymentLog', () => {
     TestBed.configureTestingModule({
       imports: [PaymentLog],
       providers: [
-        { provide: Player, useValue: { account: null } },
+        { provide: CurrentAccount, useValue: { account: null } },
         { provide: Bank, useValue: spy },
         provideRouter([]),
       ],

@@ -8,7 +8,7 @@ import { finalize } from 'rxjs/operators';
 import { Account } from 'src/app/auth/account';
 import { Bank } from 'src/app/banker/bank';
 import { Game } from 'src/app/game';
-import { Player } from '../player';
+import { CurrentAccount } from '../current-account';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,17 +47,17 @@ export class TransferMoney implements OnInit {
   readonly fg = viewChild(FormGroupDirective);
 
   private snack = inject(MatSnackBar);
-  private currentPlayer = inject(Player);
+  private currentAccount = inject(CurrentAccount);
   private game = inject(Game);
   private bank = inject(Bank);
 
-  private get player() {
-    return this.currentPlayer.account;
+  private get account() {
+    return this.currentAccount.instance;
   }
 
   ngOnInit() {
-    this.game.getOtherPlayersExcept(this.player)
-        .subscribe(players => this.recipients = players);
+    this.game.getOtherAccountsExcept(this.account)
+        .subscribe(accounts => this.recipients = accounts);
   }
 
   makeTransaction() {
@@ -65,7 +65,7 @@ export class TransferMoney implements OnInit {
     const recipient = this.recipients.find(a => a.id === +data.recipientId);
 
     this.isLoading = true;
-    this.bank.makeTransaction(this.player, data.amount, recipient)
+    this.bank.makeTransaction(this.account, data.amount, recipient)
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
           next: () => this.success(data.amount, recipient),

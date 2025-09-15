@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Account } from 'src/app/auth/account';
 import { Bank } from 'src/app/banker/bank';
-import { Player } from '../player';
-import { PlayerDetail } from './player-detail';
+import { CurrentAccount } from '../current-account';
+import { AccountDetail } from './account-detail';
 
 class MockBankService {
   getBalance() {
@@ -15,24 +15,24 @@ class MockBankService {
 
 const nameElementSelector = 'li.name';
 
-describe('PlayerDetail', () => {
-  let fixture: ComponentFixture<PlayerDetail>;
+describe('AccountDetail', () => {
+  let fixture: ComponentFixture<AccountDetail>;
 
   beforeEach(() => {
-    const mockPlayerService = { account: { isBank: true } as Account };
+    const mockCurrentAccountService = { instance: { isBank: true } as Account };
 
     TestBed.configureTestingModule({
-      imports: [PlayerDetail],
+      imports: [AccountDetail],
       providers: [
         { provide: Bank, useClass: MockBankService },
       ],
     });
 
-    TestBed.overrideComponent(PlayerDetail, {
+    TestBed.overrideComponent(AccountDetail, {
       set: {
         imports: [CurrencyPipe],
         providers: [
-          { provide: Player, useValue: mockPlayerService },
+          { provide: CurrentAccount, useValue: mockCurrentAccountService },
         ],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
       },
@@ -40,7 +40,7 @@ describe('PlayerDetail', () => {
   });
 
   it('Should hide bank name', () => {
-    fixture = TestBed.createComponent(PlayerDetail);
+    fixture = TestBed.createComponent(AccountDetail);
     fixture.detectChanges();
     const nameElement = fixture.nativeElement.querySelector(nameElementSelector);
     expect(nameElement).toBeNull();
@@ -48,16 +48,16 @@ describe('PlayerDetail', () => {
 
   // eslint-disable-next-line @stylistic/ts/quotes
   it("Should display player's name", () => {
-    const mockPlayerService = { account: { isBank: false } as Account };
-    TestBed.overrideComponent(PlayerDetail, {
+    const mockCurrentAccountService = { instance: { isBank: false } as Account };
+    TestBed.overrideComponent(AccountDetail, {
       set: {
         providers: [
-          { provide: Player, useValue: mockPlayerService },
+          { provide: CurrentAccount, useValue: mockCurrentAccountService },
         ],
       },
     });
 
-    fixture = TestBed.createComponent(PlayerDetail);
+    fixture = TestBed.createComponent(AccountDetail);
     fixture.detectChanges();
     const nameElement = fixture.nativeElement.querySelector(nameElementSelector);
     expect(nameElement).toBeTruthy();

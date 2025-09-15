@@ -26,24 +26,24 @@ describe('Game', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
-  it('Should get other players', (done: DoneFn) => {
-    service.getOtherPlayersExcept(player).subscribe(p => {
+  it('Should get other accounts', (done: DoneFn) => {
+    service.getOtherAccountsExcept(player).subscribe(p => {
       expect(p).toEqual([banker, bank]);
       done();
     });
 
-    const req = httpTestingController.expectOne(`${apiURL}/1/players`);
+    const req = httpTestingController.expectOne(`${apiURL}/1/accounts`);
     req.flush([player, banker, bank]);
     httpTestingController.verify();
   });
 
-  it('Should get other players, skipping the bank', (done: DoneFn) => {
-    service.getOtherPlayersExcept(player, true).subscribe(p => {
+  it('Should get other accounts, skipping the bank', (done: DoneFn) => {
+    service.getOtherAccountsExcept(player, true).subscribe(p => {
       expect(p).toEqual([banker]);
       done();
     });
 
-    const req = httpTestingController.expectOne(`${apiURL}/1/players`);
+    const req = httpTestingController.expectOne(`${apiURL}/1/accounts`);
     req.flush([player, banker, bank]);
     httpTestingController.verify();
   });

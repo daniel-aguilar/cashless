@@ -1,8 +1,8 @@
 @use '@angular/material' as mat;
 @use './app/toolbar-theme';
 @use './app/loading-spinner/loading-spinner-theme';
-@use './app/player/payment-log/payment-log-theme';
-@use './app/banker/player-list/player-list-theme';
+@use './app/account/payment-log/payment-log-theme';
+@use './app/banker/account-list/account-list-theme';
 
 $theme-font: Roboto;
 

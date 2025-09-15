@@ -56,14 +56,15 @@ describe('App', () => {
     expect(component.addMargin).toBeTrue();
   });
 
-  it('Should display players link as banker only', () => {
+  // eslint-disable-next-line @stylistic/ts/quotes
+  it("Should display 'manage players' link as banker only", () => {
     setBankerStatus(false);
     expect(component.account.isBanker).toBeFalse();
-    expect(getPlayersLink()).toBeNull();
+    expect(link()).toBeNull();
 
     setBankerStatus(true);
     expect(component.account.isBanker).toBeTrue();
-    expect(getPlayersLink()).toBeTruthy();
+    expect(link()).toBeTruthy();
 
     function setBankerStatus(isBanker: boolean) {
       spy.getLoggedAccount.and.returnValue({ isBanker } as Account);
@@ -71,7 +72,7 @@ describe('App', () => {
       fixture.detectChanges();
     }
 
-    function getPlayersLink(): HTMLAnchorElement {
+    function link(): HTMLAnchorElement {
       return fixture.nativeElement.querySelector('a[title="Manage Players"]');
     }
   });

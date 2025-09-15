@@ -38,14 +38,14 @@ public class GameController {
     throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No account found");
   }
 
-  @GetMapping("/{id}/players")
-  public List<Account> getPlayers(@PathVariable("id") Game game) {
+  @GetMapping("/{id}/accounts")
+  public List<Account> getAccounts(@PathVariable("id") Game game) {
     return game.getAccounts();
   }
 
-  @PostMapping("/{id}/players/add")
-  public Account addPlayer(@PathVariable("id") Game game, String playerName) {
-    return accountService.addAccount(playerName, game);
+  @PostMapping("/{id}/accounts/add")
+  public Account addAccount(@PathVariable("id") Game game, String accountName) {
+    return accountService.addAccount(accountName, game);
   }
 
   @GetMapping("/{id}/bank")

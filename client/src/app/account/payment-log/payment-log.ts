@@ -8,7 +8,7 @@ import { switchMap } from 'rxjs/operators';
 import { Bank } from 'src/app/banker/bank';
 import { Payment } from 'src/app/banker/payment';
 import { LocalizeNamePipe } from '../localize-name-pipe';
-import { Player } from '../player';
+import { CurrentAccount } from '../current-account';
 
 @Component({
   selector: 'app-payment-log',
@@ -29,20 +29,20 @@ export class PaymentLog implements OnInit, OnDestroy {
   readonly balanceChange = output();
 
   private currentPayments: Subscription;
-  private currentPlayer = inject(Player);
+  private currentAccount = inject(CurrentAccount);
   private bank = inject(Bank);
 
-  private get player() {
-    return this.currentPlayer.account;
+  private get account() {
+    return this.currentAccount.instance;
   }
 
   ngOnInit() {
-    const lastThree = this.bank.getLatestPayments(this.player);
+    const lastThree = this.bank.getLatestPayments(this.account);
 
     this.currentPayments = lastThree.pipe(
       switchMap(payments => {
         this.payments = payments;
-        return this.bank.getPayments(this.player);
+        return this.bank.getPayments(this.account);
       })
     ).subscribe(p => this.addToLog(p));
   }

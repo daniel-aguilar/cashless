@@ -31,29 +31,29 @@ export class Game {
     );
   }
 
-  addPlayer(name: string, gameId: number) {
-    const url = `${apiURL}/${gameId}/players/add`;
+  addAccount(name: string, gameId: number) {
+    const url = `${apiURL}/${gameId}/accounts/add`;
     const data = new FormData();
-    data.set('playerName', name);
+    data.set('accountName', name);
 
     return this.http.post<Account>(url, data);
   }
 
-  getOtherPlayersExcept(player: Account, skipBank = false) {
-    const gameId = player.gameId;
+  getOtherAccountsExcept(account: Account, skipBank = false) {
+    const gameId = account.gameId;
 
-    return this.getPlayers(gameId).pipe(
+    return this.getAccounts(gameId).pipe(
       map(accounts => {
         if (skipBank) {
           return accounts.filter(a => !a.isBank);
         }
         return accounts;
       }),
-      map(accounts => accounts.filter(account => account.id !== player.id))
+      map(accounts => accounts.filter(a => a.id !== account.id))
     );
   }
 
-  private getPlayers(gameId: number) {
-    return this.http.get<Account[]>(`${apiURL}/${gameId}/players`);
+  private getAccounts(gameId: number) {
+    return this.http.get<Account[]>(`${apiURL}/${gameId}/accounts`);
   }
 }

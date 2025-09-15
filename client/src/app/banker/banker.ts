@@ -4,7 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Account } from '../auth/account';
 import { Auth } from '../auth/auth';
-import { PlayerDetail } from '../player/player-detail/player-detail';
+import { AccountDetail } from '../account/account-detail/account-detail';
 import { Bank } from './bank';
 
 @Component({
@@ -12,11 +12,11 @@ import { Bank } from './bank';
   templateUrl: './banker.html',
   imports: [
     MatTabsModule,
-    PlayerDetail,
+    AccountDetail,
   ],
 })
 export class Banker implements OnInit {
-  player: Account;
+  account: Account;
   bank: Account;
   isHandset = false;
 
@@ -25,11 +25,11 @@ export class Banker implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);
 
   constructor() {
-    this.player = this.auth.getLoggedAccount();
+    this.account = this.auth.getLoggedAccount();
   }
 
   ngOnInit() {
-    this.bankService.getBankAccount(this.player.gameId).subscribe(
+    this.bankService.getBankAccount(this.account.gameId).subscribe(
       bank => this.bank = bank
     );
     this.breakpointObserver

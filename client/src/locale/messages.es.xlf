@@ -2,6 +2,186 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="1332214193580122293" datatype="html">
+        <source>Account Info</source>
+        <target>Información de la Cuenta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/account-detail/account-detail.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8953033926734869941" datatype="html">
+        <source>Name</source>
+        <target>Nombre</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/account-detail/account-detail.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/account-list/account-list.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6888797559367695264" datatype="html">
+        <source>Balance</source>
+        <target>Saldo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/account-detail/account-detail.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2849064100927111571" datatype="html">
+        <source>loading...</source>
+        <target>cargando...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/account-detail/account-detail.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8714672674517739175" datatype="html">
+        <source>Transfer Money</source>
+        <target>Transferir Dinero</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/account-detail/account-detail.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1087101825642084669" datatype="html">
+        <source>Bank</source>
+        <target>Banco</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/localize-name-pipe.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/banker.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8497528947328199741" datatype="html">
+        <source>Time</source>
+        <target>Hora</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/payment-log/payment-log.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transaction-log/transaction-log.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8650499415827640724" datatype="html">
+        <source>Type</source>
+        <target>Tipo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/payment-log/payment-log.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4086606389696938932" datatype="html">
+        <source>Account</source>
+        <target>Cuenta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/payment-log/payment-log.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6533918067030990396" datatype="html">
+        <source>Amount</source>
+        <target>Monto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/payment-log/payment-log.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transaction-log/transaction-log.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3469006812684256209" datatype="html">
+        <source>View Transaction Log</source>
+        <target>Ver Bitácora de Transacciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/payment-log/payment-log.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7470090122060093243" datatype="html">
+        <source>Transaction Log</source>
+        <target>Bitácora de Transacciones</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transaction-log/transaction-log.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5203279511751768967" datatype="html">
+        <source>From</source>
+        <target>Origen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transaction-log/transaction-log.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1640609344969975994" datatype="html">
+        <source>To</source>
+        <target>Destino</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transaction-log/transaction-log.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7683705529753923369" datatype="html">
+        <source>Player</source>
+        <target>Jugador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/banker.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6772263888516057659" datatype="html">
+        <source>Choose a Player</source>
+        <target>Escoge a un Jugador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="211306544718016340" datatype="html">
+        <source>Transfer Amount</source>
+        <target>Transferir Monto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8657498830247797615" datatype="html">
+        <source>Non-Sufficient Funds</source>
+        <target>Fondos Insuficientes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1641765973195155986" datatype="html">
+        <source>Transfered $<x id="PH" equiv-text="amount"/> to <x id="PH_1" equiv-text="recipientName"/></source>
+        <target>Se han transferido $<x id="PH" equiv-text="amount"/> a <x id="PH_1" equiv-text="recipientName"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/account/transfer-money/transfer-money.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="849939807952591979" datatype="html">
         <source>Manage Players</source>
         <target>Gestionar Jugadores</target>
@@ -10,7 +190,7 @@
           <context context-type="linenumber">7</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/player-list/player-list.html</context>
+          <context context-type="sourcefile">src/app/banker/account-list/account-list.html</context>
           <context context-type="linenumber">3,4</context>
         </context-group>
       </trans-unit>
@@ -24,7 +204,7 @@
       </trans-unit>
       <trans-unit id="1313025629521683439" datatype="html">
         <source>Continue Game</source>
-        <target>Continuar Juego</target>
+        <target>Continuar Partida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/continue-game/continue-game.html</context>
           <context context-type="linenumber">3,4</context>
@@ -38,7 +218,7 @@
           <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/player-list/player-list.html</context>
+          <context context-type="sourcefile">src/app/banker/account-list/account-list.html</context>
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
@@ -58,23 +238,39 @@
           <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="1575479484358204930" datatype="html">
+        <source>Your PIN is </source>
+        <target>Tu PIN es </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/account-list/account-list.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1813754192555569374" datatype="html">
         <source>Add Player</source>
         <target>Agregar Jugador</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/add-player/add-player.html</context>
-          <context context-type="linenumber">1,2</context>
+          <context context-type="sourcefile">src/app/banker/account-list/account-list.html</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/player-list/player-list.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="sourcefile">src/app/banker/add-account/add-account.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8326917468651479220" datatype="html">
+        <source>Player <x id="PH" equiv-text="account.name"/> added</source>
+        <target>Jugador <x id="PH" equiv-text="account.name"/> agregado</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/banker/account-list/account-list.ts</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7408681291621365060" datatype="html">
         <source>Player Name</source>
         <target>Nombre del Jugador</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/add-player/add-player.html</context>
+          <context context-type="sourcefile">src/app/banker/add-account/add-account.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
         <context-group purpose="location">
@@ -84,9 +280,9 @@
       </trans-unit>
       <trans-unit id="8437269868071962918" datatype="html">
         <source>That name is already taken</source>
-        <target>Ese nombre está reservado</target>
+        <target>Ese nombre ya existe</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/add-player/add-player.html</context>
+          <context context-type="sourcefile">src/app/banker/add-account/add-account.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
@@ -94,65 +290,13 @@
         <source>Cancel</source>
         <target>Cancelar</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/add-player/add-player.html</context>
+          <context context-type="sourcefile">src/app/banker/add-account/add-account.html</context>
           <context context-type="linenumber">12,13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7683705529753923369" datatype="html">
-        <source>Player</source>
-        <target>Jugador</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/banker.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1087101825642084669" datatype="html">
-        <source>Bank</source>
-        <target>Banco</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/banker.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/localize-name-pipe.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.ts</context>
-          <context context-type="linenumber">78</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1575479484358204930" datatype="html">
-        <source>Your PIN is </source>
-        <target>Tu PIN es </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/player-list/player-list.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8953033926734869941" datatype="html">
-        <source>Name</source>
-        <target>Nombre</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/player-list/player-list.html</context>
-          <context context-type="linenumber">12,13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8326917468651479220" datatype="html">
-        <source>Player <x id="PH" equiv-text="player.name"/> added</source>
-        <target>Jugador <x id="PH" equiv-text="player.name"/> agregado</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/banker/player-list/player-list.ts</context>
-          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7130182138525932037" datatype="html">
         <source>New Game</source>
-        <target>Nuevo Juego</target>
+        <target>Nueva Partida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main-menu/main-menu.html</context>
           <context context-type="linenumber">3,4</context>
@@ -160,7 +304,7 @@
       </trans-unit>
       <trans-unit id="7463083971834019732" datatype="html">
         <source>Join a Game</source>
-        <target>Unirse a un Juego</target>
+        <target>Unirse a una Partida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/main-menu/main-menu.html</context>
           <context context-type="linenumber">4,5</context>
@@ -180,154 +324,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/new-game/new-game.html</context>
           <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8497528947328199741" datatype="html">
-        <source>Time</source>
-        <target>Hora</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/payment-log/payment-log.html</context>
-          <context context-type="linenumber">4,5</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.html</context>
-          <context context-type="linenumber">7,8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8650499415827640724" datatype="html">
-        <source>Type</source>
-        <target>Tipo</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/payment-log/payment-log.html</context>
-          <context context-type="linenumber">5,6</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4086606389696938932" datatype="html">
-        <source>Account</source>
-        <target>Cuenta</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/payment-log/payment-log.html</context>
-          <context context-type="linenumber">6,7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6533918067030990396" datatype="html">
-        <source>Amount</source>
-        <target>Monto</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/payment-log/payment-log.html</context>
-          <context context-type="linenumber">7,8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.html</context>
-          <context context-type="linenumber">10,11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3469006812684256209" datatype="html">
-        <source>View Transaction Log</source>
-        <target>Ver Bitácora de Transacciones</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/payment-log/payment-log.html</context>
-          <context context-type="linenumber">37,38</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1332214193580122293" datatype="html">
-        <source>Account Info</source>
-        <target>Información de la Cuenta</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/player-detail/player-detail.html</context>
-          <context context-type="linenumber">2,4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="402785015655073812" datatype="html">
-        <source>Name: </source>
-        <target>Nombre: </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/player-detail/player-detail.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5344234773121446541" datatype="html">
-        <source>Balance: </source>
-        <target>Saldo: </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/player-detail/player-detail.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2849064100927111571" datatype="html">
-        <source>loading...</source>
-        <target>cargando...</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/player-detail/player-detail.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8714672674517739175" datatype="html">
-        <source>Transfer Money</source>
-        <target>Transferir Dinero</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/player-detail/player-detail.html</context>
-          <context context-type="linenumber">23,24</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7470090122060093243" datatype="html">
-        <source>Transaction Log</source>
-        <target>Bitácora de Transacciones</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.html</context>
-          <context context-type="linenumber">2,4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5203279511751768967" datatype="html">
-        <source>From</source>
-        <target>Origen</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.html</context>
-          <context context-type="linenumber">8,9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1640609344969975994" datatype="html">
-        <source>To</source>
-        <target>Destino</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transaction-log/transaction-log.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6772263888516057659" datatype="html">
-        <source>Choose a Player</source>
-        <target>Escoge a un Jugador</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.html</context>
-          <context context-type="linenumber">16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="211306544718016340" datatype="html">
-        <source>Transfer Amount</source>
-        <target>Transferir Monto</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.html</context>
-          <context context-type="linenumber">30,31</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8657498830247797615" datatype="html">
-        <source>Non-Sufficient Funds</source>
-        <target>Fondos Insuficientes</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.ts</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1641765973195155986" datatype="html">
-        <source>Transfered $<x id="PH" equiv-text="amount"/> to <x id="PH_1" equiv-text="recipientName"/></source>
-        <target>Se han transferido $<x id="PH" equiv-text="amount"/> a <x id="PH_1" equiv-text="recipientName"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/player/transfer-money/transfer-money.ts</context>
-          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
     </body>

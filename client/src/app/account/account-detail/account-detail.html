@@ -4,11 +4,11 @@
   <ul class="list-none ps-0">
     @if (!player.isBank) {
       <li class="name pb-[5px]">
-        <ng-container i18n>Name: </ng-container>{{ player.name }}
+        <ng-container i18n>Name</ng-container>: {{ player.name }}
       </li>
     }
     <li>
-      <ng-container i18n>Balance: </ng-container>
+      <ng-container i18n>Balance</ng-container>:
       @if (updatingBalance) {
         <ng-container i18n>loading...</ng-container>
       } @else {

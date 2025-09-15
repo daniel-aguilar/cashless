@@ -6,15 +6,15 @@ import orderBy from 'lodash-es/orderBy';
 import { Account } from 'src/app/auth/account';
 import { Auth } from 'src/app/auth/auth';
 import { Game } from 'src/app/game';
-import { AddPlayer, DialogData } from '../add-player/add-player';
+import { AddAccount, DialogData } from '../add-account/add-account';
 import { PinHider } from '../pin-hider';
 import { SnackBarModule } from 'src/app/snackbar-module';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-player-list',
-  templateUrl: './player-list.html',
-  styleUrl: './player-list.css',
+  selector: 'app-account-list',
+  templateUrl: './account-list.html',
+  styleUrl: './account-list.css',
   imports: [
     PinHider,
     MatButtonModule,
@@ -22,9 +22,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     SnackBarModule,
   ],
 })
-export class PlayerList implements OnInit {
+export class AccountList implements OnInit {
   banker: Account;
-  players: Account[] = [];
+  accounts: Account[] = [];
 
   private auth = inject(Auth);
   private game = inject(Game);
@@ -36,27 +36,27 @@ export class PlayerList implements OnInit {
   }
 
   ngOnInit() {
-    this.game.getOtherPlayersExcept(this.banker, true)
-      .subscribe(players => this.players = players);
+    this.game.getOtherAccountsExcept(this.banker, true)
+      .subscribe(accounts => this.accounts = accounts);
   }
 
   openDialog() {
     const data: DialogData = {
       gameId: this.banker.gameId,
-      existingPlayers: this.players.concat(this.banker), // Don't leave the banker out
+      existingAccounts: this.accounts.concat(this.banker), // Don't leave the banker out
     };
 
-    this.dialog.open(AddPlayer, { data })
-      .afterClosed().subscribe((player: Account) => {
-        if (player) {
-          this.push(player);
-          this.snack.open($localize `Player ${player.name} added`);
+    this.dialog.open(AddAccount, { data })
+      .afterClosed().subscribe((account: Account) => {
+        if (account) {
+          this.push(account);
+          this.snack.open($localize `Player ${account.name} added`);
         }
       });
   }
 
   private push(account: Account) {
-    this.players.push(account);
-    this.players = orderBy(this.players, ['name']);
+    this.accounts.push(account);
+    this.accounts = orderBy(this.accounts, ['name']);
   }
 }

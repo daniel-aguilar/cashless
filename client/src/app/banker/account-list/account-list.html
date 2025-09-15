@@ -14,10 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      @for (p of players; track p) {
+      @for (a of accounts; track a) {
         <tr>
-          <td>{{ p.name }}</td>
-          <td><span class="pin" appPinHider>{{ p.pin }}</span></td>
+          <td>{{ a.name }}</td>
+          <td><span class="pin" appPinHider>{{ a.pin }}</span></td>
         </tr>
       }
     </tbody>

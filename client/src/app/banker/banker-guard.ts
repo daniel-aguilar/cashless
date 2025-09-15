@@ -6,7 +6,7 @@ export class BankerGuard {
   private auth = inject(Auth);
 
   canActivate() {
-    const player = this.auth.getLoggedAccount();
-    return player.isBanker;
+    const account = this.auth.getLoggedAccount();
+    return account.isBanker;
   }
 }

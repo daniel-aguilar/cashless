@@ -1,16 +1,10 @@
 import { FormControl } from '@angular/forms';
-import { Account } from 'src/app/auth/account';
 import { uniqueName } from './unique-name';
 
 describe('uniqueName', () => {
   it('Should validate control', () => {
     const control = new FormControl();
-    const fn = uniqueName([
-      { name: 'Alice' } as Account,
-      { name: 'Bob' } as Account,
-      { name: 'Bank' } as Account,
-      { name: 'banK' } as Account,
-    ]);
+    const fn = uniqueName(['Alice', 'Bob', 'Bank', 'banK']);
     const error = { uniqueName: true };
 
     control.setValue('alice');

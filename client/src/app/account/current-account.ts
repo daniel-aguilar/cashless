@@ -1,5 +1,4 @@
 import { Injectable, inject } from '@angular/core';
-import { Account } from '../auth/account';
 import { Auth } from '../auth/auth';
 
 /**
@@ -7,12 +6,7 @@ import { Auth } from '../auth/auth';
  * The default instance being the currently logged-in player
  */
 @Injectable()
-export class Player {
-  account: Account;
-
+export class CurrentAccount {
   private auth = inject(Auth);
-
-  constructor() {
-    this.account = this.auth.getLoggedAccount();
-  }
+  instance = this.auth.getLoggedAccount();
 }

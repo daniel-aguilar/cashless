@@ -3,33 +3,32 @@ import { Component, OnChanges, OnInit, inject, input } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { Account } from 'src/app/auth/account';
 import { Bank } from 'src/app/banker/bank';
+import { CurrentAccount } from '../current-account';
 import { PaymentLog } from '../payment-log/payment-log';
-import { Player } from '../player';
 import { TransferMoney } from '../transfer-money/transfer-money';
 
 @Component({
-  selector: 'app-player-detail',
-  templateUrl: './player-detail.html',
+  selector: 'app-account-detail',
+  templateUrl: './account-detail.html',
   imports: [
     CurrencyPipe,
     MatDivider,
     TransferMoney,
     PaymentLog,
   ],
-  providers: [Player],
+  providers: [CurrentAccount],
 })
-export class PlayerDetail implements OnInit, OnChanges {
-  player: Account;
+export class AccountDetail implements OnInit, OnChanges {
   updatingBalance = true;
   balance = 0;
 
   readonly account = input<Account>();
 
-  private currentPlayer = inject(Player);
+  private currentAccount = inject(CurrentAccount);
   private bank = inject(Bank);
 
-  constructor() {
-    this.player = this.currentPlayer.account;
+  get player() {
+    return this.currentAccount.instance;
   }
 
   ngOnInit() {
@@ -37,7 +36,7 @@ export class PlayerDetail implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.player = this.currentPlayer.account = this.account();
+    this.currentAccount.instance = this.account();
   }
 
   updateBalance() {

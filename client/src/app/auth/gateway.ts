@@ -22,7 +22,7 @@ export class Gateway {
         if (account.isBanker) {
           this.router.navigateByUrl('/banker');
         } else {
-          this.router.navigateByUrl('/player');
+          this.router.navigateByUrl('/account');
         }
       }));
   }

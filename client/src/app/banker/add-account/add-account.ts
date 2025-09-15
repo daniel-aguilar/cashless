@@ -10,12 +10,12 @@ import { uniqueName } from './unique-name';
 
 export interface DialogData {
   gameId: number;
-  existingPlayers: Account[];
+  existingAccounts: Account[];
 }
 
 @Component({
-  selector: 'app-add-player',
-  templateUrl: './add-player.html',
+  selector: 'app-add-account',
+  templateUrl: './add-account.html',
   imports: [
     ReactiveFormsModule,
     MatDialogModule,
@@ -24,23 +24,22 @@ export interface DialogData {
     MatButtonModule,
   ],
 })
-export class AddPlayer {
-  playerName;
+export class AddAccount {
+  accountName;
 
   private data = inject<DialogData>(MAT_DIALOG_DATA);
-  private dialogRef = inject<MatDialogRef<AddPlayer>>(MatDialogRef);
+  private dialogRef = inject<MatDialogRef<AddAccount>>(MatDialogRef);
   private game = inject(Game);
 
   constructor() {
-    this.playerName = new FormControl('', [
+    this.accountName = new FormControl('', [
       Validators.required,
-      uniqueName(this.data.existingPlayers.map(p => p.name)),
+      uniqueName(this.data.existingAccounts.map(a => a.name)),
     ]);
   }
 
-  addPlayer() {
-    this.game.addPlayer(this.playerName.value, this.data.gameId).subscribe(p =>
-      this.dialogRef.close(p)
-    );
+  addAccount() {
+    this.game.addAccount(this.accountName.value, this.data.gameId).subscribe(a =>
+      this.dialogRef.close(a));
   }
 }
