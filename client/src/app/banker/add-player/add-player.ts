@@ -4,10 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Account } from 'src/app/auth/account';
 import { Game } from 'src/app/game';
-import { SnackBarModule } from 'src/app/snackbar-module';
 import { uniqueName } from './unique-name';
 
 export interface DialogData {
@@ -24,7 +22,6 @@ export interface DialogData {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    SnackBarModule,
   ],
 })
 export class AddPlayer {
@@ -33,19 +30,17 @@ export class AddPlayer {
   private data = inject<DialogData>(MAT_DIALOG_DATA);
   private dialogRef = inject<MatDialogRef<AddPlayer>>(MatDialogRef);
   private game = inject(Game);
-  private snack = inject(MatSnackBar);
 
   constructor() {
     this.playerName = new FormControl('', [
       Validators.required,
-      uniqueName(this.data.existingPlayers),
+      uniqueName(this.data.existingPlayers.map(p => p.name)),
     ]);
   }
 
   addPlayer() {
-    this.game.addPlayer(this.playerName.value, this.data.gameId).subscribe(p => {
-      this.dialogRef.close(p);
-      this.snack.open($localize `Player ${p.name} added`);
-    });
+    this.game.addPlayer(this.playerName.value, this.data.gameId).subscribe(p =>
+      this.dialogRef.close(p)
+    );
   }
 }

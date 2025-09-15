@@ -8,6 +8,8 @@ import { Auth } from 'src/app/auth/auth';
 import { Game } from 'src/app/game';
 import { AddPlayer, DialogData } from '../add-player/add-player';
 import { PinHider } from '../pin-hider';
+import { SnackBarModule } from 'src/app/snackbar-module';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-player-list',
@@ -17,6 +19,7 @@ import { PinHider } from '../pin-hider';
     PinHider,
     MatButtonModule,
     MatIconModule,
+    SnackBarModule,
   ],
 })
 export class PlayerList implements OnInit {
@@ -26,6 +29,7 @@ export class PlayerList implements OnInit {
   private auth = inject(Auth);
   private game = inject(Game);
   private dialog = inject(MatDialog);
+  private snack = inject(MatSnackBar);
 
   constructor() {
     this.banker = this.auth.getLoggedAccount();
@@ -46,6 +50,7 @@ export class PlayerList implements OnInit {
       .afterClosed().subscribe((player: Account) => {
         if (player) {
           this.push(player);
+          this.snack.open($localize `Player ${player.name} added`);
         }
       });
   }
