@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Loading } from './loading';
 
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
@@ -9,12 +10,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './loading-spinner.css',
   imports: [ MatProgressSpinnerModule ],
 })
-export class LoadingSpinner implements OnInit {
-  isLoading = false;
-
+export class LoadingSpinner {
   private loading = inject(Loading);
 
-  ngOnInit() {
-    this.loading.isLoading.subscribe(isLoading => this.isLoading = isLoading);
-  }
+  isLoading = toSignal(this.loading.isLoading);
 }

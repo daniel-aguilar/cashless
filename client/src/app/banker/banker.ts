@@ -1,8 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatTabsModule } from '@angular/material/tabs';
-import { Account } from '../auth/account';
+import { map } from 'rxjs';
 import { Auth } from '../auth/auth';
 import { AccountDetail } from '../account/account-detail/account-detail';
 import { Bank } from './bank';
@@ -15,25 +16,17 @@ import { Bank } from './bank';
     AccountDetail,
   ],
 })
-export class Banker implements OnInit {
-  account: Account;
-  bank: Account;
-  isHandset = false;
-
+export class Banker {
   private bankService = inject(Bank);
   private auth = inject(Auth);
   private breakpointObserver = inject(BreakpointObserver);
 
-  constructor() {
-    this.account = this.auth.getLoggedAccount();
-  }
-
-  ngOnInit() {
-    this.bankService.getBankAccount(this.account.gameId).subscribe(
-      bank => this.bank = bank
-    );
+  account = this.auth.getLoggedAccount();
+  bank = toSignal(this.bankService.getBankAccount(this.account.gameId));
+  isHandset = toSignal(
     this.breakpointObserver
-        .observe([Breakpoints.HandsetPortrait])
-        .subscribe(res => this.isHandset = res.matches);
-  }
+      .observe([Breakpoints.HandsetPortrait])
+      .pipe(map(res => res.matches)),
+    { initialValue: false }
+  );
 }
