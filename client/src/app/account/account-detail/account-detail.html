@@ -17,12 +17,11 @@
     </li>
   </ul>
 
-  <mat-divider></mat-divider>
+  <mat-divider />
 
   @defer {
     <h2 i18n>Transfer Money</h2>
-    <app-transfer-money></app-transfer-money>
-
-    <app-payment-log (balanceChange)="updateBalance()"></app-payment-log>
+    <app-transfer-money />
+    <app-payment-log (balanceChange)="updateBalance()" />
   }
 </div>

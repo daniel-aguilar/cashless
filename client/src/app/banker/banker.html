@@ -1,13 +1,13 @@
 <mat-tab-group mat-align-tabs="center" [mat-stretch-tabs]="isHandset()">
   <mat-tab i18n-label label="Player">
     <div class="pt-1">
-      <app-account-detail [account]="account"></app-account-detail>
+      <app-account-detail [account]="account" />
     </div>
   </mat-tab>
   <mat-tab i18n-label label="Bank">
     @if (bank()) {
       <div class="pt-1">
-        <app-account-detail [account]="bank()"></app-account-detail>
+        <app-account-detail [account]="bank()" />
       </div>
     }
   </mat-tab>
