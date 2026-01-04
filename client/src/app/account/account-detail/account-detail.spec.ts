@@ -18,7 +18,7 @@ const nameElementSelector = 'li.name';
 describe('AccountDetail', () => {
   let fixture: ComponentFixture<AccountDetail>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     const mockCurrentAccountService = { instance: { isBank: true } as Account };
 
     TestBed.configureTestingModule({
@@ -37,6 +37,8 @@ describe('AccountDetail', () => {
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
       },
     });
+
+    await TestBed.compileComponents();
   });
 
   it('Should hide bank name', () => {

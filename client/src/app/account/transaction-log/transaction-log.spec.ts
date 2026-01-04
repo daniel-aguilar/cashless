@@ -12,13 +12,14 @@ describe('TransactionLog', () => {
   const txs = new Subject<Transaction>();
 
   beforeEach(() => {
-    const bankSpy = jasmine.createSpyObj('BankService', ['getTransactionLog']);
-    bankSpy.getTransactionLog.and.returnValue(of([]));
-    bankSpy.transactions = txs;
+    const bankSpy: Pick<Bank, 'getTransactionLog' | 'transactions'> = {
+      getTransactionLog: vi.fn().mockReturnValue(of([])),
+      transactions: txs,
+    };
 
-    const authSpy: jasmine.SpyObj<Auth>
-        = jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
-    authSpy.getLoggedAccount.and.returnValue({ gameId: 1 } as Account);
+    const authSpy: Pick<Auth, 'getLoggedAccount'> = {
+      getLoggedAccount: vi.fn().mockReturnValue({ gameId: 1 } as Account)
+    };
 
     TestBed.configureTestingModule({
       imports: [TransactionLog],

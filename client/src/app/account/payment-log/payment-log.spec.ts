@@ -8,9 +8,9 @@ import { PaymentLog } from './payment-log';
 
 describe('PaymentLog', () => {
   it('Should add payments', () => {
-    const spy: jasmine.SpyObj<Bank> =
-        jasmine.createSpyObj('BankService', ['getLatestPayments']);
-    spy.getLatestPayments.and.returnValue(EMPTY);
+    const spy: Pick<Bank, 'getLatestPayments'> = {
+      getLatestPayments: vi.fn().mockReturnValue(EMPTY)
+    };
 
     TestBed.configureTestingModule({
       imports: [PaymentLog],

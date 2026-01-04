@@ -17,9 +17,9 @@ describe('Bank', () => {
   let req: TestRequest;
 
   beforeEach(() => {
-    const authSpy: jasmine.SpyObj<Auth> =
-      jasmine.createSpyObj('AuthService', ['getLoggedAccount']);
-    authSpy.getLoggedAccount.and.returnValue(player);
+    const authSpy: Pick<Auth, 'getLoggedAccount'> = {
+      getLoggedAccount: vi.fn().mockReturnValue(player)
+    };
 
     TestBed.configureTestingModule({
       providers: [
@@ -34,10 +34,9 @@ describe('Bank', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
-  it('Should get correct balance', (done: DoneFn) => {
+  it('Should get correct balance', async () => {
     service.getBalance(player).subscribe(n => {
       expect(n).toBe(100);
-      done();
     });
 
     req = httpTestingController.expectOne(`${apiURL}/1/balance`);

@@ -9,7 +9,7 @@ describe('Payment', () => {
     const tx = { sender, recipient } as Transaction;
 
     const payment = new Payment(tx, sender);
-    expect(payment.isIncoming).toBeFalse();
+    expect(payment.isIncoming).toBe(false);
     expect(payment.account).toBe(recipient);
   });
 });

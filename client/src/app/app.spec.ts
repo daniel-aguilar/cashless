@@ -18,12 +18,14 @@ describe('App', () => {
   let fixture: ComponentFixture<App>;
   let loader: HarnessLoader;
 
-  let spy: jasmine.SpyObj<Auth>;
+  let spy: Pick<Auth, 'getLoggedAccount' | 'getLoginStatus'>;
   const loginStatus = new BehaviorSubject(false);
 
   beforeEach(async () => {
-    spy = jasmine.createSpyObj('AuthService', ['getLoginStatus', 'getLoggedAccount']);
-    spy.getLoginStatus.and.returnValue(loginStatus.asObservable());
+    spy = {
+      getLoginStatus: vi.fn().mockReturnValue(loginStatus.asObservable()),
+      getLoggedAccount: vi.fn()
+    };
 
     TestBed.configureTestingModule({
       imports: [App],
@@ -53,21 +55,21 @@ describe('App', () => {
 
     expect(component.account).toBeUndefined();
     expect(links.length).toBe(0);
-    expect(component.addMargin).toBeTrue();
+    expect(component.addMargin).toBe(true);
   });
 
   // eslint-disable-next-line @stylistic/ts/quotes
   it("Should display 'manage players' link as banker only", () => {
     setBankerStatus(false);
-    expect(component.account.isBanker).toBeFalse();
+    expect(component.account.isBanker).toBe(false);
     expect(link()).toBeNull();
 
     setBankerStatus(true);
-    expect(component.account.isBanker).toBeTrue();
+    expect(component.account.isBanker).toBe(true);
     expect(link()).toBeTruthy();
 
     function setBankerStatus(isBanker: boolean) {
-      spy.getLoggedAccount.and.returnValue({ isBanker } as Account);
+      vi.mocked(spy.getLoggedAccount).mockReturnValue({ isBanker } as Account);
       loginStatus.next(true);
       fixture.detectChanges();
     }
@@ -84,20 +86,20 @@ describe('App', () => {
     const fs = await toolbar.getCssValue('font-size');
     let mb = '';
 
-    expect(component.addMargin).toBeTrue();
+    expect(component.addMargin).toBe(true);
     mb = await getMarginBottomValue();
     expect(mb).toBe(fs);
 
     await router.navigateByUrl('/banker');
     fixture.detectChanges();
     mb = await getMarginBottomValue();
-    expect(component.addMargin).toBeFalse();
+    expect(component.addMargin).toBe(false);
     expect(mb).toBe('0px');
 
     await router.navigateByUrl('/');
     fixture.detectChanges();
     mb = await getMarginBottomValue();
-    expect(component.addMargin).toBeTrue();
+    expect(component.addMargin).toBe(true);
     expect(mb).toBe(fs);
 
     function getMarginBottomValue() {

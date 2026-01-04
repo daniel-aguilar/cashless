@@ -26,10 +26,9 @@ describe('Game', () => {
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
-  it('Should get other accounts', (done: DoneFn) => {
+  it('Should get other accounts', async () => {
     service.getOtherAccountsExcept(player).subscribe(p => {
       expect(p).toEqual([banker, bank]);
-      done();
     });
 
     const req = httpTestingController.expectOne(`${apiURL}/1/accounts`);
@@ -37,10 +36,9 @@ describe('Game', () => {
     httpTestingController.verify();
   });
 
-  it('Should get other accounts, skipping the bank', (done: DoneFn) => {
+  it('Should get other accounts, skipping the bank', async () => {
     service.getOtherAccountsExcept(player, true).subscribe(p => {
       expect(p).toEqual([banker]);
-      done();
     });
 
     const req = httpTestingController.expectOne(`${apiURL}/1/accounts`);

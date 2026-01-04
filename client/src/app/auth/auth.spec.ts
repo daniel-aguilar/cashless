@@ -17,12 +17,11 @@ describe('Auth', () => {
     setup();
   });
 
-  it('Should have default values', (done: DoneFn) => {
+  it('Should have default values', async () => {
     expect(service.savedPin).toBeNull();
     expect(() => service.getLoggedAccount()).toThrowError('User is not logged in');
     service.getLoginStatus().subscribe(status => {
       expect(status).toBe(false);
-      done();
     });
   });
 
@@ -34,7 +33,7 @@ describe('Auth', () => {
     expect(service.savedPin).toEqual('1234');
   });
 
-  it('Should log user in', (done: DoneFn) => {
+  it('Should log user in', async () => {
     const account = { pin: '1111' } as Account;
 
     service.login(account);
@@ -45,11 +44,10 @@ describe('Auth', () => {
 
     service.getLoginStatus().subscribe(status => {
       expect(status).toBe(true);
-      done();
     });
   });
 
-  it('Should log user out', (done: DoneFn) => {
+  it('Should log user out', async () => {
     service.login({} as Account);
 
     service.logout();
@@ -60,7 +58,6 @@ describe('Auth', () => {
 
     service.getLoginStatus().subscribe(status => {
       expect(status).toBe(false);
-      done();
     });
   });
 });
