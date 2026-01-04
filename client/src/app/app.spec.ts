@@ -46,7 +46,6 @@ describe('App', () => {
     fixture = TestBed.createComponent(App);
     loader = TestbedHarnessEnvironment.loader(fixture);
     component = fixture.componentInstance;
-    component.ngOnInit();
     fixture.detectChanges();
   });
 
