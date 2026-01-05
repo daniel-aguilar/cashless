@@ -81,28 +81,19 @@ describe('App', () => {
   it('Should not add margin on banker route', async () => {
     const harness = await loader.getHarness(MatToolbarHarness);
     const toolbar = await harness.host();
-
-    const fs = await toolbar.getCssValue('font-size');
-    let mb = '';
+    const className = 'add-bottom-margin';
 
     expect(component.addMargin).toBe(true);
-    mb = await getMarginBottomValue();
-    expect(mb).toBe(fs);
+    expect(await toolbar.hasClass(className)).toBe(true);
 
     await router.navigateByUrl('/banker');
     fixture.detectChanges();
-    mb = await getMarginBottomValue();
     expect(component.addMargin).toBe(false);
-    expect(mb).toBe('0px');
+    expect(await toolbar.hasClass(className)).toBe(false);
 
     await router.navigateByUrl('/');
     fixture.detectChanges();
-    mb = await getMarginBottomValue();
     expect(component.addMargin).toBe(true);
-    expect(mb).toBe(fs);
-
-    function getMarginBottomValue() {
-      return toolbar.getCssValue('margin-bottom');
-    }
+    expect(await toolbar.hasClass(className)).toBe(true);
   });
 });

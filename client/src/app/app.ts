@@ -12,6 +12,7 @@ import { LoadingSpinner } from './loading-spinner/loading-spinner';
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
+  styleUrl: './app.css',
   imports: [
     LoadingSpinner,
     MatToolbarModule,

@@ -46,7 +46,6 @@
     "@stylistic/eslint-plugin-ts": "^2.12.1",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/lodash-es": "^4.17.12",
-    "@vitest/browser-webdriverio": "^4.0.16",
     "angular-eslint": "21.1.0",
     "eslint": "^9.33.0",
     "jsdom": "^27.4.0",
