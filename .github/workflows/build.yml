@@ -33,6 +33,8 @@ jobs:
         run: npm clean-install
       - name: Lint
         run: npx ng lint
+      - name: Test
+        run: npx ng test --watch false
       - name: Build
         run: npx ng build
       - name: Deploy
