@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -18,6 +19,7 @@ public class AccountServiceTest {
 
   @Test
   @Transactional
+  @Sql("/test-data.sql")
   public void testCreateBankAccount() {
     var game = gameRepository.findById(2).orElseThrow();
     var bank = accountService.createBankAccount(game);
