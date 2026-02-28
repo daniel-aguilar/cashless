@@ -32,11 +32,11 @@ jobs:
       - name: Install Dependencies
         run: npm clean-install
       - name: Lint
-        run: npx ng lint
+        run: npm run lint
       - name: Test
-        run: npx ng test --watch false
+        run: npm test -- --watch false
       - name: Build
-        run: npx ng build
+        run: npm run build
       - name: Deploy
         run: |
           cd dist/cashless/browser/es-CR
